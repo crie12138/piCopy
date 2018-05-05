@@ -5,12 +5,12 @@
         <image  class="cover-banner" src="printer.jpeg" mode="scaleToFill"></image>
     </view>
     <view class='button'>
-        <button type="primary" loading="{{loading}}" plain="{{plain}}" size=""
-        bindtap="login">我要发送打印文件</button>
+        <button type="primary" loading="{{userLoading}}" disable="{{userDisable}}" hover-class="button-hover" 
+        data-identity="user" bindtap="onclick">我是用户</button>
     </view>
     <view class='button'>
-        <button type="primary" loading="{{loading}}" plain="{{plain}}" size="default"
-        bindtap="login">我要注册打印点</button>
+        <button type="primary" loading="{{shopkeeperLoading}}" disable="{{shopkeeperDisable}}" hover-class="button-hover" 
+        data-identity="shopkeeper" bindtap="onclick">我是商家</button>
     </view>
     <!-- 上传图片测试 -->
 </view>
