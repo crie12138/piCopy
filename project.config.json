@@ -8,5 +8,26 @@
 	},
 	"appid": "wxd5797e5f93c49ab2",
 	"projectname": "%2Fhome%2Fcirno%2Fwin7Share%2FpiCopy",
-	"condition": {}
+	"compileType": "miniprogram",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": []
+		}
+	}
 }
