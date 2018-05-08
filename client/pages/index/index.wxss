@@ -1,11 +1,5 @@
 /**index.wxss**/
-page {
-    background: rgb(246, 246, 246);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
- }
+
 .cover-banner{
     width: 375rpx;
     height: 375rpx ;

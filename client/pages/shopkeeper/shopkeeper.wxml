@@ -1,0 +1,6 @@
+<!--pages/shopkeeper/shopkeeper.wxml-->
+<view>
+    <view class="container">
+        <button></button>
+    </view>
+</view>

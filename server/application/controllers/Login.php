@@ -48,7 +48,7 @@ class Login extends CI_Controller {
     }
     public function shopkeeper() {
         $result = LoginService::check();
-
+        $isNewShopkeeper=TRUE;
         if ($result['loginState'] === Constants::S_AUTH) {
             $userinfo=$result['userinfo'];
             $row=DB::row('shopkeepers',['*'],[
@@ -60,14 +60,18 @@ class Login extends CI_Controller {
                     'nickname'=>$userinfo['nickName'],
                     'avatar'=>$userinfo['avatarUrl']
                  ]);
+            else{
+                if(get_object_vars($row)['phone']!=NULL)
+                    $isNewShopkeeper=FALSE;
+            }
             $this->json([
                 'code' => 0,
-                'data' =>$row,
+                'isNewShopkeeper'=>$isNewShopkeeper
             ]);
         } else {
             $this->json([
                 'code' => -1,
-                'data' => []
+                'data' => [],
             ]);
         }
     }

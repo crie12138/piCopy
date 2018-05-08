@@ -5,3 +5,11 @@
   align-items: center;
   box-sizing: border-box;
 } 
+
+page {
+  background: rgb(246, 246, 246);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}

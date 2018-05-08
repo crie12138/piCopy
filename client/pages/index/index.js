@@ -16,14 +16,21 @@ Page( {
         util.showBusy('正在登录')
         var that = this
         // 调用登录接口
-        var url=config.service.loginUrl+this.data.identity
-        console.log(url)
+        var loginUrl=config.service.loginUrl+this.data.identity
+        var redirectUrl = "/pages/" + this.data.identity + "/" + this.data.identity
+        console.log(redirectUrl)
         qcloud.request({
-            url: url,
+            url: loginUrl,
             login: true,
             success(result) {
                 util.showSuccess('登录成功')
-                console.log(result)
+                if(result.data.isNewShopkeeper){
+                    redirectUrl="/pages/keeperRegist/keeperRegist"
+                }
+                wx.navigateTo({
+                    url: redirectUrl //实际路径要写全
+                })
+                console.log(redirectUrl)
             },
             fail(error) {
                 util.showModel('请求失败', error)
@@ -49,6 +56,7 @@ Page( {
             })
         }
         this.login()
+        
         
     },
 
