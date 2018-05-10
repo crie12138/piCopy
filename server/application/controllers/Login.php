@@ -25,19 +25,19 @@ class Login extends CI_Controller {
         $result = LoginService::check();
 
         if ($result['loginState'] === Constants::S_AUTH) {
-            $userinfo=$result['userinfo'];
+            $userInfo=$result['userinfo'];
             $row=DB::row('users',['*'],[
-                'open_id'=>$userinfo['openId']
+                'open_id'=>$userInfo['openId']
             ]);
             if($row===NULL)
                 DB::insert('users',[
-                    'open_id'=>$userinfo['openId'],
-                    'nickname'=>$userinfo['nickName'],
-                    'avatar'=>$userinfo['avatarUrl']
+                    'open_id'=>$userInfo['openId'],
+                    'nickname'=>$userInfo['nickName'],
+                    'avatar'=>$userInfo['avatarUrl'],
                  ]);
             $this->json([
                 'code' => 0,
-                'data' =>$row,
+                'data' =>$userInfo,
             ]);
         } else {
             $this->json([
@@ -50,15 +50,15 @@ class Login extends CI_Controller {
         $result = LoginService::check();
         $isNewShopkeeper=TRUE;
         if ($result['loginState'] === Constants::S_AUTH) {
-            $userinfo=$result['userinfo'];
+            $keeperInfo=$result['userinfo'];
             $row=DB::row('shopkeepers',['*'],[
-                'open_id'=>$userinfo['openId']
+                'open_id'=>$keeperInfo['openId']
             ]);
             if($row===NULL)
                 DB::insert('shopkeepers',[
-                    'open_id'=>$userinfo['openId'],
-                    'nickname'=>$userinfo['nickName'],
-                    'avatar'=>$userinfo['avatarUrl']
+                    'open_id'=>$keeperInfo['openId'],
+                    'avatar'=>$keeperInfo['avatarUrl'],
+                    'nickname'=>$keeperInfo['nickName'],
                  ]);
             else{
                 if(get_object_vars($row)['phone']!=NULL)
@@ -66,6 +66,7 @@ class Login extends CI_Controller {
             }
             $this->json([
                 'code' => 0,
+                'data' =>$keeperInfo,
                 'isNewShopkeeper'=>$isNewShopkeeper
             ]);
         } else {

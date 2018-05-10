@@ -24,13 +24,13 @@ Page( {
             login: true,
             success(result) {
                 util.showSuccess('登录成功')
+                getApp().globalData.userInfo=result.data.data
                 if(result.data.isNewShopkeeper){
                     redirectUrl="/pages/keeperRegist/keeperRegist"
                 }
                 wx.navigateTo({
                     url: redirectUrl //实际路径要写全
                 })
-                console.log(redirectUrl)
             },
             fail(error) {
                 util.showModel('请求失败', error)
@@ -59,5 +59,14 @@ Page( {
         
         
     },
+    onHide:function(){
+        this.setData({
+            userDisable:false,
+            userLoading:false,
+            shopkeeperDisable:false,
+            shopkeeperLoading:false,
+        })
+
+    }
 
 })

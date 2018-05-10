@@ -1,2 +1,14 @@
 <!--pages/keeperRegist/keeperRegist.wxml-->
-<text>pages/keeperRegist/keeperRegist.wxml</text>
+<view class="container">
+    <view class="container">
+        <image  class="avatar-banner" src="{{avatarUrl}}" mode="scaleToFill"></image>
+        <label class="nickName-banner">{{nickName}}</label>
+    </view>
+    <view class="inputView">
+        <input class="input" value="真实姓名" maxlength="10" confirm-type="next"></input>
+    </view>
+    <view class="inputView">
+        <input class="input" value="手机号码" type="number"></input>    
+    </view>
+    <view><button type="primary">确认注册</button></view>
+</view>

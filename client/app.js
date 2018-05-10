@@ -10,9 +10,6 @@ App({
                 if (result) {
                     util.showSuccess('登录成功')
                     console.log(result)
-                } else {
-                    // 如果不是首次登录，不会返回用户信息，请求用户信息接口获取
-                    
                 }
             },
             fail(error) {
@@ -20,5 +17,8 @@ App({
                 console.log('登录失败', error)
             }
         })
+    },
+    globalData:{
+        userInfo:null
     }
 })

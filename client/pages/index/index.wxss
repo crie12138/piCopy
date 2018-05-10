@@ -1,12 +1,13 @@
 /**index.wxss**/
 
+
+.button{
+    widows: 450rpx;
+    height: 200rpx;
+}
 .cover-banner{
     width: 375rpx;
     height: 375rpx ;
     border-radius: 50%;
     margin-bottom: 400rpx;
- }
-.button{
-    widows: 450rpx;
-    height: 200rpx;
-}
+  }
