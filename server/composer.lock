@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5a14b686cdf8f48c8865a10ad1b17b78",
+    "content-hash": "b575e9b8c9c97910125d6e858d464a39",
     "packages": [
         {
             "name": "guzzle/guzzle",
@@ -16,7 +16,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/guzzle/guzzle3/0645b70d953bc1c067bbc8d5bc53194706b628d9.zip",
+                "url": "https://api.github.com/repos/guzzle/guzzle3/zipball/0645b70d953bc1c067bbc8d5bc53194706b628d9",
                 "reference": "0645b70d953bc1c067bbc8d5bc53194706b628d9",
                 "shasum": ""
             },
@@ -104,21 +104,21 @@
         },
         {
             "name": "qcloud/cos-sdk-v5",
-            "version": "v1.1.1",
+            "version": "v1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tencentyun/cos-php-sdk-v5.git",
-                "reference": "889be64dc70bace3722df3b44604ab510e64ea48"
+                "reference": "10a740399eb407ed89679ffcead76086519bf9d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/tencentyun/cos-php-sdk-v5/889be64dc70bace3722df3b44604ab510e64ea48.zip",
-                "reference": "889be64dc70bace3722df3b44604ab510e64ea48",
+                "url": "https://api.github.com/repos/tencentyun/cos-php-sdk-v5/zipball/10a740399eb407ed89679ffcead76086519bf9d9",
+                "reference": "10a740399eb407ed89679ffcead76086519bf9d9",
                 "shasum": ""
             },
             "require": {
                 "guzzle/guzzle": "~3.7",
-                "php": ">=5.3.3"
+                "php": ">=5.3.0"
             },
             "type": "library",
             "autoload": {
@@ -127,13 +127,26 @@
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
             "authors": [
                 {
-                    "name": "lewzylu"
+                    "name": "yaozongyou",
+                    "email": "yaozongyou@vip.qq.com"
+                },
+                {
+                    "name": "lewzylu",
+                    "email": "327874225@qq.com"
                 }
             ],
-            "description": "COS SDK for PHP",
-            "time": "2017-09-28T13:25:15+00:00"
+            "description": "PHP SDK for QCloud COS",
+            "keywords": [
+                "cos",
+                "php",
+                "qcloud"
+            ],
+            "time": "2018-05-03T06:50:56+00:00"
         },
         {
             "name": "qcloud/weapp-sdk",
@@ -145,7 +158,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/tencentyun/wafer-php-server-sdk/0d6eb85104dfade25025fa8048e5a5e9a089ce1f.zip",
+                "url": "https://api.github.com/repos/tencentyun/wafer-php-server-sdk/zipball/0d6eb85104dfade25025fa8048e5a5e9a089ce1f",
                 "reference": "0d6eb85104dfade25025fa8048e5a5e9a089ce1f",
                 "shasum": ""
             },
@@ -184,17 +197,53 @@
             "time": "2017-10-24T08:35:02+00:00"
         },
         {
-            "name": "symfony/event-dispatcher",
-            "version": "v2.8.28",
+            "name": "qcloudsms/qcloudsms_php",
+            "version": "v0.1.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "7fe089232554357efb8d4af65ce209fc6e5a2186"
+                "url": "https://github.com/qcloudsms/qcloudsms_php.git",
+                "reference": "8ee474a6836c015d412eabd1b082bae926f5ee02"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/symfony/event-dispatcher/7fe089232554357efb8d4af65ce209fc6e5a2186.zip",
-                "reference": "7fe089232554357efb8d4af65ce209fc6e5a2186",
+                "url": "https://api.github.com/repos/qcloudsms/qcloudsms_php/zipball/8ee474a6836c015d412eabd1b082bae926f5ee02",
+                "reference": "8ee474a6836c015d412eabd1b082bae926f5ee02",
+                "shasum": ""
+            },
+            "require-dev": {
+                "sami/sami": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Qcloud\\Sms\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "qcloud sms php sdk",
+            "keywords": [
+                "php",
+                "qcloud",
+                "sdk",
+                "sms"
+            ],
+            "time": "2018-02-23T06:31:39+00:00"
+        },
+        {
+            "name": "symfony/event-dispatcher",
+            "version": "v2.8.39",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/event-dispatcher.git",
+                "reference": "9b69aad7d4c086dc94ebade2d5eb9145da5dac8c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/9b69aad7d4c086dc94ebade2d5eb9145da5dac8c",
+                "reference": "9b69aad7d4c086dc94ebade2d5eb9145da5dac8c",
                 "shasum": ""
             },
             "require": {
@@ -241,7 +290,7 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2017-10-01T21:00:16+00:00"
+            "time": "2018-04-06T07:35:03+00:00"
         }
     ],
     "packages-dev": [],

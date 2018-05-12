@@ -9,8 +9,8 @@
         data-identity="user" bindtap="onclick">我是用户</button>
     </view>
     <view class='button'>
-        <button type="primary" loading="{{shopkeeperLoading}}" disabled="{{shopkeeperDisable}}" hover-class="button-hover" 
-        data-identity="shopkeeper" bindtap="onclick">我是商家</button>
+        <button type="primary" loading="{{keeperLoading}}" disabled="{{keeperDisable}}" hover-class="button-hover" 
+        data-identity="keeper" bindtap="onclick">我是商家</button>
     </view>
     <!-- 上传图片测试 -->
 </view>

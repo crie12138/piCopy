@@ -13,6 +13,7 @@ class ComposerStaticInit1b277734c5cf2c915c36dd14ed3bc61f
         ),
         'Q' => 
         array (
+            'Qcloud\\Sms\\' => 11,
             'QCloud_WeApp_SDK\\' => 17,
         ),
     );
@@ -21,6 +22,10 @@ class ComposerStaticInit1b277734c5cf2c915c36dd14ed3bc61f
         'Symfony\\Component\\EventDispatcher\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/event-dispatcher',
+        ),
+        'Qcloud\\Sms\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/qcloudsms/qcloudsms_php/src',
         ),
         'QCloud_WeApp_SDK\\' => 
         array (
@@ -473,6 +478,7 @@ class ComposerStaticInit1b277734c5cf2c915c36dd14ed3bc61f
         'Qcloud\\Cos\\BucketStyleListener' => __DIR__ . '/..' . '/qcloud/cos-sdk-v5/src/Qcloud/Cos/BucketStyleListener.php',
         'Qcloud\\Cos\\Client' => __DIR__ . '/..' . '/qcloud/cos-sdk-v5/src/Qcloud/Cos/Client.php',
         'Qcloud\\Cos\\Command' => __DIR__ . '/..' . '/qcloud/cos-sdk-v5/src/Qcloud/Cos/Command.php',
+        'Qcloud\\Cos\\Copy' => __DIR__ . '/..' . '/qcloud/cos-sdk-v5/src/Qcloud/Cos/Copy.php',
         'Qcloud\\Cos\\ExceptionListener' => __DIR__ . '/..' . '/qcloud/cos-sdk-v5/src/Qcloud/Cos/ExceptionListener.php',
         'Qcloud\\Cos\\ExceptionParser' => __DIR__ . '/..' . '/qcloud/cos-sdk-v5/src/Qcloud/Cos/ExceptionParser.php',
         'Qcloud\\Cos\\Exception\\BucketAlreadyExistsException' => __DIR__ . '/..' . '/qcloud/cos-sdk-v5/src/Qcloud/Cos/Exception/BucketAlreadyExistsException.php',
@@ -489,11 +495,17 @@ class ComposerStaticInit1b277734c5cf2c915c36dd14ed3bc61f
         'Qcloud\\Cos\\Service' => __DIR__ . '/..' . '/qcloud/cos-sdk-v5/src/Qcloud/Cos/Service.php',
         'Qcloud\\Cos\\Signature' => __DIR__ . '/..' . '/qcloud/cos-sdk-v5/src/Qcloud/Cos/Signature.php',
         'Qcloud\\Cos\\SignatureListener' => __DIR__ . '/..' . '/qcloud/cos-sdk-v5/src/Qcloud/Cos/SignatureListener.php',
-        'Qcloud\\Cos\\Tests\\BucketTest' => __DIR__ . '/..' . '/qcloud/cos-sdk-v5/src/Qcloud/Cos/Tests/BucketTest.php',
-        'Qcloud\\Cos\\Tests\\ObjectTest' => __DIR__ . '/..' . '/qcloud/cos-sdk-v5/src/Qcloud/Cos/Tests/ObjectTest.php',
+        'Qcloud\\Cos\\Tests\\BucketTest' => __DIR__ . '/..' . '/qcloud/cos-sdk-v5/src/Qcloud/Cos/Tests/Test.php',
         'Qcloud\\Cos\\Tests\\TestHelper' => __DIR__ . '/..' . '/qcloud/cos-sdk-v5/src/Qcloud/Cos/Tests/TestHelper.php',
         'Qcloud\\Cos\\TokenListener' => __DIR__ . '/..' . '/qcloud/cos-sdk-v5/src/Qcloud/Cos/TokenListener.php',
         'Qcloud\\Cos\\UploadBodyListener' => __DIR__ . '/..' . '/qcloud/cos-sdk-v5/src/Qcloud/Cos/UploadBodyListener.php',
+        'Qcloud\\Sms\\SmsMobileStatusPuller' => __DIR__ . '/..' . '/qcloudsms/qcloudsms_php/src/SmsMobileStatusPuller.php',
+        'Qcloud\\Sms\\SmsMultiSender' => __DIR__ . '/..' . '/qcloudsms/qcloudsms_php/src/SmsMultiSender.php',
+        'Qcloud\\Sms\\SmsSenderUtil' => __DIR__ . '/..' . '/qcloudsms/qcloudsms_php/src/SmsSenderUtil.php',
+        'Qcloud\\Sms\\SmsSingleSender' => __DIR__ . '/..' . '/qcloudsms/qcloudsms_php/src/SmsSingleSender.php',
+        'Qcloud\\Sms\\SmsStatusPuller' => __DIR__ . '/..' . '/qcloudsms/qcloudsms_php/src/SmsStatusPuller.php',
+        'Qcloud\\Sms\\SmsVoicePromptSender' => __DIR__ . '/..' . '/qcloudsms/qcloudsms_php/src/SmsVoicePromptSender.php',
+        'Qcloud\\Sms\\SmsVoiceVerifyCodeSender' => __DIR__ . '/..' . '/qcloudsms/qcloudsms_php/src/SmsVoiceVerifyCodeSender.php',
         'Symfony\\Component\\EventDispatcher\\ContainerAwareEventDispatcher' => __DIR__ . '/..' . '/symfony/event-dispatcher/ContainerAwareEventDispatcher.php',
         'Symfony\\Component\\EventDispatcher\\Debug\\TraceableEventDispatcher' => __DIR__ . '/..' . '/symfony/event-dispatcher/Debug/TraceableEventDispatcher.php',
         'Symfony\\Component\\EventDispatcher\\Debug\\TraceableEventDispatcherInterface' => __DIR__ . '/..' . '/symfony/event-dispatcher/Debug/TraceableEventDispatcherInterface.php',

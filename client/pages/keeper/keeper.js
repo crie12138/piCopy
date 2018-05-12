@@ -1,4 +1,4 @@
-// pages/shopkeeper/shopkeeper.js
+// pages/keeper/keeper.js
 Page({
 
   /**

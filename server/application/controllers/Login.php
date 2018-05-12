@@ -46,28 +46,28 @@ class Login extends CI_Controller {
             ]);
         }
     }
-    public function shopkeeper() {
+    public function keeper() {
         $result = LoginService::check();
-        $isNewShopkeeper=TRUE;
+        $isNewKeeper=TRUE;
         if ($result['loginState'] === Constants::S_AUTH) {
             $keeperInfo=$result['userinfo'];
-            $row=DB::row('shopkeepers',['*'],[
+            $row=DB::row('keepers',['*'],[
                 'open_id'=>$keeperInfo['openId']
             ]);
             if($row===NULL)
-                DB::insert('shopkeepers',[
+                DB::insert('keepers',[
                     'open_id'=>$keeperInfo['openId'],
                     'avatar'=>$keeperInfo['avatarUrl'],
                     'nickname'=>$keeperInfo['nickName'],
                  ]);
             else{
                 if(get_object_vars($row)['phone']!=NULL)
-                    $isNewShopkeeper=FALSE;
+                    $isNewKeeper=FALSE;
             }
             $this->json([
                 'code' => 0,
                 'data' =>$keeperInfo,
-                'isNewShopkeeper'=>$isNewShopkeeper
+                'isNewKeeper'=>$isNewKeeper
             ]);
         } else {
             $this->json([

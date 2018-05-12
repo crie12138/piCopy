@@ -1,9 +1,9 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/shopkeeper/shopkeeper",
     "pages/user/user",
-    "pages/keeperRegist/keeperRegist"
+    "pages/keeperRegist/keeperRegist",
+    "pages/keeper/keeper"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

@@ -7,9 +7,9 @@ Page( {
     data: {
         identity:null,
         userLoading:false,
-        shopkeeperLoading:false,
+        keeperLoading:false,
         userDisable:false,
-        shopkeeperDisable:false,
+        keeperDisable:false,
         takeSession:true
     },
     login:function(){
@@ -18,18 +18,17 @@ Page( {
         // 调用登录接口
         var loginUrl=config.service.loginUrl+this.data.identity
         var redirectUrl = "/pages/" + this.data.identity + "/" + this.data.identity
-        console.log(redirectUrl)
         qcloud.request({
             url: loginUrl,
             login: true,
             success(result) {
                 util.showSuccess('登录成功')
                 getApp().globalData.userInfo=result.data.data
-                if(result.data.isNewShopkeeper){
+                if(result.data.isNewKeeper){
                     redirectUrl="/pages/keeperRegist/keeperRegist"
                 }
                 wx.navigateTo({
-                    url: redirectUrl //实际路径要写全
+                    url: redirectUrl 
                 })
             },
             fail(error) {
@@ -45,14 +44,14 @@ Page( {
         if (this.data.identity=="user"){
             this.setData({
                 userLoading:true,
-                shopkeeperDisable:true
+                keeperDisable:true
             })
         }
         else
         {
             this.setData({
                 userDisable:true,
-                shopkeeperLoading:true
+                keeperLoading:true
             })
         }
         this.login()
@@ -63,8 +62,8 @@ Page( {
         this.setData({
             userDisable:false,
             userLoading:false,
-            shopkeeperDisable:false,
-            shopkeeperLoading:false,
+            keeperDisable:false,
+            keeperLoading:false,
         })
 
     }

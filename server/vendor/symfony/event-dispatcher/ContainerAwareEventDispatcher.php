@@ -23,30 +23,18 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class ContainerAwareEventDispatcher extends EventDispatcher
 {
-    /**
-     * The container from where services are loaded.
-     *
-     * @var ContainerInterface
-     */
     private $container;
 
     /**
      * The service IDs of the event listeners and subscribers.
-     *
-     * @var array
      */
     private $listenerIds = array();
 
     /**
      * The services registered as listeners.
-     *
-     * @var array
      */
     private $listeners = array();
 
-    /**
-     * @param ContainerInterface $container A ContainerInterface instance
-     */
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
@@ -79,7 +67,7 @@ class ContainerAwareEventDispatcher extends EventDispatcher
 
         if (isset($this->listenerIds[$eventName])) {
             foreach ($this->listenerIds[$eventName] as $i => $args) {
-                list($serviceId, $method, $priority) = $args;
+                list($serviceId, $method) = $args;
                 $key = $serviceId.'.'.$method;
                 if (isset($this->listeners[$eventName][$key]) && $listener === array($this->listeners[$eventName][$key], $method)) {
                     unset($this->listeners[$eventName][$key]);

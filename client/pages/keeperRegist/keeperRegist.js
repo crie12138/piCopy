@@ -1,4 +1,7 @@
 // pages/keeperRegist/keeperRegist.js
+var qcloud = require('../../vendor/wafer2-client-sdk/index')
+var config = require('../../config')
+var util = require('../../utils/util.js')
 Page({
 
   /**
@@ -6,7 +9,11 @@ Page({
    */
   data: {
     avatarUrl:null,
+    openId:null,
     nickName:null,
+    captcha:null,
+    realName:null,
+    phone:null,
 
   },
 
@@ -17,7 +24,8 @@ Page({
     var keeperInfo=getApp().globalData.userInfo
     this.setData({
         avatarUrl:keeperInfo["avatarUrl"],
-        nickName:keeperInfo["nickName"]
+        nickName:keeperInfo["nickName"],
+        openId:keeperInfo["openId"]
     })
   },
 
@@ -68,5 +76,57 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  realNameInput:function(event){
+    console.log(event.detail.value)
+    this.setData({
+      realName:event.detail.value
+    })
+  },
+  phoneInput:function(event){
+    console.log(event.detail.value)
+    this.setData({
+      phone:event.detail.value
+    })
+  },
+  captchaInput:function(event){
+    console.log(event.detail.value)
+    this.setData({
+      captcha:event.detail.value
+    })
+  },
+  getCaptcha:function(){
+
+  },
+  confirm:function(event){
+    var realName=this.data.realName
+    var phone=this.data.phone
+    var openId=this.data.openId
+    var url=config.service.keeperUrl+"regist"
+    console.log(realName,phone)
+    wx.request({
+      url:url,
+      data:{
+          "realName":realName,
+          "phone":phone,
+          "openId":openId,
+      },
+      method:"post",
+      header:{
+        'content-type':'application/x-www-form-urlencoded'
+      },
+      success:function(result){
+        console.log(result)
+        if(result.data.code==0){
+          wx.redirectTo({
+            url:"/pages/keeper/keeper"
+          })
+        }
+        else{
+          util.showModel("注册失败",result.data.data)
+        }
+      },
+    })
   }
+
 })

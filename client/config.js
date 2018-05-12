@@ -20,7 +20,7 @@ var config = {
         userUrl: `${host}/weapp/user/`,
 
         // 商家地址，用于发起商家请求
-        shopkeeperUrl:`${host}/weapp/shopkeeper/`,
+        keeperUrl:`${host}/weapp/keeper/`,
 
         // 测试的信道服务地址
         tunnelUrl: `${host}/weapp/tunnel/`,

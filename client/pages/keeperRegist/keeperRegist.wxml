@@ -5,10 +5,16 @@
         <label class="nickName-banner">{{nickName}}</label>
     </view>
     <view class="inputView">
-        <input class="input" value="真实姓名" maxlength="10" confirm-type="next"></input>
+        <input class="input" value="真实姓名" maxlength="10" confirm-type="next" bindinput="realNameInput"></input>
     </view>
     <view class="inputView">
-        <input class="input" value="手机号码" type="number"></input>    
+        <input class="input" value="手机号码" type="number" bindinput="phoneInput"></input>
     </view>
-    <view><button type="primary">确认注册</button></view>
+    <view>
+        <view class="inputView">
+            <input class="input" value="输入验证码" type="number" bindinput="captchaInput"></input>
+        </view>
+        <button type="primary" bindtap="getCaptcha">获取验证码</button>
+    </view>
+    <view class="button"><button type="primary" bindtap="confirm">确认注册</button></view>
 </view>

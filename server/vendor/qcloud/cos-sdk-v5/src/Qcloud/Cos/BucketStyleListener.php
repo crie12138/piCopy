@@ -8,6 +8,14 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 /**
  * Change from path style to host style, currently only host style is supported in cos.
  */
+function endWith($haystack, $needle) {
+    $length = strlen($needle);
+    if($length == 0)
+    {
+        return true;
+    }
+    return (substr($haystack, -$length) === $needle);
+}
 class BucketStyleListener implements EventSubscriberInterface {
 
     private $appId;  // string: application id.
@@ -28,6 +36,7 @@ class BucketStyleListener implements EventSubscriberInterface {
         $command = $event['command'];
         $bucket = $command['Bucket'];
         $request = $command->getRequest();
+
         if ($command->getName() == 'ListBuckets')
         {
             $request->setHost('service.cos.myqcloud.com');
@@ -39,14 +48,19 @@ class BucketStyleListener implements EventSubscriberInterface {
                 $command['Key'] = $key = implode('/', $key);
             }
         }
+        $request->setHeader('Date', gmdate('D, d M Y H:i:s T'));
+        $request->setPath(preg_replace("#^/{$bucket}#", '', $request->getPath()));
 
+        if ($this->appId != null && endWith($bucket,'-'.$this->appId) == False)
+        {
+            $bucket = $bucket.'-'.$this->appId;
+        }
         // Set the key and bucket on the request
         $request->getParams()->set('bucket', $bucket)->set('key', $key);
 
+        //$request->setPath(urldecode($request->getPath()));
         // Switch to virtual hosted bucket
-        $request->setHost($bucket . '-' . $this->appId . '.' . $request->getHost());
-        $request->setPath(preg_replace("#^/{$bucket}#", '', $request->getPath()));
-
+        $request->setHost($bucket. '.' . $request->getHost());
         if (!$bucket) {
             $request->getParams()->set('cos.resource', '/');
         } else {
