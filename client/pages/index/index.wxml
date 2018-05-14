@@ -1,9 +1,10 @@
 <!--index.wxml-->
-<view>
+<view >
     <!-- 用户登录测试 -->
     <view>
         <image  class="cover-banner" src="image/printer.jpeg" mode="scaleToFill"></image>
     </view>
+    <view class='conter'>
     <view class='button'>
         <button type="primary" loading="{{userLoading}}" disabled="{{userDisable}}" hover-class="button-hover" 
         data-identity="user" bindtap="onclick">我是用户</button>
@@ -11,6 +12,7 @@
     <view class='button'>
         <button type="primary" loading="{{keeperLoading}}" disabled="{{keeperDisable}}" hover-class="button-hover" 
         data-identity="keeper" bindtap="onclick">我是商家</button>
+    </view>
     </view>
     <!-- 上传图片测试 -->
 </view>
