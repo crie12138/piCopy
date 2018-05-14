@@ -5,7 +5,7 @@
         <label class="nickName-banner">{{nickName}}</label>
     </view>
     <view class="inputView">
-        <input class="input" value="真实姓名" maxlength="10" confirm-type="next" bindinput="realNameInput"></input>
+        <input class="input" placeholder="真实姓名" maxlength="10" confirm-type="next" bindinput="realNameInput"></input>
     </view>
     <view class="inputView">
         <input class="input" value="手机号码" type="number" bindinput="phoneInput"></input>

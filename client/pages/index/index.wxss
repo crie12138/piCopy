@@ -1,6 +1,10 @@
 /**index.wxss**/
 
-
+  .conter{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}  
 .button{
     widows: 450rpx;
     height: 200rpx;
@@ -9,5 +13,6 @@
     width: 375rpx;
     height: 375rpx ;
     border-radius: 50%;
-    margin-bottom: 400rpx;
+    margin-top: 25%;
+    margin-bottom: 40%;
   }
