@@ -9,15 +9,42 @@ Page({
   data: {
     latitude:null,
     longitude:null,
-    speed:null,
-    accuracy:null,
+    markker:null,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    
+  onLoad: function () {
+    // 实例化腾讯地图API核心类
+    qqmapsdk = new QQMapWX({
+      key: 'KAKBZ-WCBKG-WATQG-IVKYT-46Q42-VJBNC' // 必填
+    });
+    var latitude
+    var longitude
+    //1、获取当前位置坐标
+    wx.getLocation({
+      type: 'wgs84',
+      success: function (res) {
+        //2、根据坐标获取当前位置名称，显示在顶部:腾讯地图逆地址解析
+        latitude=res.latitude
+        longitude=res.longitude
+        qqmapsdk.reverseGeocoder({
+          location: {
+            latitude: res.latitude,
+            longitude: res.longitude
+          },
+          success: function (addressRes) {
+            var address = addressRes.result.formatted_addresses.recommend;
+          }
+        })
+      }
+    })
+    this.setData({
+      'longitude':longitude,
+      'latitude':latitude
+      })
+    console.log(this.data.longitude,this.data.latitude)
   },
 
   /**
@@ -30,30 +57,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onLoad: function () {
-    // 实例化腾讯地图API核心类
-    qqmapsdk = new QQMapWX({
-      key: 'KAKBZ-WCBKG-WATQG-IVKYT-46Q42-VJBNC' // 必填
-    });
-    //1、获取当前位置坐标
-    wx.getLocation({
-      type: 'wgs84',
-      success: function (res) {
-        //2、根据坐标获取当前位置名称，显示在顶部:腾讯地图逆地址解析
-        qqmapsdk.reverseGeocoder({
-          location: {
-            latitude: res.latitude,
-            longitude: res.longitude
-          },
-          success: function (addressRes) {
-            var address = addressRes.result.formatted_addresses.recommend;
-            console.log(address)
-          }
-        })
-      }
-    })
-  },
-
+  
   /**
    * 生命周期函数--监听页面隐藏
    */

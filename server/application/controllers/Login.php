@@ -54,6 +54,7 @@ class Login extends CI_Controller {
             $row=DB::row('keepers',['*'],[
                 'open_id'=>$keeperInfo['openId']
             ]);
+            $row=get_object_vars($row);
             if($row===NULL)
                 DB::insert('keepers',[
                     'open_id'=>$keeperInfo['openId'],
@@ -61,20 +62,21 @@ class Login extends CI_Controller {
                     'nickname'=>$keeperInfo['nickName'],
                  ]);
             else{
-                if(get_object_var($row)['avatar']!=$keeperInfo['avatarUrl']){
+                if($row['avatar']!=$keeperInfo['avatarUrl']){
                     DB::update("keepers",[
                         'avatar'=>$keeperInfo['avatarUrl']
                     ],['open_id'=>$keeperInf['openId']]);
                 }
                 //检测已注册商家的头像是否有变动
-                if(get_object_vars($row)['phone']!=NULL)
+                if($row['phone']!=NULL){
                     $isNewKeeper=FALSE;
+                }
                 //通过检测商家是否填写过电话号码检测是否注册过
             }
             $this->json([
                 'code' => 0,
                 'data' =>$keeperInfo,
-                'isNewKeeper'=>$isNewKeeper
+                'isNewKeeper'=>$isNewKeeper,
             ]);
         } else {
             $this->json([

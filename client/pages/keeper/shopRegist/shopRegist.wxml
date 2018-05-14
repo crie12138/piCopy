@@ -1,1 +1,7 @@
 <!--pages/keeper/shopRegist/shopRegist.wxml-->
+<view>
+    <view>
+        <input  maxlength="30" placeholder="最大输入长度30" />
+    </view>
+        <map longitude="{{longitude}}" latitude="{{latitude}}" markers="{{marker}}" class="map"></map>
+</view>

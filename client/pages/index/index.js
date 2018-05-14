@@ -23,6 +23,7 @@ Page( {
             login: true,
             success(result) {
                 util.showSuccess('登录成功')
+                console.log(result)
                 getApp().globalData.userInfo=result.data.data
                 if(result.data.isNewKeeper){
                     redirectUrl="/pages/keeper/keeperRegist/keeperRegist"
