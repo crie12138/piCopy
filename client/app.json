@@ -2,8 +2,11 @@
   "pages": [
     "pages/index/index",
     "pages/user/user",
-    "pages/keeperRegist/keeperRegist",
-    "pages/keeper/keeper"
+    "pages/keeper/keeperRegist/keeperRegist",
+    "pages/keeper/keeper",
+    "pages/keeper/shopManage/shopManage",
+    "pages/keeper/shopRegist/shopRegist",
+    "pages/about/about"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

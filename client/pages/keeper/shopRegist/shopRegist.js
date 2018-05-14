@@ -1,0 +1,91 @@
+// pages/keeper/shopRegist/shopRegist.js
+var QQMapWX = require('../../../qqmap-wx-jssdk.js');
+var qqmapsdk;
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    latitude:null,
+    longitude:null,
+    speed:null,
+    accuracy:null,
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+  
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onLoad: function () {
+    // 实例化腾讯地图API核心类
+    qqmapsdk = new QQMapWX({
+      key: 'KAKBZ-WCBKG-WATQG-IVKYT-46Q42-VJBNC' // 必填
+    });
+    //1、获取当前位置坐标
+    wx.getLocation({
+      type: 'wgs84',
+      success: function (res) {
+        //2、根据坐标获取当前位置名称，显示在顶部:腾讯地图逆地址解析
+        qqmapsdk.reverseGeocoder({
+          location: {
+            latitude: res.latitude,
+            longitude: res.longitude
+          },
+          success: function (addressRes) {
+            var address = addressRes.result.formatted_addresses.recommend;
+            console.log(address)
+          }
+        })
+      }
+    })
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+  
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+  
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+  
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+  
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+  
+  }
+})

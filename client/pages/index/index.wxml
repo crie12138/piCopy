@@ -2,7 +2,7 @@
 <view>
     <!-- 用户登录测试 -->
     <view>
-        <image  class="cover-banner" src="printer.jpeg" mode="scaleToFill"></image>
+        <image  class="cover-banner" src="image/printer.jpeg" mode="scaleToFill"></image>
     </view>
     <view class='button'>
         <button type="primary" loading="{{userLoading}}" disabled="{{userDisable}}" hover-class="button-hover" 

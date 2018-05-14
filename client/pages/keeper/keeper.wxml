@@ -1,2 +1,11 @@
 <!--pages/keeper/keeper.wxml-->
-<text>pages/keeper/keeper.wxml</text>
+<view>
+    <view>
+        <image src="image/manage.png" class="icon" mode="scaleToFill"></image>
+        <button data-action="shopManage" bindtap="onclick">管理打印店</button>
+    </view>
+    <view>
+        <image src="image/add.png" class="icon" mode="scaleToFill"></image>
+        <button data-action="shopRegist" bindtap="onclick">添加打印店</button>
+    </view>
+</view>

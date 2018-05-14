@@ -1,0 +1,5 @@
+<!--pages/keeper/shopManage/shopManage.wxml-->
+<view>
+   <view wx:for="{{shops}}">
+   </view>
+</view>

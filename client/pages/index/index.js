@@ -25,7 +25,7 @@ Page( {
                 util.showSuccess('登录成功')
                 getApp().globalData.userInfo=result.data.data
                 if(result.data.isNewKeeper){
-                    redirectUrl="/pages/keeperRegist/keeperRegist"
+                    redirectUrl="/pages/keeper/keeperRegist/keeperRegist"
                 }
                 wx.navigateTo({
                     url: redirectUrl 

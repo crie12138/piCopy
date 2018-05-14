@@ -1,1 +1,4 @@
 /* pages/keeper/keeper.wxss */
+.icon{
+    width: 250rpx;
+}
