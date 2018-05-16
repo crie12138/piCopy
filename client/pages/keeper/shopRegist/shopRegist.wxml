@@ -1,7 +1,7 @@
 <!--pages/keeper/shopRegist/shopRegist.wxml-->
 <view>
     <view>
-        <input  maxlength="30" placeholder="最大输入长度30" />
+        <input  maxlength="30" placeholder="{{address}}" bindinput="addressInput"/>
     </view>
-        <map longitude="{{longitude}}" latitude="{{latitude}}" markers="{{marker}}" class="map"></map>
+        <map longitude="{{longitude}}" latitude="{{latitude}}" markers="{{markers}}" class="map"></map>
 </view>

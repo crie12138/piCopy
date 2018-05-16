@@ -54,7 +54,6 @@ class Login extends CI_Controller {
             $row=DB::row('keepers',['*'],[
                 'open_id'=>$keeperInfo['openId']
             ]);
-            $row=get_object_vars($row);
             if($row===NULL)
                 DB::insert('keepers',[
                     'open_id'=>$keeperInfo['openId'],
@@ -62,6 +61,7 @@ class Login extends CI_Controller {
                     'nickname'=>$keeperInfo['nickName'],
                  ]);
             else{
+                $row=get_object_vars($row);
                 if($row['avatar']!=$keeperInfo['avatarUrl']){
                     DB::update("keepers",[
                         'avatar'=>$keeperInfo['avatarUrl']

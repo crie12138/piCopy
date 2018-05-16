@@ -8,8 +8,9 @@ Page({
    */
   data: {
     latitude:null,
+    address:null,
     longitude:null,
-    markker:null,
+    markers:null,
   },
 
   /**
@@ -22,13 +23,14 @@ Page({
     });
     var latitude
     var longitude
+    var that=this
     //1、获取当前位置坐标
     wx.getLocation({
       type: 'wgs84',
       success: function (res) {
-        //2、根据坐标获取当前位置名称，显示在顶部:腾讯地图逆地址解析
         latitude=res.latitude
         longitude=res.longitude
+        //2、根据坐标获取当前位置名称，显示在顶部:腾讯地图逆地址解析
         qqmapsdk.reverseGeocoder({
           location: {
             latitude: res.latitude,
@@ -36,22 +38,30 @@ Page({
           },
           success: function (addressRes) {
             var address = addressRes.result.formatted_addresses.recommend;
+            var markers=[{
+              iconPath:"/img/location-sign.png",
+              id: 0,
+              latitude: latitude,
+              longitude: longitude,
+              width: 5,
+              height: 5
+            }]
+            that.setData({
+              'longitude':longitude,
+              'latitude':latitude,
+              'address':address,
+              'markers':markers
+            })
           }
         })
       }
     })
-    this.setData({
-      'longitude':longitude,
-      'latitude':latitude
-      })
-    console.log(this.data.longitude,this.data.latitude)
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
   },
 
   /**
