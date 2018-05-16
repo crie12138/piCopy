@@ -14,6 +14,7 @@ Page({
     captcha:null,
     realName:null,
     phone:null,
+    result:"inputView",
 
   },
 
@@ -80,13 +81,21 @@ Page({
   realNameInput:function(event){
     console.log(event.detail.value)
     this.setData({
-      realName:event.detail.value
+      'realName':event.detail.value
     })
   },
   phoneInput:function(event){
-    console.log(event.detail.value)
+    var phone = event.detail.value
+    var result="inputMismatch"
+    if(/^1[34578]\d{9}$/.test(phone)){ 
+      result="inputCorrect"
+    } 
+    else{
+      phone=null
+    }
     this.setData({
-      phone:event.detail.value
+      'phone':phone,
+      'result':result
     })
   },
   captchaInput:function(event){

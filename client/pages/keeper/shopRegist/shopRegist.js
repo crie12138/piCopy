@@ -101,5 +101,8 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  addressInout:function(event){
+      
   }
 })
