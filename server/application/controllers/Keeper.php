@@ -13,15 +13,16 @@ class Keeper extends CI_Controller {
         try{
             DB::update("keepers",[
                 "real_name"=>$dataArry['realName'],
-                "phone"=>$dataArry['phone'],
+                "phone"=>intval($dataArry['phone']),
             ],['open_id'=>$dataArry['openId']]);
         }catch(Exception $e){
             $code=-1;
-            $msg=$e->getMessage();;
+            $msg=$e->getMessage();
         }
         $this->json([
             "code" => $code,
-            "data" =>$msg
+            "data" =>$msg,
+            "phone"=>gettype(intval($dataArry['phone'])),
         ]);
     }
    
