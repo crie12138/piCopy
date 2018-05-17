@@ -43,8 +43,8 @@ Page({
               id: 0,
               latitude: latitude,
               longitude: longitude,
-              width: 5,
-              height: 5
+              width: 10,
+              height: 10
             }]
             that.setData({
               'longitude':longitude,
