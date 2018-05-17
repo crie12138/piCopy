@@ -1,4 +1,5 @@
 // pages/keeper/shopRegist/shopRegist.js
+//http://lbs.qq.com/qqmap_wx_jssdk  腾讯地图小程序api文档
 var QQMapWX = require('../../../qqmap-wx-jssdk.js');
 var qqmapsdk;
 Page({
@@ -11,6 +12,7 @@ Page({
     address:null,
     longitude:null,
     markers:null,
+    suggestions:[],
   },
 
   /**
@@ -102,7 +104,29 @@ Page({
   onShareAppMessage: function () {
   
   },
-  addressInout:function(event){
-      
+  addressInput:function(event){
+     var address=event.detail.value 
+     var that=this
+     console.log(address)
+     qqmapsdk.getSuggestion({
+        keyword:address,
+        success: function(res) {
+          that.setData({
+            'suggestions':res.data
+          })  
+        },
+        fail: function(res) {
+          console.log(res);
+        },
+        complete: function(res) {
+          console.log(that.data.suggestions)
+        }
+     })
+
+  },
+  useSuggestion:function(event){
+    console.log(event.currentTarget.dataset.latitude)
+    console.log(event.currentTarget.dataset.longitude)
+
   }
 })
