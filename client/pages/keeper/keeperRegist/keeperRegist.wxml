@@ -1,5 +1,5 @@
 <!--pages/keeperRegist/keeperRegist.wxml-->
-<view class="container">
+<view >
     <view class="container">
         <image  class="avatar-banner" src="{{avatarUrl}}" mode="scaleToFill"></image>
         <label class="nickName-banner">{{nickName}}</label>
@@ -8,11 +8,11 @@
         <input class="input" placeholder="真实姓名" maxlength="10" confirm-type="next" bindinput="realNameInput"></input>
     </view>
     <view class="inputView">
-        <input class="input" value="手机号码" type="number" bindinput="phoneInput"></input>
+        <input class="input" placeholder="手机号码" type="number" bindinput="phoneInput"></input>
     </view>
     <view>
         <view class="inputView">
-            <input class="input" value="输入验证码" type="number" bindinput="captchaInput"></input>
+            <input class="input" placeholder="输入验证码" type="number" bindinput="captchaInput"></input>
         </view>
         <button type="primary" bindtap="getCaptcha">获取验证码</button>
     </view>
