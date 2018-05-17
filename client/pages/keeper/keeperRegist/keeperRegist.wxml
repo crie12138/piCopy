@@ -7,8 +7,9 @@
     <view class="inputView">
         <input class="input" placeholder="真实姓名" maxlength="10" confirm-type="next" bindinput="realNameInput"></input>
     </view>
-    <view class="inputView">
-        <input class="input" placeholder="手机号码" type="number" bindinput="phoneInput"></input>
+
+    <view class="{{result}}">
+        <input class="input" value="手机号码" type="number" bindinput="phoneInput"></input>
     </view>
     <view>
         <view class="inputView">
