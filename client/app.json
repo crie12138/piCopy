@@ -6,6 +6,7 @@
     "pages/keeper/keeper",
     "pages/keeper/shopManage/shopManage",
     "pages/keeper/shopRegist/shopRegist",
+    "pages/keeper/shopRegist/localChoose/localChoose",
     "pages/about/about"
   ],
   "window": {

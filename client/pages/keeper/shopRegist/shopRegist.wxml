@@ -1,11 +1,6 @@
 <!--pages/keeper/shopRegist/shopRegist.wxml-->
-<view>
-    <view>
-        <input  maxlength="30" placeholder="{{address}}" bindinput="addressInput"/>
-        <view wx:for="{{suggestions}}" wx:for-item="suggestion">
-            <button bindtap="useSuggestion" data-latitude="{{suggestion.location.lat}}" data-longitude="{{suggestion.location.lng}}">
-            {{suggestion.address}}</button>
-        </view>
-    </view>
-        <map longitude="{{longitude}}" latitude="{{latitude}}" markers="{{markers}}" class="map"></map>
-</view>
+<input placeholder="打印店名称"></input>
+<input placeholder="打印店联系电话"></input>
+<button>选择打印店地址</button>
+<picker>打印一面单价</picker>
+<button>提交</button>
