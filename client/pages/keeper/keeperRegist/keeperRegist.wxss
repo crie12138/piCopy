@@ -4,27 +4,6 @@
     height: 88rpx;
 }
 
-.inputView{
-    border:  2px solid rgb(181, 184, 176);
-    border-radius: 80rpx;
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-top: 30rpx;
-}
-.inputCorrect{
-    border:  2px solid rgb(60,179,113);
-    border-radius: 40px;
-    margin-left: 15px;
-    margin-right: 15px;
-    margin-top: 15px;
-}
-.inputMismatch{
-    border:  2px solid rgb(255, 94, 0);
-    border-radius: 40px;
-    margin-left: 15px;
-    margin-right: 15px;
-    margin-top: 15px;
-}
 .avatar-banner{
     width: 175rpx;
     height: 175rpx ;

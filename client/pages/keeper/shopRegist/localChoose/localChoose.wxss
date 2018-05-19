@@ -1,0 +1,5 @@
+/* pages/keeper/shopRegist/shopRegist.wxss */
+.map{
+    height: 700rpx;
+    weight: 500rpx;
+}

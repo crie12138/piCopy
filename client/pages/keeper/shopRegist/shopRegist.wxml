@@ -1,11 +1,26 @@
 <!--pages/keeper/shopRegist/shopRegist.wxml-->
-<view>
-    <view>
-        <input  maxlength="30" placeholder="{{address}}" bindinput="addressInput"/>
-        <view wx:for="{{suggestions}}" wx:for-item="suggestion">
-            <button bindtap="useSuggestion" data-latitude="{{suggestion.location.lat}}" data-longitude="{{suggestion.location.lng}}">
-            {{suggestion.address}}</button>
-        </view>
-    </view>
-        <map longitude="{{longitude}}" latitude="{{latitude}}" markers="{{markers}}" class="map"></map>
+<input placeholder="打印店名称" bindinput="shopNameInput"></input>
+<view wx:if="{{shopLocation}}">
+    <text>{{shopLocation.address}}</text>
+    <button bindtap="localChoose">重新选择地址</button>
 </view>
+<view wx:else>
+    <button bindtap="localChoose">选择打印店地址</button>
+</view>
+<view class="uploader">
+        <view class="uploader-text" bindtap="doUpload">
+            <text>上传店面图片</text>
+        </view>
+        <view class="uploader-container" wx:if="{{imgUrl}}">
+            <image
+                class="uploader-image"
+                src="{{imgUrl}}"
+                mode="aspectFit"
+                bindtap="previewImg"
+            ></image>
+        </view>
+</view>
+<view class="{{inputResult}}">
+    <input placeholder="打印单面价格" type="digit" bindinput="priceInput"></input>
+</view>
+<button>提交</button>
