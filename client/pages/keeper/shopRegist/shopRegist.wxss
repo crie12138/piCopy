@@ -1,5 +1,24 @@
 /* pages/keeper/shopRegist/shopRegist.wxss */
 .map{
-    height: 700rpx;
-    weight: 500rpx;
+    height: 100vh;
+    weight: 100vh;
+}
+.pc{
+color:  darkgrey;
+}
+.inputView{
+    /*边界：大小1px, 为固体，为绿色*/
+    border:  1px solid green;
+    /*边界角的弧度*/
+    border-radius: 30px;
+    margin-left: 10px;
+    width: 70%;
+}
+.title{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.a{
+  width: 15%;
 }

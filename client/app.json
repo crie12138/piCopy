@@ -1,11 +1,12 @@
 {
   "pages": [
+    "pages/keeper/shopRegist/shopRegist",
     "pages/index/index",
     "pages/user/user",
     "pages/keeper/keeperRegist/keeperRegist",
     "pages/keeper/keeper",
     "pages/keeper/shopManage/shopManage",
-    "pages/keeper/shopRegist/shopRegist",
+    
     "pages/about/about"
   ],
   "window": {
