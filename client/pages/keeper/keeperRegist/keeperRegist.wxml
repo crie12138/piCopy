@@ -9,7 +9,7 @@
     </view>
 
     <view class="{{result}}">
-        <input class="input" value="手机号码" type="number" bindinput="phoneInput"></input>
+        <input class="input" placeholder="手机号码" type="number" bindinput="phoneInput"></input>
     </view>
     <view>
         <view class="inputView">
