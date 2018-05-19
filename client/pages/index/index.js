@@ -70,6 +70,5 @@ Page( {
             keeperLoading:false,
         })
 
-    }
-
+    },
 })
