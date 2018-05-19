@@ -48,6 +48,17 @@ Page({
               width: 5,
               height: 5
             }]
+            //重新选点的时候显示出原来选择的地点
+            var shopLocation
+            if (shopLocation=getApp().globalData.shopLocation){
+              console.log(shopLocation)
+              latitude=shopLocation.latitude
+              longitude=shopLocation.longitude
+              address=shopLocation.address
+              marker[0]['latitude']=latitude
+              marker[0]['longitude']=longitude
+            }
+            //重新选点的时候显示出原来选择的地点
             that.setData({
               'longitude':longitude,
               'latitude':latitude,
@@ -60,10 +71,8 @@ Page({
     })
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+  /** * 生命周期函数--监听页面初次渲染完成 */
+    onReady: function () {
   },
 
   /**
@@ -138,12 +147,12 @@ Page({
     
   },
   confirm:function(event){
-    var shopInfo={
+    var shopLocation={
       "longitude":this.data.longitude,
       "latitude":this.data.latitude,
       "address": this.data.address
     }
-    getApp().globalData.shopInfo=shopInfo
-    console.log(getApp().globalData.shopInfo)
+    getApp().globalData.shopLocation=shopLocation
+    wx.navigateBack()
   }
 })

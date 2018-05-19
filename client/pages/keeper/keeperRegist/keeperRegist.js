@@ -90,6 +90,9 @@ Page({
     if(/^1[34578]\d{9}$/.test(phone)){ 
       result="inputCorrect"
     } 
+    else if(phone==0){
+      result="inputView"
+    }
     else{
       phone=null
     }

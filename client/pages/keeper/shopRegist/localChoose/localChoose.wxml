@@ -1,13 +1,14 @@
 <!--pages/keeper/shopRegist/shopRegist.wxml-->
 <view>
-    <view>
+    <view class="inputView">
         <input  maxlength="30" value="{{address}}" bindinput="addressInput"/>
         <view wx:for="{{suggestions}}" wx:for-item="suggestion">
-            <button bindtap="useSuggestion" data-latitude="{{suggestion.location.lat}}"
+            <view bindtap="useSuggestion" data-latitude="{{suggestion.location.lat}}"
              data-longitude="{{suggestion.location.lng}}" data-address="{{suggestion.address}}" data-title="{{suggestion.title}}">
-            {{suggestion.title}}</button>
+            <text>{{suggestion.title}}</text>
+            </view>
         </view>
     </view>
         <map longitude="{{longitude}}" latitude="{{latitude}}" markers="{{marker}}" class="map"></map>
-        <button bindtap="confirm">确认地址</button>
+        <button bindtap="confirm">确认</button>
 </view>
