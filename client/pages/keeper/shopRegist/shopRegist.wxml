@@ -1,5 +1,7 @@
 <!--pages/keeper/shopRegist/shopRegist.wxml-->
-<input placeholder="打印店名称" bindinput="shopNameInput"></input>
+<view class="{{nameInput}}">
+    <input placeholder="打印店名称" bindinput="shopNameInput"></input>
+</view>
 <view wx:if="{{shopLocation}}">
     <text>{{shopLocation.address}}</text>
     <button bindtap="localChoose">重新选择地址</button>
@@ -23,4 +25,4 @@
 <view class="{{inputResult}}">
     <input placeholder="打印单面价格" type="digit" bindinput="priceInput"></input>
 </view>
-<button>提交</button>
+<button bindtap="confirm">提交</button>

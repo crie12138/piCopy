@@ -34,7 +34,7 @@ class Login extends CI_Controller {
                     'open_id'=>$userInfo['openId'],
                     'nickname'=>$userInfo['nickName'],
                     'avatar'=>$userInfo['avatarUrl'],
-                 ]);
+                ]);
             $this->json([
                 'code' => 0,
                 'data' =>$userInfo,
@@ -59,7 +59,7 @@ class Login extends CI_Controller {
                     'open_id'=>$keeperInfo['openId'],
                     'avatar'=>$keeperInfo['avatarUrl'],
                     'nickname'=>$keeperInfo['nickName'],
-                 ]);
+                ]);
             else{
                 $row=get_object_vars($row);
                 if($row['avatar']!=$keeperInfo['avatarUrl']){
