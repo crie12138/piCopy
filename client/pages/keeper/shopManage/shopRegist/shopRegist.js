@@ -1,5 +1,5 @@
 // pages/keeper/shopRegist/shopRegist.js
-var config =require("../../../config")
+var config =require("../../../../config")
 Page({
 
   /**
@@ -8,7 +8,7 @@ Page({
   data: {
     shopName:null,
     price:null,
-    shopLocation:[],
+    shopLocation:null,
     imgUrl:null,
     priceInput:"inputView",
     nameInput:"inputView"
@@ -82,6 +82,12 @@ Page({
         "nameInput":"inputCorrect"
       })
     }
+    else{
+      this.setData({
+        "shopName":null,
+        "nameInput":"inputMismatch"
+      })
+    }
   },
 
 
@@ -116,9 +122,6 @@ Page({
     var price=event.detail.value
     if(reg.test(price)){
       result="inputCorrect"
-    }
-    else if(price==0){
-      result="inputView"
     }
     else{
       result="inputMismatch"

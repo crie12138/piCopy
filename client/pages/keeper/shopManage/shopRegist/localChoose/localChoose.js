@@ -1,6 +1,6 @@
 // pages/keeper/shopRegist/shopRegist.js
 //http://lbs.qq.com/qqmap_wx_jssdk  腾讯地图小程序api文档
-var QQMapWX = require('../../../../qqmap-wx-jssdk.js');
+var QQMapWX = require('../../../../../qqmap-wx-jssdk.js');
 var qqmapsdk;
 Page({
 

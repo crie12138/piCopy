@@ -2,15 +2,15 @@
 <view class='conter'>
     <view>
         <button data-action="shopManage" bindtap="onclick" class='bu'>
-          <image src="image/manage.png"  class="icon" mode="widthFix"></image>
-          管理打印店
+            <image src="image/manage.png"  class="icon" mode="widthFix"></image>
+            管理打印店
         </button>
     </view>
     <view>
         
-        <button data-action="shopRegist" bindtap="onclick" class='bu'>
-          <image src="image/add.png" class="icon" mode="widthFix"></image>
-          添加打印店
+        <button data-action="keeperInfo" bindtap="onclick" class='bu'>
+            <image src="image/user.png" class="icon" mode="widthFix"></image>
+            添加打印店
         </button>
     </view>
 </view>
