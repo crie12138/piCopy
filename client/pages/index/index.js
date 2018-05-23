@@ -6,13 +6,14 @@ var util = require('../../utils/util.js')
 Page( {
     data: {
         identity:null,
+        canIUse: wx.canIUse('button.open-type.getUserInfo'),
         userLoading:false,
         keeperLoading:false,
         userDisable:false,
         keeperDisable:false,
         takeSession:true
     },
-    login:function(){
+    getUserinfo:function(){
         util.showBusy('正在登录')
         var that = this
         // 调用登录接口
@@ -38,6 +39,8 @@ Page( {
             }
         })
     },
+
+
     onclick:function(event){
         this.setData({
             identity:event.currentTarget.dataset.identity,
@@ -55,7 +58,7 @@ Page( {
                 keeperLoading:true
             })
         }
-        this.login()
+        this.getUserinfo()
         
         
     },
@@ -67,6 +70,5 @@ Page( {
             keeperLoading:false,
         })
 
-    }
-
+    },
 })

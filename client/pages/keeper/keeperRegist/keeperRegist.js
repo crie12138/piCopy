@@ -14,6 +14,7 @@ Page({
     captcha:null,
     realName:null,
     phone:null,
+    result:"inputView",
 
   },
 
@@ -80,14 +81,26 @@ Page({
   realNameInput:function(event){
     console.log(event.detail.value)
     this.setData({
-      realName:event.detail.value
+      'realName':event.detail.value
     })
   },
   phoneInput:function(event){
-    console.log(event.detail.value)
+    var phone = event.detail.value
+    var result="inputMismatch"
+    if(/^1[34578]\d{9}$/.test(phone)){ 
+      result="inputCorrect"
+    } 
+    else if(phone==0){
+      result="inputView"
+    }
+    else{
+      phone=null
+    }
     this.setData({
-      phone:event.detail.value
+      'phone':phone,
+      'result':result
     })
+    
   },
   captchaInput:function(event){
     console.log(event.detail.value)
@@ -104,29 +117,45 @@ Page({
     var openId=this.data.openId
     var url=config.service.keeperUrl+"regist"
     console.log(realName,phone)
-    wx.request({
-      url:url,
-      data:{
-          "realName":realName,
-          "phone":phone,
-          "openId":openId,
-      },
-      method:"post",
-      header:{
-        'content-type':'application/x-www-form-urlencoded'
-      },
-      success:function(result){
-        console.log(result)
-        if(result.data.code==0){
-          wx.redirectTo({
-            url:"/pages/keeper/keeper"
-          })
-        }
-        else{
-          util.showModel("注册失败",result.data.data)
-        }
-      },
-    })
+    if (!(/^1[34578]\d{9}$/.test(this.data.phone))) {
+      this.setData({
+        ajxtrue: false
+      })
+      if (this.data.phone.length != 11) {
+        wx.showToast({
+          title: '手机号输入错误',
+        })
+      }
+    }
+    else {
+      this.setData({
+        ajxtrue: true
+      })
+      wx.request({
+        url: url,
+        data: {
+          "realName": realName,
+          "phone": phone,
+          "openId": openId,
+        },
+        method: "post",
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success: function (result) {
+          console.log(result)
+          if (result.data.code == 0) {
+            wx.redirectTo({
+              url: "/pages/keeper/keeper"
+            })
+          }
+          else {
+            util.showModel("注册失败", result.data.data)
+          }
+        },
+      })
+    }
+    
   }
 
 })

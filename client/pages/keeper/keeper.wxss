@@ -1,4 +1,20 @@
 /* pages/keeper/keeper.wxss */
 .icon{
-    width: 250rpx;
+    width: 265rpx;
+}
+.conter{
+    height:1000rpx; 
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around; 
+} 
+.bu{
+  width: 350rpx;
+  height: 350rpx;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+}
+.bu image{
+  margin-left: 4.2%;
 }
