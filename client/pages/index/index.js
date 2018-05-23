@@ -54,8 +54,8 @@ Page( {
         else
         {
             this.setData({
-                userDisable:true,
-                keeperLoading:true
+                userDisable:false,
+                keeperLoading:false
             })
         }
         this.getUserinfo()

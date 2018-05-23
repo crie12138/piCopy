@@ -15,7 +15,6 @@ Page({
     realName:null,
     phone:null,
     result:"inputView",
-
   },
 
   /**
@@ -79,7 +78,7 @@ Page({
   
   },
   realNameInput:function(event){
-    console.log(event.detail.value)
+    console.log(event.detail.value=='')
     this.setData({
       'realName':event.detail.value
     })
@@ -94,7 +93,7 @@ Page({
       result="inputView"
     }
     else{
-      phone=null
+      phone=phone
     }
     this.setData({
       'phone':phone,
@@ -111,26 +110,31 @@ Page({
   getCaptcha:function(){
 
   },
-  confirm:function(event){
-    var realName=this.data.realName
-    var phone=this.data.phone
-    var openId=this.data.openId
-    var url=config.service.keeperUrl+"regist"
-    console.log(realName,phone)
-    if (!(/^1[34578]\d{9}$/.test(this.data.phone))) {
-      this.setData({
-        ajxtrue: false
+  
+  formSubmit:function(e){
+    var realName = this.data.realName
+    var phone = this.data.phone
+    var openId = this.data.openId
+    var url = config.service.keeperUrl + "regist"
+    if (this.data.realName == "" || this.data.realName == null || this.data.phone == null){
+      wx.showToast({
+        title: '输入不能为空',
+        image:'/pages/keeper/image/error.png',
+        duration:1500
       })
-      if (this.data.phone.length != 11) {
-        wx.showToast({
-          title: '手机号输入错误',
-        })
-      }
-    }
-    else {
-      this.setData({
-        ajxtrue: true
+      setTimeout(function(){
+        wx.hideToast()
+      },2000)
+    } else if (this.data.result == "inputMismatch"){
+      wx.showToast({
+        title: '手机号格式错误',
+        image: '/pages/keeper/image/error.png',
+        duration: 1500
       })
+      setTimeout(function () {
+        wx.hideToast()
+      }, 2000)
+    }else{
       wx.request({
         url: url,
         data: {
@@ -138,7 +142,7 @@ Page({
           "phone": phone,
           "openId": openId,
         },
-        method: "post",
+        method: "POST",
         header: {
           'content-type': 'application/x-www-form-urlencoded'
         },
@@ -155,7 +159,5 @@ Page({
         },
       })
     }
-    
   }
-
 })
