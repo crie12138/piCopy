@@ -27,11 +27,16 @@ Page( {
                 console.log(result)
                 getApp().globalData.userInfo=result.data.data
                 if(result.data.isNewKeeper){
-                    redirectUrl="/pages/keeper/keeperRegist/keeperRegist"
+                    var navigateUrl="/pages/keeper/keeperRegist/keeperRegist"
+                    wx.navigateTo({
+                        url:navigateUrl
+                    })
                 }
-                wx.navigateTo({
-                    url: redirectUrl 
-                })
+                else{
+                    wx.redirectTo({
+                        url: redirectUrl 
+                    })
+                }
             },
             fail(error) {
                 util.showModel('请求失败', error)

@@ -73,7 +73,6 @@ class Mysql
             || gettype($suffix)     !== 'string') {
             throw new Exception(Constants::E_CALL_FUNCTION_PARAM);
         }
-
         list($condition, $execValues) = array_values(self::conditionProcess($conditions, $operator));
 
         $column = implode(', ', $columns);
@@ -87,7 +86,6 @@ class Mysql
 
         // 拼接后缀
         $sql .= " $suffix";
-
         // 执行 SQL 语句
         $query = self::raw($sql, $execValues);
         $allResult = $query->fetchAll(PDO::FETCH_OBJ);
@@ -193,7 +191,7 @@ class Mysql
     }
 
     /**
-     * 按照指定的规则处理条件数组
+     * 按照指定的规则处理条件数组lei
      * @example ['a' => 1, 'b' => 2] 会被转换为 ['a = :a and b = :b', [':a' => 1, ':b' => 2]]
      * @param array|string $conditions 条件数组或字符串
      * @param string       $operator  condition 连接的操作符：and|or

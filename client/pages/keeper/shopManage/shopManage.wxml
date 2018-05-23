@@ -1,5 +1,11 @@
 <!--pages/keeper/shopManage/shopManage.wxml-->
-<view>
-   <view wx:for="{{shops}}">
-   </view>
-</view>
+<scroll-view scroll-y="{{true}}">
+    <view wx:for="{{shops}}" wx:for-item="shop">
+        <image src="image/shop.png"></image>
+        <button data-shopId="{{shop.id}}" bindtap="chooseShop">{{shop.name}}</button>
+    </view>
+    <view>
+        <image src="image/add.png"></image>
+        <button plain="ture" data-action="shopRegist" bindtap="addShop">添加打印店</button>
+    </view>
+</scroll-view>

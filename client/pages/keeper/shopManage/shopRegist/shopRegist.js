@@ -1,5 +1,6 @@
 // pages/keeper/shopRegist/shopRegist.js
 var config =require("../../../../config")
+var util= require("../../../../utils/util")
 Page({
 
   /**
@@ -134,27 +135,40 @@ Page({
     console.log(event.detail.value)
     
   },
+
+
+
+
   confirm:function(){
+    util.showModel("正在注册")
     var that=this
-    var url=config.service.keeperUrl+"shopRegist"
+    var url=config.service.shopUrl+"shopRegist"
     var imgUrl=this.data.imgUrl
     wx.uploadFile({
       url:url,
       filePath:imgUrl,
       name:'file',
       formData:{
-        "address":that.data.shopLocation['address'],
-        'longitude':that.data.shopLocation['longitude'],
-        'latitude' : that.data.shopLocation['latitude'],
+        "openId":getApp().globalData.userInfo.openId,
+        "address":that.data.shopLocation.address,
+        'longitude':that.data.shopLocation.longitude,
+        'latitude' : that.data.shopLocation.latitude,
         "shopName":that.data.shopName,
         "price":that.data.price,
       },
       success: function(res){
-        console.log(res)
+        if (res.data.code == 0) {
+          util.showModel("注册成功")
+          wx.redirectBack()
+        }
+        else{
+          console.log(res)
+          util.showModel("注册失败")
+        }
       },
-
       fail: function(e) {
         console.log(e)
+        util.showModel("注册失败")
       }
     })
   }

@@ -25,8 +25,8 @@ var config = {
         // 测试的信道服务地址
         tunnelUrl: `${host}/weapp/tunnel/`,
 
-        // 上传图片接口
-        uploadUrl: `${host}/weapp/upload/`
+        // 商店地址，用于发起商店请求
+        shopUrl: `${host}/weapp/shop/`
     }
 };
 

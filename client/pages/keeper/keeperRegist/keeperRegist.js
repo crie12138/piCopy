@@ -116,22 +116,7 @@ Page({
     var phone=this.data.phone
     var openId=this.data.openId
     var url=config.service.keeperUrl+"regist"
-    console.log(realName,phone)
-    if (!(/^1[34578]\d{9}$/.test(this.data.phone))) {
-      this.setData({
-        ajxtrue: false
-      })
-      if (this.data.phone.length != 11) {
-        wx.showToast({
-          title: '手机号输入错误',
-        })
-      }
-    }
-    else {
-      this.setData({
-        ajxtrue: true
-      })
-      wx.request({
+    wx.request({
         url: url,
         data: {
           "realName": realName,
@@ -156,6 +141,4 @@ Page({
       })
     }
     
-  }
-
 })

@@ -1,19 +1,29 @@
-// pages/keeper/shopManage/shopManage.js
-var config=require("../../../config")
+// pages/keeper/shopManage/shop/shop.js
+var config=require("../../../../config")
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    shops:null
+    shop:null,
+    isEdit:false,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getShopList()
+    var that=this
+    wx.request({
+      url:config.service.shopUrl+"getShop/"+options.shopId,
+      success:function(res){
+        that.setData({
+          'shop':res.data.row
+        })
+      }
+    })
+
   },
 
   /**
@@ -27,7 +37,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getShopList()
+  
   },
 
   /**
@@ -64,33 +74,15 @@ Page({
   onShareAppMessage: function () {
   
   },
+  
 
-  addShop:function(event){
-    wx.navigateTo({
-      url:"shopRegist/shopRegist"
-    })
+  submit:function(event){
+    console.log(event.detail.value)
   },
 
-  chooseShop:function(event){
-    var shopId = event.currentTarget.dataset.shopid
-    var url="shop/shop?shopId="+shopId
-    wx.navigateTo({
-      url:url
-    })
-  },
-
-  getShopList:function(){
-    var url=config.service.shopUrl+"getShopList/"+getApp().globalData.userInfo.openId
-    var that=this
-    console.log(url)
-    wx.request({
-      url:url,
-      success:function(res){
-        console.log(res),
-        that.setData({
-          'shops':res.data.row
-        })
-      }
+  editInfo:function(){
+    this.setData({
+      "isEdit":true
     })
   }
 })
