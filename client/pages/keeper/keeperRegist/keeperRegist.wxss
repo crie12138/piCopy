@@ -3,14 +3,19 @@
     padding-left: 20rpx;
     height: 88rpx;
 }
-
-.avatar-banner{
+.con{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.con image{
     width: 175rpx;
     height: 175rpx ;
     border-radius: 50%;
     margin-top: 110rpx;
     margin-bottom: 50rpx;
-  }
+}
 .nickName-banner{
     height: 75rpx ;
     border-radius: 50%;

@@ -9,6 +9,7 @@ App({
     },
     globalData:{
         userInfo:null,
-        shopLocation:null
+        shopLocation:null,
+        shopInfo:null,
     }
 })

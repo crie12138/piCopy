@@ -23,7 +23,7 @@
             ></image>
         </view>
 </view>
-<view class="{{inputResult}}">
+<view class="{{priceInput}}">
     <input placeholder="打印单面价格" type="digit" bindinput="priceInput"></input>
 </view>
 <button bindtap="confirm">提交</button>

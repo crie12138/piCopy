@@ -1,5 +1,6 @@
 // pages/keeper/shopRegist/shopRegist.js
 var config =require("../../../../config")
+var util= require("../../../../utils/util")
 Page({
 
   /**
@@ -151,9 +152,14 @@ Page({
     console.log(event.detail.value)
     
   },
+
+
+
+
   confirm:function(){
+    util.showModel("正在注册")
     var that=this
-    var url=config.service.keeperUrl+"shopRegist"
+    var url=config.service.shopUrl+"shopRegist"
     var imgUrl=this.data.imgUrl
     if (!(this.isBlank(config.service.keeperUrl) || this.isBlank(imgUrl) || this.isBlank(that.data.shopLocation['address']) || this.isBlank(that.data.shopLocation['longitude']) || this.isBlank(that.data.shopLocation['latitude']) || this.isBlank(that.data.shopName) || this.isBlank(that.data.price))) {
       wx.uploadFile({
@@ -181,12 +187,11 @@ Page({
 
         title: '请填写全部信息',
 
-        icon: "/client/img/error.png",
+        image: "/img/error.png",
 
         duration: 1500
 
       })
     }
-    
   }
 })

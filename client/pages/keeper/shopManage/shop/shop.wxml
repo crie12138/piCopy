@@ -1,0 +1,46 @@
+<!--pages/keeper/shopManage/shop/shop.wxml-->
+<view>
+        <view>
+            <image src="{{shop.photo}}" mode="scaleToFill"></image>
+        </view>
+
+        <view wx:if="{{isEdit}}">
+            <form bindsubmit="submit">
+                <view class="{{nameInput}}">
+                    <input name="shopName" value="{{shop.name}}" bindinput="nameInput"></input>
+                </view>,
+                <view class="{{priceInput}}">
+                    <input name="price" value="{{shop.page_price}}" bindinput="priceInput"></input>
+                </view>
+                <view>
+                    <text>{{shop.location}}</text>
+                </view>
+                <view class="section btn-area">
+                    <button type="primary" plain form-type="submit">提交修改</button>
+                </view>
+                <view>
+                    <button>删除打印店</button>
+                </view>
+            </form>
+        </view>
+
+        <view wx:else>
+            <view class="{{nameInput}}">
+                    <input name="shopName" value="{{shop.name}}" bindinput="nameInput"></input>
+                </view>,
+                <view class="{{priceInput}}">
+                    <input name="price" value="{{shop.page_price}}" bindinput="priceInput"></input>
+                </view>
+                <view>
+                    <text>{{shop.location}}</text>
+                </view>
+                <view>
+                    <button bindtap="editInfo">编辑信息</button>
+                </view>
+        </view>       
+    
+        <view>
+            <button>返回</button>
+        </view>
+    
+</view>
