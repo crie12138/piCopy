@@ -4,14 +4,14 @@
     <view>
         <image  class="cover-banner" src="image/printer.jpeg" mode="scaleToFill"></image>
     </view>
-    <view class='conter'>
+    <view class='conter' wx:if="{{canIUse}}">
     <view class='button'>
         <button type="primary" loading="{{userLoading}}" disabled="{{userDisable}}" hover-class="button-hover" 
-        data-identity="user" bindtap="onclick">我是用户</button>
+        data-identity="user" open-type="getUserInfo" bindgetuserinfo="onclick">我是用户</button>
     </view>
     <view class='button'>
         <button type="primary" loading="{{keeperLoading}}" disabled="{{keeperDisable}}" hover-class="button-hover" 
-        data-identity="keeper" bindtap="onclick">我是商家</button>
+        data-identity="keeper" open-type="getUserInfo" bindgetuserinfo="onclick">我是商家</button>
     </view>
     </view>
     <!-- 上传图片测试 -->
