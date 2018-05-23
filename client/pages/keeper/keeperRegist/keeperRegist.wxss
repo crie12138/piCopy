@@ -1,14 +1,14 @@
 /* pages/keeperRegist/keeperRegist.wxss */
 .input{
-    padding-left: 10px;
-    height: 44px;
+    padding-left: 20rpx;
+    height: 88rpx;
 }
-
 
 .avatar-banner{
     width: 175rpx;
     height: 175rpx ;
     border-radius: 50%;
+    margin-top: 110rpx;
     margin-bottom: 50rpx;
   }
 .nickName-banner{
@@ -17,5 +17,5 @@
     margin-bottom: 75rpx;
 }
 .button{
-    margin-top: 15px
+    margin-top: 30rpx
 }

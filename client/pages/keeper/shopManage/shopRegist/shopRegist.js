@@ -1,17 +1,18 @@
 // pages/keeper/shopRegist/shopRegist.js
-var config =require("../../../config")
+var config =require("../../../../config")
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    photoPath:null,
     shopName:null,
     price:null,
     shopLocation:null,
     imgUrl:null,
-    inputResult:"inputView"
+    priceInput:"inputView",
+    nameInput:"inputView"
+
   },
 
   /**
@@ -37,6 +38,7 @@ Page({
     this.setData({
       "shopLocation":getApp().globalData.shopLocation
     })
+    //当页面从隐藏到下一次打开是获取全局变量看是否选好了商店地址
   },
 
   /**
@@ -73,6 +75,24 @@ Page({
   onShareAppMessage: function () {
   
   },
+
+  shopNameInput:function(event){
+    var name=event.detail.value
+    if(4<name.length<50){
+        this.setData({
+        "shopName":event.detail.value,
+        "nameInput":"inputCorrect"
+      })
+    }
+    else{
+      this.setData({
+        "shopName":null,
+        "nameInput":"inputMismatch"
+      })
+    }
+  },
+
+
   localChoose:function(){
     wx.navigateTo({
       url:"localChoose/localChoose"
@@ -105,15 +125,12 @@ Page({
     if(reg.test(price)){
       result="inputCorrect"
     }
-    else if(price==0){
-      result="inputView"
-    }
     else{
       result="inputMismatch"
       price=0
     }
     this.setData({
-      "inputResult":result,
+      "priceInput":result,
       "price":price
     })
     console.log(event.detail.value)
@@ -121,11 +138,25 @@ Page({
   },
   confirm:function(){
     var that=this
+    var url=config.service.keeperUrl+"shopRegist"
+    var imgUrl=this.data.imgUrl
     wx.uploadFile({
-      url:config.keeperUrl+"shopRegist",
+      url:url,
       filePath:imgUrl,
+      name:'file',
       formData:{
-        "Location":that.data.Location,
+        "address":that.data.shopLocation['address'],
+        'longitude':that.data.shopLocation['longitude'],
+        'latitude' : that.data.shopLocation['latitude'],
+        "shopName":that.data.shopName,
+        "price":that.data.price,
+      },
+      success: function(res){
+        console.log(res)
+      },
+
+      fail: function(e) {
+        console.log(e)
       }
     })
   }

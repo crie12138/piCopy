@@ -42,7 +42,7 @@ $config = [
          */
         'region' => 'cn-sorth',
         // Bucket 名称
-        'fileBucket' => 'wafer',
+        'fileBucket' => 'picopy',
         // 文件夹
         'uploadFolder' => ''
     ],

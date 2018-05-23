@@ -2,7 +2,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
   box-sizing: border-box;
 } 
 page {
@@ -20,7 +20,7 @@ page {
   margin-top: 15px;
 }
 .inputCorrect{
-  border:  2px solid rgb(187, 255, 0);
+  border:  2px solid rgb(60, 179, 113);
   border-radius: 40px;
   margin-left: 15px;
   margin-right: 15px;

@@ -1,6 +1,6 @@
 // pages/keeper/shopRegist/shopRegist.js
 //http://lbs.qq.com/qqmap_wx_jssdk  腾讯地图小程序api文档
-var QQMapWX = require('../../../../qqmap-wx-jssdk.js');
+var QQMapWX = require('../../../../../qqmap-wx-jssdk.js');
 var qqmapsdk;
 Page({
 
@@ -11,7 +11,7 @@ Page({
     latitude:null,
     address:null,
     longitude:null,
-    marker:null,
+    marker:[],
     suggestions:[],
   },
 
@@ -49,8 +49,8 @@ Page({
               height: 5
             }]
             //重新选点的时候显示出原来选择的地点
-            var shopLocation
-            if (shopLocation=getApp().globalData.shopLocation){
+            var shopLocation=getApp().globalData.shopLocation
+            if (shopLocation&&shopLocation.address){
               console.log(shopLocation)
               latitude=shopLocation.latitude
               longitude=shopLocation.longitude
@@ -114,10 +114,10 @@ Page({
   
   },
   addressInput : function(event){
-     var address=event.detail.value 
-     var that=this
-     console.log(address)
-     qqmapsdk.getSuggestion({
+    var address=event.detail.value 
+    var that=this
+    console.log(address)
+    qqmapsdk.getSuggestion({
         keyword:address,
         success: function(res) {
           that.setData({
@@ -130,7 +130,7 @@ Page({
         complete: function(res) {
           console.log(that.data.suggestions)
         }
-     })
+    })
 
   },
   useSuggestion:function(event){
