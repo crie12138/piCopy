@@ -76,6 +76,21 @@ Page({
   
   },
 
+  isBlank:function(str){
+    if(Object.prototype.toString.call(str) === '[object Undefined]') {//空
+      return true
+    } else if (
+      Object.prototype.toString.call(str) === '[object String]' ||
+        Object.prototype.toString.call(str) === '[object Array]') { //字条串或数组
+      return str.length == 0 ? true : false
+    } else if (Object.prototype.toString.call(str) === '[object Object]') {
+      return JSON.stringify(str) == '{}' ? true : false
+    }else{
+      return true
+    }
+
+  },
+
   shopNameInput:function(event){
     var name=event.detail.value
     if(4<name.length<50){
@@ -140,24 +155,38 @@ Page({
     var that=this
     var url=config.service.keeperUrl+"shopRegist"
     var imgUrl=this.data.imgUrl
-    wx.uploadFile({
-      url:url,
-      filePath:imgUrl,
-      name:'file',
-      formData:{
-        "address":that.data.shopLocation['address'],
-        'longitude':that.data.shopLocation['longitude'],
-        'latitude' : that.data.shopLocation['latitude'],
-        "shopName":that.data.shopName,
-        "price":that.data.price,
-      },
-      success: function(res){
-        console.log(res)
-      },
+    if (!(this.isBlank(config.service.keeperUrl) || this.isBlank(imgUrl) || this.isBlank(that.data.shopLocation['address']) || this.isBlank(that.data.shopLocation['longitude']) || this.isBlank(that.data.shopLocation['latitude']) || this.isBlank(that.data.shopName) || this.isBlank(that.data.price))) {
+      wx.uploadFile({
+        url: url,
+        filePath: imgUrl,
+        name: 'file',
 
-      fail: function(e) {
-        console.log(e)
-      }
-    })
+        formData: {
+          "address": that.data.shopLocation['address'],
+          'longitude': that.data.shopLocation['longitude'],
+          'latitude': that.data.shopLocation['latitude'],
+          "shopName": that.data.shopName,
+          "price": that.data.price,
+        },
+        success: function (res) {
+          console.log(res)
+        },
+
+        fail: function (e) {
+          console.log(e)
+        }
+      })
+    } else {
+      wx.showToast({
+
+        title: '请填写全部信息',
+
+        icon: "/client/img/error.png",
+
+        duration: 1500
+
+      })
+    }
+    
   }
 })
