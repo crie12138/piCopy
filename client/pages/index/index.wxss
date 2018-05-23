@@ -1,5 +1,4 @@
 /**index.wxss**/
-
   .conter{
   display: flex;
   flex-direction: column;
