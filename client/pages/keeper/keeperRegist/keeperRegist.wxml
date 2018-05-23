@@ -1,8 +1,9 @@
 <!--pages/keeperRegist/keeperRegist.wxml-->
 <view >
     <view class="container">
-        <image  class="avatar-banner" src="{{avatarUrl}}" mode="scaleToFill"></image>
-        <label class="nickName-banner">{{nickName}}</label>
+    
+        <view class="d1"><image  class="avatar-banner" src="{{avatarUrl}}" mode="scaleToFill"></image></view>
+        <view class="d2"><label class="nickName-banner">{{nickName}}</label></view>
     </view>
     <view class="inputView">
         <input class="input" placeholder="真实姓名" maxlength="10" confirm-type="next" bindinput="realNameInput"></input>

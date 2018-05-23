@@ -1,11 +1,16 @@
 <!--pages/keeper/shopRegist/shopRegist.wxml-->
 
-<view>
+
+
     <view>
+
     <view class="title">
       <view class="a"><text>地址</text></view>
         <view class="inputView">
-          <input  maxlength="30" placeholder="{{address}}" bindinput="addressInput" placeholder-class="pc" auto-focus="false"/>
+        <form>
+         <input  maxlength="30" placeholder="{{address}}" bindinput="addressInput" placeholder-class="pc" auto-focus="false"/>
+        
+        </form>
         </view>
         </view>
         
@@ -17,4 +22,5 @@
     </view>
         <map longitude="{{longitude}}" latitude="{{latitude}}" markers="{{markers}}" class="map"></map>
         <button bindtap="confirm">确认</button>
-</view>
+
+
