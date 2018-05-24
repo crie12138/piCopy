@@ -2,10 +2,15 @@
 <scroll-view scroll-y="{{true}}">
     <view wx:for="{{shops}}" wx:for-item="shop">
         <image src="image/shop.png"></image>
-        <button data-shopId="{{shop.id}}" bindtap="chooseShop">{{shop.name}}</button>
+        <button data-shopId="{{shop.id}}" bindtap="chooseShop">
+        
+        {{shop.name}}
+        </button>
     </view>
-    <view>
+    <view class='ac_button'>
+      <button plain="ture" data-action="shopRegist" bindtap="addShop">
         <image src="image/add.png"></image>
-        <button plain="ture" data-action="shopRegist" bindtap="addShop">添加打印店</button>
+        添加打印店
+      </button>
     </view>
 </scroll-view>
