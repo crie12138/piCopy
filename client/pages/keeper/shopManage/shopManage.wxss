@@ -1,1 +1,18 @@
 /* pages/keeper/shopManage/shopManage.wxss */
+.img{
+  width: 175rpx;
+  height: 175rpx ;
+  border-radius: 50%;
+}
+.ac_button{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: center;
+}
+.ac_button button{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-content: center;
+}

@@ -27,6 +27,23 @@
   margin-top: 30rpx
 }
 .inputView{
+  border:  2px solid rgb(181, 184, 176);
+  border-radius: 40px;
+  margin-top: 30rpx;
+  margin-left: 100rpx;
+  margin-right:100rpx;
+}
+.inputCorrect{
+  border:  2px solid rgb(60, 179, 113);
+  border-radius: 40px;
+  margin-top: 30rpx;
+  margin-left: 100rpx;
+  margin-right:100rpx;
+}
+.inputMismatch{
+  border:  2px solid rgb(255, 94, 0);
+  border-radius: 40px;
+  margin-top: 30rpx;
   margin-left: 100rpx;
   margin-right:100rpx;
 }
