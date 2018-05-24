@@ -22,6 +22,7 @@
     margin-bottom: 75rpx;
 }
 .button{
+<<<<<<< HEAD
   margin-left: 100rpx;
   margin-right:100rpx;
   margin-top: 30rpx
@@ -47,3 +48,16 @@
   margin-left: 100rpx;
   margin-right:100rpx;
 }
+=======
+    margin-top: 30rpx
+}
+.container{
+  display: flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items: center;
+}
+/* .d1{
+  text-align: center;
+} */
+>>>>>>> ddc3f6b1a05d06c23a030574c9f94a29eb2bb86c

@@ -1,6 +1,5 @@
 // pages/keeper/shopRegist/shopRegist.js
 var config =require("../../../../config")
-var util= require("../../../../utils/util")
 Page({
 
   /**
@@ -19,8 +18,10 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+
   onLoad: function (options) {
   
+
   },
 
   /**
@@ -73,6 +74,21 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+
+  isBlank:function(str){
+    if(Object.prototype.toString.call(str) === '[object Undefined]') {//空
+      return true
+    } else if (
+      Object.prototype.toString.call(str) === '[object String]' ||
+        Object.prototype.toString.call(str) === '[object Array]') { //字条串或数组
+      return str.length == 0 ? true : false
+    } else if (Object.prototype.toString.call(str) === '[object Object]') {
+      return JSON.stringify(str) == '{}' ? true : false
+    }else{
+      return true
+    }
+
   },
 
   shopNameInput:function(event){
@@ -140,36 +156,42 @@ Page({
 
 
   confirm:function(){
-    util.showModel("正在注册")
     var that=this
     var url=config.service.shopUrl+"shopRegist"
     var imgUrl=this.data.imgUrl
-    wx.uploadFile({
-      url:url,
-      filePath:imgUrl,
-      name:'file',
-      formData:{
-        "openId":getApp().globalData.userInfo.openId,
-        "address":that.data.shopLocation.address,
-        'longitude':that.data.shopLocation.longitude,
-        'latitude' : that.data.shopLocation.latitude,
-        "shopName":that.data.shopName,
-        "price":that.data.price,
-      },
-      success: function(res){
-        if (res.data.code == 0) {
-          util.showModel("注册成功")
-          wx.redirectBack()
-        }
-        else{
+    if (!(this.isBlank(config.service.keeperUrl) || this.isBlank(imgUrl) || this.isBlank(that.data.shopLocation) 
+    || this.isBlank(that.data.shopLocation['address']) || this.isBlank(that.data.shopName)
+    || this.isBlank(that.data.price))) {
+      wx.uploadFile({
+        url: url,
+        filePath: imgUrl,
+        name: 'file',
+
+        formData: {
+          "address": that.data.shopLocation['address'],
+          'longitude': that.data.shopLocation['longitude'],
+          'latitude': that.data.shopLocation['latitude'],
+          "shopName": that.data.shopName,
+          "price": that.data.price,
+        },
+        success: function (res) {
           console.log(res)
-          util.showModel("注册失败")
+        },
+
+        fail: function (e) {
+          console.log(e)
         }
-      },
-      fail: function(e) {
-        console.log(e)
-        util.showModel("注册失败")
-      }
-    })
+      })
+    } else {
+      wx.showToast({
+
+        title: '请填写全部信息',
+
+        image: "/img/error.png",
+
+        duration: 1500
+
+      })
+    }
   }
 })

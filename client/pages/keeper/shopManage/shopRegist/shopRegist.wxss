@@ -1,4 +1,5 @@
 /* pages/keeper/shopRegist/shopRegist.wxss */
+
 .uploader{
     margin-top: 40rpx;
     height: 140rpx;
