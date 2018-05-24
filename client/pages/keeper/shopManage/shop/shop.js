@@ -19,7 +19,8 @@ Page({
       url:config.service.shopUrl+"getShop/"+options.shopId,
       success:function(res){
         that.setData({
-          'shop':res.data.row
+          'shop':res.data.row,
+          'isEdit':false
         })
       }
     })
@@ -74,15 +75,67 @@ Page({
   onShareAppMessage: function () {
   
   },
-  
+  priceInput:function(event){
+    var reg = /^(([1-9]+)|([0-9]+\.[0-9]{1,2}))$/;
+    var result
+    var price=event.detail.value
+    if(reg.test(price)){
+      result="inputCorrect"
+    }
+    else{
+      result="inputMismatch"
+      price=0
+    }
+    this.setData({
+      "priceInput":result,
+      "price":price
+    })
+    console.log(event.detail.value)
+    
+  },
 
   submit:function(event){
-    console.log(event.detail.value)
+    var url=config.service.shopUrl+"shopUpdata"
+    var that=this
+    var form=event.detail.value
+    var options={shopId:form.shopId}
+    wx.request({
+      url:url,
+      data:form,
+      method: "POST",
+      header: {  
+        "Content-Type": "application/x-www-form-urlencoded"  
+      },
+      success: function(res) {
+        if(res.data.code==0){
+          //提示修改成功
+          that.setData({
+            "isEdit":false
+          })
+        }
+        else{
+          //提示更新失败
+        }
+      }
+    })
   },
 
   editInfo:function(){
     this.setData({
       "isEdit":true
     })
+  },
+
+  shopDelete:function(event){
+    var shopId=event.currentTarget.dataset.shopid
+    var url=config.service.shopUrl+"shopDelete/"+shopId
+    console.log(shopId)
+    wx.request({
+        url:url,
+        success(result){
+          console.log(result)
+        }
+    })
+
   }
 })

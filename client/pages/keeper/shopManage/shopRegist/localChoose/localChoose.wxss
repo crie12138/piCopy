@@ -1,7 +1,7 @@
 
 .map{
-    height: 100vh;
-    weight: 100vh;
+    height: 75vh;
+    weight: 50vm;
 }
 .pc{
 color:  darkgrey;
