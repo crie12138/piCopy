@@ -8,7 +8,7 @@ use QCloud_WeApp_SDK\Mysql\Mysql as DB;
 use \QCloud_WeApp_SDK\Constants as Constants;
 
 class Shop extends CI_Controller {
-//商家打印店信息获取
+//商家打印店信息获取需要传入shopId
     public function getShop($shopId){
         try{
             $row=DB::row("shops",["*"],["id"=>$shopId]);
@@ -23,9 +23,11 @@ class Shop extends CI_Controller {
             ]);
         }
     }
+
+//打印店列表获取，需要传用户的openId
     public function getShopList($openId){
         try{
-            $row=DB::select("shops",["*"],'delete_time is null and open_id="'.$openId.'"');
+            $row=DB::select("shops",["*"],["open_id"=>$openId]);
             $this->json([
                 'code'=>0,
                 'row'=>$row,
@@ -126,5 +128,36 @@ class Shop extends CI_Controller {
                 'err'=>$e->getMessage(),
             ]);
         }
+    }
+
+    public function shopUpdata(){
+        $infoArry=$_POST;
+        try{
+            DB::update("shops",["name"=>$infoArry["shopName"],"page_price"=>$infoArry["price"]],["id"=>$infoArry['id']]);
+            $this->json([
+                "code"=>0,
+            ]);
+        }catch (Expection $e){
+            $this->json([
+                "code"=>-1,
+                "err"=>$e->getMessage()
+            ]);
+        }
+    }
+
+    public function shopDelete($shopId){
+        try{
+            DB::delete("shops",["id"=>$shopId]);
+            $this->json([
+                'code'=>0
+            ]);
+        }catch(Expection $e){
+            $this->json([
+                'code'=>-1,
+                'err'=>$e->getMessage()
+            ]);
+
+        }
+
     }
 }
