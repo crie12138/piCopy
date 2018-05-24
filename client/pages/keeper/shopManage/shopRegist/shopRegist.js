@@ -156,6 +156,7 @@ Page({
 
 
   confirm:function(){
+    console.log(getApp().globalData.userInfo.openId)
     var that=this
     var url=config.service.shopUrl+"shopRegist"
     var imgUrl=this.data.imgUrl
@@ -168,6 +169,7 @@ Page({
         name: 'file',
 
         formData: {
+          "openId": getApp().globalData.userInfo.openId,
           "address": that.data.shopLocation['address'],
           'longitude': that.data.shopLocation['longitude'],
           'latitude': that.data.shopLocation['latitude'],

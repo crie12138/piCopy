@@ -1,16 +1,17 @@
 {
   "pages": [
-    "pages/keeper/shopManage/shopManage",
     "pages/index/index",
+    "pages/keeper/shopManage/shop/shop",
+    
     "pages/user/user",
     "pages/keeper/keeperRegist/keeperRegist",
     "pages/keeper/keeper",
-    
+    "pages/keeper/shopManage/shopManage",
     "pages/keeper/shopManage/shopRegist/shopRegist",
     "pages/keeper/shopManage/shopRegist/localChoose/localChoose",
     "pages/about/about",
-    "pages/keeper/keeperInfo/keeperInfo",
-    "pages/keeper/shopManage/shop/shop"
+    "pages/keeper/keeperInfo/keeperInfo"
+    
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

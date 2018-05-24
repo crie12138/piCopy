@@ -10,9 +10,17 @@
   justify-content: space-around;
   align-content: center;
 }
-.ac_button button{
+.ac_button_view{
+  border:1px solid #353535;
   display: flex;
-  flex-direction: column;
+  flex-direction:row;
+  justify-content: space-around;
+  align-content: center;
+}
+.text{
+  font-size: larger;
+  display: flex;
+  flex-direction:column;
   justify-content: space-around;
   align-content: center;
 }
