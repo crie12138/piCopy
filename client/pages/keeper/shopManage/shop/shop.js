@@ -133,9 +133,24 @@ Page({
     wx.request({
         url:url,
         success(result){
-          console.log(result)
+          if(result.data.code==0){
+            wx.navigateBack()
+          }
+          else{
+            //提示删除失败
+          }
         }
     })
-
+  },
+  addPrinter:function(event){
+    var shopId=event.currentTarget.dataset.shopid
+    console.log(shopId)
+    var url="printerManage/printerManage?shopId="+shopId
+    wx.navigateTo({
+      url:url
+    })
+  },
+  back:function(){
+    wx.navigateBack()
   }
 })

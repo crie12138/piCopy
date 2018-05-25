@@ -1,0 +1,2 @@
+<!--pages/keeper/shopManage/shop/printerManage/printerManage.wxml-->
+<text>{{shopId}}</text>

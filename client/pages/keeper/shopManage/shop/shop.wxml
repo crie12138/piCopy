@@ -20,7 +20,7 @@
                     <button type="primary" plain form-type="submit">提交修改</button>
                 </view>
                 <view>
-                    <button data-shopid="{{shop.id}}" bindtap="shopDelete">删除打印店</button>
+                    <button data-shopid="{{shop.id}}" bindtap="shopDelete" type="warn">删除打印店</button>
                 </view>
             </form>
         </view>
@@ -36,12 +36,13 @@
                     <text>{{shop.location}}</text>
                 </view>
                 <view>
+                    <button type="primary" plain bindtap="addPrinter" data-shopid="{{shop.id}}">打印机管理</button>
                     <button bindtap="editInfo">编辑信息</button>
                 </view>
         </view>       
     
         <view>
-            <button>返回</button>
+            <button bindtap="back">返回</button>
         </view>
     
 </view>

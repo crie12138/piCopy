@@ -160,4 +160,19 @@ class Shop extends CI_Controller {
         }
 
     }
+
+    public function getPrinter($shopId){
+        try{
+            $rows=DB::select("printers",["*"],["shop_id"=>$shopId]);
+            $this->json([
+                'code'=>0,
+                'data'=>$rows
+            ]);
+        }catch(Expection $e){
+            $this->json([
+                code=>-1,
+                err=>$e->getMessage()
+            ]);
+        }
+    }
 }
