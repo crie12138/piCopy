@@ -1,14 +1,11 @@
 /* pages/keeper/shopManage/shopManage.wxss */
-.img{
-  width: 175rpx;
-  height: 175rpx ;
-  border-radius: 50%;
-}
 .ac_button{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-content: center;
+  width: 490rpx;
+  border-radius:5%; 
 }
 .ac_button_view{
   border:1px solid #353535;
@@ -16,11 +13,23 @@
   flex-direction:row;
   justify-content: space-around;
   align-content: center;
+  border-radius:5%;  
+}
+.img{
+  display: flex;
+  flex-direction:row;
+  justify-content: space-around;
+  align-content: center; 
+  width: 175rpx;
+  height: 175rpx ;
+  border-radius: 50%;
 }
 .text{
+  width: 250rpx;
   font-size: larger;
   display: flex;
   flex-direction:column;
-  justify-content: space-around;
-  align-content: center;
+  justify-content: center;
+  align-content: space-between;
+  text-align: center;
 }

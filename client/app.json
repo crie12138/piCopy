@@ -2,7 +2,6 @@
   "pages": [
     "pages/index/index",
     "pages/keeper/shopManage/shop/shop",
-    
     "pages/user/user",
     "pages/keeper/keeperRegist/keeperRegist",
     "pages/keeper/keeper",

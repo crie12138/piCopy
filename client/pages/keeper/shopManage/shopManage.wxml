@@ -1,10 +1,10 @@
 <!--pages/keeper/shopManage/shopManage.wxml-->
 <!-- <scroll-view class='ac_button' scroll-y="{{true}}"> -->
     <view class='ac_button' wx:for="{{shops}}" wx:for-item="shop">
-      <button class='ac_button_view' data-shopId="{{shop.id}}" bindtap="chooseShop">
+      <view class='ac_button_view' data-shopId="{{shop.id}}" bindtap="chooseShop">
         <image class='img' src="image/shop.png"></image>
         <view class='text'>{{shop.name}}</view>
-      </button>
+      </view>
     </view>
     <view class='ac_button'>
       <button class='ac_button_view' plain="ture" data-action="shopRegist" bindtap="addShop">
