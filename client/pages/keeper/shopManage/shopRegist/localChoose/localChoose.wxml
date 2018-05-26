@@ -5,7 +5,7 @@
     <view>
 
     <view class="title">
-        <view class="a"><text>??</text></view>
+        <view class="a"><text>地址</text></view>
         <view class="inputView">
         <form>
         <input  maxlength="30" placeholder="{{address}}" bindinput="addressInput" placeholder-class="pc" auto-focus="false"/>
@@ -20,9 +20,9 @@
         </view>
         
     </view>
-        <map longitude="{{longitude}}" latitude="{{latitude}}" markers="{{markers}}" class="map"></map>
-    <cover-view>
-        <button bindtap="confirm">??</button>
-    </cover-view>
+        <map longitude="{{longitude}}" latitude="{{latitude}}" markers="{{markers}}"></map>
+    <view>
+        <button bindtap="confirm">确认</button>
+    </view>
 
 

@@ -1,11 +1,15 @@
 <!--pages/keeper/shopManage/shopManage.wxml-->
-<scroll-view scroll-y="{{true}}">
-    <view wx:for="{{shops}}" wx:for-item="shop">
-        <image src="image/shop.png"></image>
-        <button data-shopId="{{shop.id}}" bindtap="chooseShop">{{shop.name}}</button>
+<!-- <scroll-view class='ac_button' scroll-y="{{true}}"> -->
+    <view class='ac_button' wx:for="{{shops}}" wx:for-item="shop">
+      <view class='ac_button_view' data-shopId="{{shop.id}}" bindtap="chooseShop">
+        <image class='img' src="image/shop.png"></image>
+        <view class='text'>{{shop.name}}</view>
+      </view>
     </view>
-    <view>
-        <image src="image/add.png"></image>
-        <button plain="ture" data-action="shopRegist" bindtap="addShop">添加打印店</button>
+    <view class='ac_button'>
+      <button class='ac_button_view' plain="ture" data-action="shopRegist" bindtap="addShop">
+        <image class='img' src="image/add.png"></image>
+        <view class='text'>添加打印店</view>
+      </button>
     </view>
-</scroll-view>
+<!-- </scroll-view> -->
