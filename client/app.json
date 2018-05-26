@@ -10,7 +10,8 @@
     "pages/about/about",
     "pages/keeper/keeperInfo/keeperInfo",
     "pages/keeper/shopManage/shop/shop",
-    "pages/keeper/shopManage/shop/printerManage/printerManage"
+    "pages/keeper/shopManage/shop/printerManage/printerManage",
+    "pages/keeper/shopManage/shop/printerManage/addPrint/addPrint"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

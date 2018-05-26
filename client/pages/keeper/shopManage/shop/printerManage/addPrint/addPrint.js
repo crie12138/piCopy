@@ -1,29 +1,17 @@
-// pages/keeper/shopManage/shop/printerManage/printerManage.js
-var config=require("../../../../../config")
+// pages/keeper/shopManage/shop/printerManage/addPrint/addPrint.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    shopId:null,
+  
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var shopId=options.shopId
-    this.setData({
-      'shopId':shopId
-    })
-    wx.request({
-      url:config.service.shopUrl+"getPrinter/"+shopId,
-      success:function(result){
-        console.log(result)
-      }
-    })
-
   
   },
 
@@ -74,14 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
   
-  },
-
-  addPrint:function(){
-    wx.scanCode({
-      onlyFromCamera:true,
-      success:function(res){
-        console.log(res)
-      }
-    })
   }
 })

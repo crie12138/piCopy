@@ -1,2 +1,15 @@
 <!--pages/keeper/shopManage/shop/printerManage/printerManage.wxml-->
-<text>{{shopId}}</text>
+<view>
+    <view wx:for="{{printers}}" wx:for-item="{{printer}}">
+        <view>
+            <image src="image/print.png"></image>
+        </view>
+    
+    </view>
+    <view bindtap="addPrint">
+        <image src="image/add.png"></image>
+        <text>添加打印机</text>
+    </view>
+
+
+</view>
