@@ -4,8 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 use \QCloud_WeApp_SDK\Auth\LoginService as LoginService;
 use \QCloud_WeApp_SDK\Conf as Conf;
 use \QCloud_WeApp_SDK\Cos\CosAPI as Cos;
-use QCloud_WeApp_SDK\Mysql\Mysql as DB;
 use \QCloud_WeApp_SDK\Constants as Constants;
+use QCloud_WeApp_SDK\Mysql\Mysql as DB;
+
 
 class Shop extends CI_Controller {
 //商家打印店信息获取需要传入shopId
@@ -102,7 +103,7 @@ class Shop extends CI_Controller {
 
         } catch (Exception $e) {
             $this->json([
-                'code' => 1,
+                'code' =>-1,
                 'error' => $e->__toString()
             ]);
         }
@@ -120,11 +121,12 @@ class Shop extends CI_Controller {
                 "page_price"=>$infoArry['price']
             ]);
             $this->json([
-                'code' => 0,
+                "code"=>$code
             ]);
         }catch(Expection $e){
+            $code=-1;
             $this->json([
-                'code'=>-1,
+                'code'=>$code,
                 'err'=>$e->getMessage(),
             ]);
         }
@@ -173,6 +175,25 @@ class Shop extends CI_Controller {
                 code=>-1,
                 err=>$e->getMessage()
             ]);
+        }
+    }
+
+    public function addPrinter($shopId){
+        $messArry=$_POST;
+        try{
+            $row=DB::row("printers",['pcname'],['token'=>$messArry['token']]);
+            DB::update("printers",['shopId'=>$shopId],['token'=>$messArry['token']]);
+            $this->json([
+                'code'=>0,
+                'name'=>$row
+            ]);
+
+        }catch(Expection $e){
+            $this->json([
+                'code'=>-1,
+                'err'=>$e->getMessage()
+            ]);
+
         }
     }
 }

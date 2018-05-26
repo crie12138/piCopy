@@ -145,7 +145,6 @@ Page({
           'content-type': 'application/x-www-form-urlencoded'
         },
         success: function (result) {
-          console.log(result)
           if (result.data.code == 0) {
             wx.redirectTo({
               url: "/pages/keeper/keeper"

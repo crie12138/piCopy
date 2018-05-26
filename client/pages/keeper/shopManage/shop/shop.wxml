@@ -43,5 +43,3 @@
   <view>
     <button bindtap="back">返回</button>
   </view>
-    
-</view>
