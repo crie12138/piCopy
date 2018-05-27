@@ -1,14 +1,19 @@
 /* pages/keeper/shopManage/shop/shop.wxss */
-page{
+
+page {
   height: 100%;
   background: rgb(246, 246, 246);
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  padding: 0%;
 }
-.img{
-    height: 40%;
-    width: 100%;
+
+.img {
+  height: 40%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }

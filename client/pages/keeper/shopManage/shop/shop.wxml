@@ -1,19 +1,19 @@
 <!--pages/keeper/shopManage/shop/shop.wxml-->
 <view class='img'>
-  <image src="{{shop.photo}}" mode="scaleToFill"></image>
+  <image src="{{shop.photo}}" mode="aspectFit"></image>
 </view>
 
 <view wx:if="{{isEdit}}">
   <form bindsubmit="submit">
     <view class="{{nameInput}}">
       <input name="id" value="{{shop.id}}" hidden disabled></input>
-      <input name="shopName" value="{{shop.name}}" bindinput="nameInput"></input>
+      <input name="shopName" value="店名：{{shop.name}}" bindinput="nameInput"></input>
     </view>
     <view class="{{priceInput}}">
-      <input name="price" value="{{shop.page_price}}" bindinput="priceInput"></input>
+      <input name="price" value="单张打印价格：{{shop.page_price}}" bindinput="priceInput"></input>
     </view>
     <view>
-      <text>{{shop.location}}</text>
+      <text>商店地址：{{shop.location}}</text>
     </view>
     <view class="section btn-area">
       <button type="primary" plain form-type="submit">提交修改</button>
@@ -26,22 +26,20 @@
 
 <view wx:if="{{shop}}" hidden="{{isEdit}}">
   <view class="{{nameInput}}">
-    <input name="shopName" value="{{shop.name}}" bindinput="nameInput"></input>
+    <input name="shopName" value="店名：{{shop.name}}" bindinput="nameInput"></input>
   </view>
   <view class="{{priceInput}}">
-    <input name="price" value="{{shop.page_price}}" bindinput="priceInput"></input>
+    <input name="price" value="单张打印价格：{{shop.page_price}}" bindinput="priceInput"></input>
   </view>
   <view>
-    <text>{{shop.location}}</text>
+    <text>商店地址：{{shop.location}}</text>
   </view>
   <view>
     <button type="primary" plain bindtap="addPrinter" data-shopid="{{shop.id}}">打印机管理</button>
     <button bindtap="editInfo">编辑信息</button>
   </view>
-  </view>       
-    
-  <view>
-    <button bindtap="back">返回</button>
-  </view>
-    
+</view>
+
+<view>
+  <button bindtap="back">返回</button>
 </view>
