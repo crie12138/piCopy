@@ -1,6 +1,10 @@
 // pages/keeper/shopRegist/shopRegist.js
 //http://lbs.qq.com/qqmap_wx_jssdk  腾讯地图小程序api文档
 var QQMapWX = require('../../../../../qqmap-wx-jssdk.js');
+var Bmap = require('../../../../../bmap-wx.js')
+var bmap =new Bmap.BMapWX({
+  ak:'18q8dG0hhApDZCVuG4SiPVQPywoLgWK4'
+})
 var qqmapsdk;
 Page({
 
@@ -33,38 +37,44 @@ Page({
         latitude=res.latitude
         longitude=res.longitude
         //2、根据坐标获取当前位置名称，显示在顶部:腾讯地图逆地址解析
-        qqmapsdk.reverseGeocoder({
-          location: {
-            latitude: res.latitude,
-            longitude: res.longitude
-          },
-          success: function (addressRes) {
-            var address = addressRes.result.formatted_addresses.recommend;
-            var marker=[{
-              iconPath:"/img/location-sign.png",
-              id: 0,
-              latitude: latitude,
-              longitude: longitude,
-              width: 5,
-              height: 5
-            }]
-            //重新选点的时候显示出原来选择的地点
-            var shopLocation=getApp().globalData.shopLocation
-            if (shopLocation&&shopLocation.address){
-              console.log(shopLocation)
-              latitude=shopLocation.latitude
-              longitude=shopLocation.longitude
-              address=shopLocation.address
-              marker[0]['latitude']=latitude
-              marker[0]['longitude']=longitude
-            }
-            //重新选点的时候显示出原来选择的地点
-            that.setData({
-              'longitude':longitude,
-              'latitude':latitude,
-              'address':address,
-              'marker':marker
-            })
+        // qqmapsdk.reverseGeocoder({
+        //   location: {
+        //     latitude: res.latitude,
+        //     longitude: res.longitude
+        //   },
+        //   success: function (addressRes) {
+        //     var address = addressRes.result.formatted_addresses.recommend;
+        //     var marker=[{
+        //       iconPath:"/img/location-sign.png",
+        //       id: 0,
+        //       latitude: latitude,
+        //       longitude: longitude,
+        //       width: 5,
+        //       height: 5
+        //     }]
+        //     //重新选点的时候显示出原来选择的地点
+        //     var shopLocation=getApp().globalData.shopLocation
+        //     if (shopLocation&&shopLocation.address){
+        //       console.log(shopLocation)
+        //       latitude=shopLocation.latitude
+        //       longitude=shopLocation.longitude
+        //       address=shopLocation.address
+        //       marker[0]['latitude']=latitude
+        //       marker[0]['longitude']=longitude
+        //     }
+        //     //重新选点的时候显示出原来选择的地点
+        //     that.setData({
+        //       'longitude':longitude,
+        //       'latitude':latitude,
+        //       'address':address,
+        //       'marker':marker
+        //     })
+        //   }
+        // })
+        bmap.regeocoding({
+          iconPath:"/img/location-sign.png",
+          success:function(res){
+            console.log(res)
           }
         })
       }
@@ -117,18 +127,27 @@ Page({
     var address=event.detail.value 
     var that=this
     console.log(address)
-    qqmapsdk.getSuggestion({
-        keyword:address,
-        success: function(res) {
-          that.setData({
-            'suggestions':res.data
-          })  
+    // qqmapsdk.getSuggestion({
+    //     keyword:address,
+    //     success: function(res) {
+    //       that.setData({
+    //         'suggestions':res.data
+    //       })  
+    //     },
+    //     fail: function(res) {
+    //       console.log(res);
+    //     },
+    //     complete: function(res) {
+    //       console.log(that.data.suggestions)
+    //     }
+    // })
+    bmap.suggestion({
+        query:address,
+        success:function(res){
+          console.log(res)
         },
-        fail: function(res) {
-          console.log(res);
-        },
-        complete: function(res) {
-          console.log(that.data.suggestions)
+        fail:function(res){
+          console.log(res)
         }
     })
 
