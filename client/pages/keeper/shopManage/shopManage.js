@@ -82,11 +82,9 @@ Page({
   getShopList:function(){
     var url=config.service.shopUrl+"getShopList/"+getApp().globalData.userInfo.openId
     var that=this
-    console.log(url)
     wx.request({
       url:url,
       success:function(res){
-        console.log(res),
         that.setData({
           'shops':res.data.row
         })

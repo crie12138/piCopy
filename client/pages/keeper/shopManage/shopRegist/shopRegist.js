@@ -181,7 +181,10 @@ Page({
           "price": that.data.price,
         },
         success: function (res) {
-          if(res.data.code==0){
+          console.log(res.data)
+          var code=res.data.slice(-2,-1)
+          console.log(code)
+          if(code=="0"){
             wx.showToast({
               title: '注册成功',
               icon:"success",
@@ -190,7 +193,7 @@ Page({
           }
           else{
             wx.showToast({
-              title: '请填写全部信息',
+              title: '注册失败',
               image: "/img/error.png",
             })
           }

@@ -4,7 +4,6 @@ import os
 import time
 import uuid
 from urllib import error, parse, request
-
 import qrcode_terminal
 
 config=configparser.ConfigParser()
@@ -33,6 +32,7 @@ def get_mac_address():
     return "".join([mac[e:e+2] for e in range(0,11,2)])
 
 def regist():
+    global token
     url=host+'getToken'
     body = {"mac": get_mac_address(), "name": hostname()}
     data = bytes(parse.urlencode(body), encoding='utf8')
@@ -56,18 +56,19 @@ def showQR(token):
     qrcode_terminal.draw(token)
     return 0
 
-def askShopId():
-    url=host+"getShopId"
-    body={'token':token}
-    data=bytes(parse.urlencode(body), encoding='utf8')
+def checkToken():
+    global token
+    url = host + "checkToken/"+token
     try:
-        response = request.urlopen(url,data)
-        responese = json.loads(bytes.decode(response.read()))
-        if (responese['code'] == 0):
-            config.set('base', 'shopId', response['shopId'])
+        response = request.urlopen(url)
+        response = json.loads(bytes.decode(response.read()))
+        print(response)
+        if (response['code'] == 0 and response['token']==None):
+            config.set('base', 'token','')
+            config.set('base', 'shopId', '')
             config.write(open('config.ini', 'w'))
             config.read('config.ini')
-            shopId=config.get('base', 'shopId')
+            token = config.get('base', 'token')
 
     except error.URLError as e:
         if hasattr(e, 'code'):
@@ -77,13 +78,40 @@ def askShopId():
             print("URLError")
             print(e.reason)
 
+def askShopId():
+    global shopId
+    url=host+"getShop"
+    body={'token':token}
+    data=bytes(parse.urlencode(body), encoding='utf8')
+    try:
+        response = request.urlopen(url,data)
+        response = json.loads(bytes.decode(response.read()))
+        if (response['code'] == 0 and response['shopId']!=None):
+            config.set('base', 'shopId', response['shopId'])
+            config.write(open('config.ini', 'w'))
+            config.read('config.ini')
+            shopId = config.get('base', 'shopId')
+
+    except error.URLError as e:
+        if hasattr(e, 'code'):
+            print("HTTPError")
+            print(e.code)
+        elif hasattr(e, 'reason'):
+            print("URLError")
+            print(e.reason)
+
+
 def main():
+
     if(token==''):
         regist()
+    else:
+        checkToken()
     if(shopId=='' and token!=''):
         showQR(token)
         while(shopId==''):
             askShopId()
             time.sleep(3)
+    
 if __name__ == "__main__":
     main()

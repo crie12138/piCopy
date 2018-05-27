@@ -4,8 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 use \QCloud_WeApp_SDK\Auth\LoginService as LoginService;
 use \QCloud_WeApp_SDK\Conf as Conf;
 use \QCloud_WeApp_SDK\Cos\CosAPI as Cos;
-use QCloud_WeApp_SDK\Mysql\Mysql as DB;
 use \QCloud_WeApp_SDK\Constants as Constants;
+use QCloud_WeApp_SDK\Mysql\Mysql as DB;
+
 
 class Shop extends CI_Controller {
 //商家打印店信息获取需要传入shopId
@@ -102,7 +103,7 @@ class Shop extends CI_Controller {
 
         } catch (Exception $e) {
             $this->json([
-                'code' => 1,
+                'code' =>-1,
                 'error' => $e->__toString()
             ]);
         }
@@ -120,11 +121,12 @@ class Shop extends CI_Controller {
                 "page_price"=>$infoArry['price']
             ]);
             $this->json([
-                'code' => 0,
+                "code"=>$code
             ]);
         }catch(Expection $e){
+            $code=-1;
             $this->json([
-                'code'=>-1,
+                'code'=>$code,
                 'err'=>$e->getMessage(),
             ]);
         }
@@ -163,7 +165,7 @@ class Shop extends CI_Controller {
 
     public function getPrinter($shopId){
         try{
-            $rows=DB::select("printers",["*"],["shop_id"=>$shopId]);
+            $rows=DB::select("printers",["id","name","pcname"],["shop_id"=>$shopId]);
             $this->json([
                 'code'=>0,
                 'data'=>$rows
@@ -172,6 +174,40 @@ class Shop extends CI_Controller {
             $this->json([
                 code=>-1,
                 err=>$e->getMessage()
+            ]);
+        }
+    }
+
+    public function addPrinter(){
+        $messArry=$_POST;
+        $shopId=$messArry['shopId'];
+        $token=$messArry['token'];
+        try{
+            DB::update("printers",['shop_id'=>$shopId],['token'=>$token]);
+            $row=DB::row("printers",['pcname'],['token'=>$token]);
+            $this->json([
+                'code'=>0,
+            ]);
+
+        }catch(Expection $e){
+            $this->json([
+                'code'=>-1,
+                'err'=>$e->getMessage()
+            ]);
+
+        }
+    }
+
+    public function deletPrint($printId){
+        try{
+            DB::delete("printers",['id'=>$printId]);
+            $this->json([
+                'code'=>0,
+            ]);
+        }catch(Expection $e){
+            $this.json([
+                "code"=>-1,
+                "err"=>$e->getMessage()
             ]);
         }
     }

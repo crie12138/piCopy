@@ -7,6 +7,8 @@ Page({
    */
   data: {
     shopId:null,
+    printers:null,
+    active:null,
   },
 
   /**
@@ -17,12 +19,7 @@ Page({
     this.setData({
       'shopId':shopId
     })
-    wx.request({
-      url:config.service.shopUrl+"getPrinter/"+shopId,
-      success:function(result){
-        console.log(result)
-      }
-    })
+    this.getPrinters(shopId)
 
   
   },
@@ -76,12 +73,79 @@ Page({
   
   },
 
+  getPrinters:function(shopId){
+    var that=this
+    wx.request({
+      url:config.service.shopUrl+"getPrinter/"+shopId,
+      success:function(result){
+        that.setData({
+          'printers':result.data.data
+        })
+        console.log(result.data.data)
+      }
+    })
+  },
+
   addPrint:function(){
+    var that=this
+    var shopId=this.data.shopId
     wx.scanCode({
       onlyFromCamera:true,
       success:function(res){
-        console.log(res)
+        console.log(res.result)
+        var token=res.result
+        wx.request({
+          url:config.service.shopUrl+"addPrinter",
+          data:{
+            "token":token,
+            "shopId":shopId
+          },
+          method:"POST",
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+          success:function(res){
+            if(res.data.code==0){
+              that.getPrinters(shopId)
+            }
+            else{
+              wx.showToast({
+                title: '注册失败',
+                image: "/img/error.png",
+              })
+            }
+          }
+        })
       }
+    })
+  },
+  
+  deletePrint:function(event){
+    var printId=event.currentTarget.dataset.printid
+    var url=config.service.shopUrl+"deletPrint/"+printId
+    var shopId=this.data.shopId
+    var that=this
+    wx.request({
+      url:url,
+      success:function(res){
+        if(res.data.code==0){
+          that.getPrinters(shopId)
+        }
+        else{
+          wx.showToast({
+            title: '操作失败',
+            image: "/img/error.png",
+          })
+        }
+      }
+    })
+
+  },
+  showOptions:function(event){
+    var printId=event.currentTarget.dataset.printid
+    console.log(printId)
+    this.setData({
+      'active':printId
     })
   }
 })

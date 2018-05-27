@@ -38,8 +38,16 @@
     <button type="primary" plain bindtap="addPrinter" data-shopid="{{shop.id}}">打印机管理</button>
     <button bindtap="editInfo">编辑信息</button>
   </view>
+<<<<<<< HEAD
 </view>
 
 <view>
   <button bindtap="back">返回</button>
 </view>
+=======
+  </view>       
+    
+  <view>
+    <button bindtap="back">返回</button>
+  </view>
+>>>>>>> 1b9952b607f690f4a0b4ab3d94acb82efe70a1d2
