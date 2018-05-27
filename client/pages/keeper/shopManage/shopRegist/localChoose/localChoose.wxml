@@ -1,30 +1,9 @@
-<!--pages/keeper/shopRegist/shopRegist.wxml-->
-
-
-<view>
-    <view>
-
-    <view class="title">
-        <view class="a"><text>地址</text></view>
-        <view class="inputView">
-        <form>
-        <input  maxlength="30" placeholder="{{address}}" bindinput="addressInput" placeholder-class="pc" auto-focus="false"/>
-        
-        </form>
-        </view>
-        </view>
-        
-        <view wx:for="{{suggestions}}" wx:for-item="suggestion">
-            <view bindtap="useSuggestion" data-latitude="{{suggestion.location.lat}}" data-longitude="{{suggestion.location.lng}}">
-            <text>{{suggestion.title}}</text></view>
-        </view>
-        
-    </view>
-    <view class="map">
-        <map longitude="{{longitude}}" latitude="{{latitude}}" markers="{{markers}}" class="map"></map>
-    </view>
-    <view>
-        <button bindtap="confirm">按钮</button>
-    </view>
+<view class="section">
+  <input placeholder="输入关键字"  type="text" bindinput="haha"></input>
 </view>
 
+<view class="sug_info">
+  <text>{{sugData}}</text>
+</view>
+
+<view class="mapcontianer"></view>
