@@ -1,2 +1,5 @@
 <!--pages/user/user.wxml-->
-<text>pages/user/user.wxml</text>
+<view>
+    <input></input>
+
+</view>

@@ -165,7 +165,7 @@ class Shop extends CI_Controller {
 
     public function getPrinter($shopId){
         try{
-            $rows=DB::select("printers",["*"],["shop_id"=>$shopId]);
+            $rows=DB::select("printers",["id","name","pcname"],["shop_id"=>$shopId]);
             $this->json([
                 'code'=>0,
                 'data'=>$rows
@@ -178,14 +178,15 @@ class Shop extends CI_Controller {
         }
     }
 
-    public function addPrinter($shopId){
+    public function addPrinter(){
         $messArry=$_POST;
+        $shopId=$messArry['shopId'];
+        $token=$messArry['token'];
         try{
-            $row=DB::row("printers",['pcname'],['token'=>$messArry['token']]);
-            DB::update("printers",['shopId'=>$shopId],['token'=>$messArry['token']]);
+            DB::update("printers",['shop_id'=>$shopId],['token'=>$token]);
+            $row=DB::row("printers",['pcname'],['token'=>$token]);
             $this->json([
                 'code'=>0,
-                'name'=>$row
             ]);
 
         }catch(Expection $e){
@@ -194,6 +195,20 @@ class Shop extends CI_Controller {
                 'err'=>$e->getMessage()
             ]);
 
+        }
+    }
+
+    public function deletPrint($printId){
+        try{
+            DB::delete("printers",['id'=>$printId]);
+            $this->json([
+                'code'=>0,
+            ]);
+        }catch(Expection $e){
+            $this.json([
+                "code"=>-1,
+                "err"=>$e->getMessage()
+            ]);
         }
     }
 }

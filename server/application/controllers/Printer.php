@@ -29,16 +29,54 @@ class Printer extends CI_Controller {
     public function getShop(){
         $messArry=$_POST;
         $token=$messArry['token'];
+        $this->json([
+            "code"=>0,
+            "token"=>$token
+        ]);
         try{
             $row=DB::row('printers',['shop_id'],['token'=>$token]);
-            $this->json([
-                "code"=>0,
-                "shopId"=>$row['shopId']
-            ]);
+            if($row==null){
+                $this->json([
+                    "code"=>0,
+                    "shop"=>null,
+                ]);
+            }else{
+                $row=get_object_vars($row);
+                $this->json([
+                    "code"=>0,
+                    "shopId"=>$row['shop_id']
+                ]);
+            }
         }catch(Expection $e){
             $this->json([
                 "code"=>-1,
                 "err"=>$e
+            ]);
+        }
+
+    }
+
+    public function checkToken($token){
+        try{
+            $row=DB::row('printers',['token'],['token'=>$token]);
+            if ($row==null){
+                $this->json([
+                    "code"=>0,
+                    "token"=>null
+                    ]);
+            }
+            else{
+                $row=get_object_vars($row);
+                $this->json([
+                    "code"=>0,
+                    "token"=>$row['token']
+                ]);
+            }
+
+        }catch(Expection $e){
+            $this->json([
+                "code"=>-1,
+                'err'=>$e->getMessage()
             ]);
         }
 
