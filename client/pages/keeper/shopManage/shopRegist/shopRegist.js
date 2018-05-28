@@ -156,18 +156,24 @@ Page({
 
 
   confirm:function(){
+    console.log(getApp().globalData.userInfo.openId)
     var that=this
     var url=config.service.shopUrl+"shopRegist"
     var imgUrl=this.data.imgUrl
     if (!(this.isBlank(config.service.keeperUrl) || this.isBlank(imgUrl) || this.isBlank(that.data.shopLocation) 
     || this.isBlank(that.data.shopLocation['address']) || this.isBlank(that.data.shopName)
     || this.isBlank(that.data.price))) {
+      wx.showToast({
+        title: '提交申请',
+        icon:"loading",
+      })
       wx.uploadFile({
         url: url,
         filePath: imgUrl,
         name: 'file',
 
         formData: {
+          "openId": getApp().globalData.userInfo.openId,
           "address": that.data.shopLocation['address'],
           'longitude': that.data.shopLocation['longitude'],
           'latitude': that.data.shopLocation['latitude'],
@@ -175,7 +181,22 @@ Page({
           "price": that.data.price,
         },
         success: function (res) {
-          console.log(res)
+          console.log(res.data)
+          var code=res.data.slice(-2,-1)
+          console.log(code)
+          if(code=="0"){
+            wx.showToast({
+              title: '注册成功',
+              icon:"success",
+            })
+            wx.navigateBack()
+          }
+          else{
+            wx.showToast({
+              title: '注册失败',
+              image: "/img/error.png",
+            })
+          }
         },
 
         fail: function (e) {
@@ -184,13 +205,8 @@ Page({
       })
     } else {
       wx.showToast({
-
         title: '请填写全部信息',
-
         image: "/img/error.png",
-
-        duration: 1500
-
       })
     }
   }

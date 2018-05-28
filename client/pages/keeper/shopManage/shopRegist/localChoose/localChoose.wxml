@@ -1,9 +1,31 @@
-<view class="section">
-  <input placeholder="输入关键字"  type="text" bindinput="haha"></input>
-</view>
+
+<!--pages/keeper/shopRegist/shopRegist.wxml-->
+    <view>
+
+    <view class="title">
+        <view class="a"><text>地址</text></view>
+        <view class="inputView">
+        <form>
+        <input  value='{{inputvalue}}' maxlength="30" placeholder="{{address}}" bindinput="addressInput" placeholder-class="pc" auto-focus="false"/>
+        </form>
+        </view>
+        </view> <!--title结束-->
+        
+        <view wx:for="{{suggestions}}" wx:for-item="suggestion">
+          <view bindtap="useSuggestion" data-name="{{suggestion.name}}" data-lat='{{suggestion.location.lat}}' data-lng='{{suggestion.location.lng}}'>
+            <text>{{suggestion.name}}</text>
+          </view>
+        </view><!--重复渲染-->
+        
+    </view><!--搜索栏结束-->
+    <view style="width: {{width}}; height: {{height}};"><map longitude="{{longitude}}" latitude="{{latitude}}" markers="{{markers}}" style="width: {{width}}; height: {{height}};"></map></view>
+    
+        
+    <view>
+        <button bindtap="confirm">确认</button>
+    </view>
 
 <view class="sug_info">
   <text>{{sugData}}</text>
 </view>
 
-<view class="mapcontianer"></view>

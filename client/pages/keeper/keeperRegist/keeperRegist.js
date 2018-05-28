@@ -120,7 +120,6 @@ Page({
       wx.showToast({
         title: '输入不能为空',
         image:'/pages/keeper/image/error.png',
-        duration:1500
       })
       setTimeout(function(){
         wx.hideToast()
@@ -129,7 +128,6 @@ Page({
       wx.showToast({
         title: '手机号格式错误',
         image: '/pages/keeper/image/error.png',
-        duration: 1500
       })
       setTimeout(function () {
         wx.hideToast()
@@ -147,7 +145,6 @@ Page({
           'content-type': 'application/x-www-form-urlencoded'
         },
         success: function (result) {
-          console.log(result)
           if (result.data.code == 0) {
             wx.redirectTo({
               url: "/pages/keeper/keeper"
