@@ -28,20 +28,23 @@ Page({
   onLoad: function () {
     var latitude
     var longitude
+    var address
     var that=this
     var wxMarkerData = []
     //1、获取当前位置坐标
         bmap.regeocoding({
-          iconPath:"/img/location-sign.png",
+          iconPath:"img/location-sign.png",
           success:function(res){
             wxMarkerData = res.wxMarkerData
             latitude=wxMarkerData[0]['latitude']
             longitude=wxMarkerData[0]['longitude']
+            address=wxMarkerData[0].address
             //console.log(wxMarkerData)
             that.setData({
               'marker': wxMarkerData,
               'latitude':latitude,
-              'longitude':longitude
+              'longitude':longitude,
+              'address':address
             });
             //console.log(that.data.marker)
           }
@@ -94,20 +97,6 @@ Page({
     var address=event.detail.value 
     var that=this
     console.log(address)
-    // qqmapsdk.getSuggestion({
-    //     keyword:address,
-    //     success: function(res) {
-    //       that.setData({
-    //         'suggestions':res.data
-    //       })  
-    //     },
-    //     fail: function(res) {
-    //       console.log(res);
-    //     },
-    //     complete: function(res) {
-    //       console.log(that.data.suggestions)
-    //     }
-    // })
     bmap.suggestion({
         
         query:address,
@@ -138,7 +127,6 @@ Page({
       "latitude": lat,
       "marker":marker,
       "suggestions":null,
-      "inputvalue":name,
       "height": "70vh",
       "width": "100%"
     })
