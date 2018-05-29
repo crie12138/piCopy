@@ -4,7 +4,7 @@ import os
 import time
 import uuid
 from urllib import error, parse, request
-import qrcode_terminal
+import qrcode
 
 config=configparser.ConfigParser()
 config.read('config.ini')
@@ -53,7 +53,11 @@ def regist():
             print(e.reason)
 
 def showQR(token):
-    qrcode_terminal.draw(token)
+    data = token
+    img_file = r'./py_qrcode.png'
+    img = qrcode.make(data)
+    img.save(img_file)
+    img.show()
     return 0
 
 def checkToken():
@@ -86,6 +90,7 @@ def askShopId():
     try:
         response = request.urlopen(url,data)
         response = json.loads(bytes.decode(response.read()))
+        print(response)
         if (response['code'] == 0 and response['shopId']!=None):
             config.set('base', 'shopId', response['shopId'])
             config.write(open('config.ini', 'w'))
