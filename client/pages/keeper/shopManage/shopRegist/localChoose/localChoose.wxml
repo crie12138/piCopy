@@ -1,8 +1,5 @@
 <!--pages/keeper/shopRegist/shopRegist.wxml-->
-
-
-
-    <view>
+<view>
 
     <view class="title">
         <view class="a"><text>地址</text></view>
