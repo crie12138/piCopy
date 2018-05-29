@@ -76,13 +76,17 @@ Page({
         //   }
         // })
         bmap.regeocoding({
-          iconPath:"/img/location-sign.png",
+          iconPath:"img/location-sign.png",
           success:function(res){
             //console.log(res)
             wxMarkerData = res.wxMarkerData
-            //console.log(wxMarkerData)
+            console.log(wxMarkerData)
             that.setData({
-              'marker': wxMarkerData
+              'marker': wxMarkerData,
+              'latitude':latitude,
+              'longitude':longitude,
+              'address':wxMarkerData[0].address
+
             });
             //console.log(that.data.marker)
           }
@@ -181,7 +185,6 @@ Page({
       "latitude": lat,
       "marker":marker,
       "suggestions":null,
-      "inputvalue":name,
       "height": "70vh",
       "width": "100%"
     })

@@ -6,7 +6,7 @@
         <view class="a"><text>地址</text></view>
         <view class="inputView">
         <form>
-        <input  value='{{inputvalue}}' maxlength="30" placeholder="{{address}}" bindinput="addressInput" placeholder-class="pc" auto-focus="false"/>
+        <input  value='{{address}}' maxlength="30" bindinput="addressInput" placeholder-class="pc" auto-focus="false"/>
         </form>
         </view>
         </view> <!--title结束-->
@@ -18,7 +18,7 @@
         </view><!--重复渲染-->
         
     </view><!--搜索栏结束-->
-    <view style="width: {{width}}; height: {{height}};"><map longitude="{{longitude}}" latitude="{{latitude}}" markers="{{markers}}" style="width: {{width}}; height: {{height}};"></map></view>
+    <view style="width: {{width}}; height: {{height}};"><map longitude="{{longitude}}" latitude="{{latitude}}" markers="{{marker}}" style="width: {{width}}; height: {{height}};"></map></view>
     
         
     <view>
