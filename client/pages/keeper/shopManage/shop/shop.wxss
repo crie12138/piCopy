@@ -17,3 +17,21 @@ page {
   justify-content: space-around;
   align-items: center;
 }
+.row{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5rpx;
+}
+.row input{
+  border:  1px solid black;
+}
+.row1{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5rpx;
+}
+.row1 input{
+  /* width: 55%; */
+  border:  1px solid black;
+  color: gray;
+} 

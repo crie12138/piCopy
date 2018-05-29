@@ -7,13 +7,22 @@
   <form bindsubmit="submit">
     <view class="{{nameInput}}">
       <input name="id" value="{{shop.id}}" hidden disabled></input>
-      <input name="shopName" value="店名：{{shop.name}}" bindinput="nameInput"></input>
+      <view class='row'>
+        <text>店名：</text>
+        <input name="shopName" value="{{shop.name}}" bindinput="nameInput"></input>
+      </view>
     </view>
     <view class="{{priceInput}}">
-      <input name="price" value="单张打印价格：{{shop.page_price}}" bindinput="priceInput"></input>
+      <view class='row'>
+        <text>单张打印价格：（元）</text>
+        <input name="price" value="{{shop.page_price}}" bindinput="priceInput"></input>
+      </view>
     </view>
     <view>
-      <text>商店地址：{{shop.location}}</text>
+      <view class='row1'>
+        <text>商店地址：(无法修改，请删除后重建！)</text>
+        <input name="price" value="{{shop.location}}" disabled></input>
+      </view>
     </view>
     <view class="section btn-area">
       <button type="primary" plain form-type="submit">提交修改</button>
@@ -26,10 +35,10 @@
 
 <view wx:if="{{shop}}" hidden="{{isEdit}}">
   <view class="{{nameInput}}">
-    <input name="shopName" value="店名：{{shop.name}}" bindinput="nameInput"></input>
+    <input name="shopName" value="店名：{{shop.name}}" bindinput="nameInput" disabled></input>
   </view>
   <view class="{{priceInput}}">
-    <input name="price" value="单张打印价格：{{shop.page_price}}" bindinput="priceInput"></input>
+    <input name="price" value="单张打印价格：{{shop.page_price}}元" bindinput="priceInput" disabled></input>
   </view>
   <view>
     <text>商店地址：{{shop.location}}</text>
@@ -38,16 +47,8 @@
     <button type="primary" plain bindtap="addPrinter" data-shopid="{{shop.id}}">打印机管理</button>
     <button bindtap="editInfo">编辑信息</button>
   </view>
-<<<<<<< HEAD
 </view>
 
 <view>
   <button bindtap="back">返回</button>
 </view>
-=======
-  </view>       
-    
-  <view>
-    <button bindtap="back">返回</button>
-  </view>
->>>>>>> 1b9952b607f690f4a0b4ab3d94acb82efe70a1d2
