@@ -1,13 +1,12 @@
 {
   "pages": [
-    "pages/keeper/shopManage/shopRegist/localChoose/localChoose",
     "pages/index/index",
     "pages/user/user",
     "pages/keeper/keeperRegist/keeperRegist",
     "pages/keeper/keeper",
     "pages/keeper/shopManage/shopManage",
     "pages/keeper/shopManage/shopRegist/shopRegist",
-   
+    "pages/keeper/shopManage/shopRegist/localChoose/localChoose",
     "pages/about/about",
     "pages/keeper/keeperInfo/keeperInfo",
     "pages/keeper/shopManage/shop/shop",
