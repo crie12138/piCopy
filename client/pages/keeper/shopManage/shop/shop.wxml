@@ -13,7 +13,7 @@
       <input name="price" value="{{shop.page_price}}" bindinput="priceInput"></input>
     </view>
     <view>
-      <text>{{shop.location}}</text>
+      <input value="{{shop.location}}" disabled></input>
     </view>
     <view class="section btn-area">
       <button type="primary" plain form-type="submit">提交修改</button>

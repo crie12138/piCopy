@@ -99,25 +99,39 @@ Page({
     var that=this
     var form=event.detail.value
     var options={shopId:form.shopId}
-    wx.request({
-      url:url,
-      data:form,
-      method: "POST",
-      header: {  
-        "Content-Type": "application/x-www-form-urlencoded"  
-      },
+    wx.showModal({
+      title: '确认',
+      content: '是否更新信息',
       success: function(res) {
-        if(res.data.code==0){
-          //提示修改成功
-          that.setData({
-            "isEdit":false
+        if (res.confirm) {
+          wx.request({
+            url:url,
+            data:form,
+            method: "POST",
+            header: {  
+              "Content-Type": "application/x-www-form-urlencoded"  
+            },
+            success: function(res) {
+              if(res.data.code==0){
+                //提示修改成功
+                that.setData({
+                  "shop.name":form.name,
+                  "shop.page_price":form.price,
+                  "isEdit":false
+                })
+              }
+              else{
+                //提示更新失败
+              }
+            }
           })
-        }
-        else{
-          //提示更新失败
+        } else if (res.cancel) {
+          console.log('用户点击取消')
         }
       }
     })
+    
+    
   },
 
   editInfo:function(){
@@ -129,18 +143,30 @@ Page({
   shopDelete:function(event){
     var shopId=event.currentTarget.dataset.shopid
     var url=config.service.shopUrl+"shopDelete/"+shopId
-    console.log(shopId)
-    wx.request({
-        url:url,
-        success(result){
-          if(result.data.code==0){
-            wx.navigateBack()
-          }
-          else{
-            //提示删除失败
-          }
+    wx.showModal({
+      title:"删除确认",
+      content:"是否删除商店",
+      success: function(res) {
+        if (res.confirm) {
+          wx.request({
+            url:url,
+            success(result){
+              if(result.data.code==0){
+                wx.navigateBack()
+              }
+              else{
+                //提示删除失败
+              }
+            }
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
         }
+      }
     })
+    
+    console.log(shopId)
+    
   },
   addPrinter:function(event){
     var shopId=event.currentTarget.dataset.shopid

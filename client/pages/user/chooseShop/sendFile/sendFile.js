@@ -1,4 +1,4 @@
-// pages/user/user.js
+// pages/user/chooseShop/sendFile/sendFile.js
 Page({
 
   /**
@@ -62,14 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
   
-  },
-  redirect:function(event){
-    var action=event.currentTarget.dataset.action
-    console.log(action)
-    var url=action+"/"+action
-    wx.navigateTo({
-      url:url
-    })
-
   }
 })
