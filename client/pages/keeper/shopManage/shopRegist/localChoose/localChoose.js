@@ -12,8 +12,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+    name:null,
     latitude:null,
     address:null,
+    placehold:null,
     longitude:null,
     marker:[],
     suggestions:[],
@@ -38,13 +40,13 @@ Page({
             wxMarkerData = res.wxMarkerData
             latitude=wxMarkerData[0]['latitude']
             longitude=wxMarkerData[0]['longitude']
-            address=wxMarkerData[0].address
+            address=wxMarkerData[0]['address']
             //console.log(wxMarkerData)
             that.setData({
               'marker': wxMarkerData,
               'latitude':latitude,
               'longitude':longitude,
-              'address':address
+              'placehold':address
             });
             //console.log(that.data.marker)
           }
@@ -98,7 +100,6 @@ Page({
     var that=this
     console.log(address)
     bmap.suggestion({
-        
         query:address,
         success:function(res){
           that.setData({
@@ -133,11 +134,20 @@ Page({
     
   },
   confirm:function(event){
-    var shopLocation={
-      "longitude":this.data.longitude,
-      "latitude":this.data.latitude,
-      "address": this.data.address
+    if(this.data.address==null){
+      var shopLocation={
+        "longitude":this.data.longitude,
+        "latitude":this.data.latitude,
+        "address": this.data.placehold
+      }
+    }else{
+      var shopLocation={
+        "longitude":this.data.longitude,
+        "latitude":this.data.latitude,
+        "address": this.data.address
+      }
     }
+      
     getApp().globalData.shopLocation=shopLocation
     wx.navigateBack()
   }
