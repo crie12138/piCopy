@@ -1,2 +1,5 @@
 <!--pages/user/chooseShop/chooseShop.wxml-->
-<text>pages/user/chooseShop/chooseShop.wxml</text>
+<view>
+    <map longitude="{{location.longitude}}" latitude="{{location.latitude}}" include-points markers="{{markers}}"
+    bindmarkertap="getShop"></map>
+</view><!--pages/user/chooseShop/chooseShop.wxml-->

@@ -1,4 +1,4 @@
-// pages/user/chooseShop/sendFile/sendFile.js
+// pages/user/chooseShop/shopInfo/shopInfo.js
 Page({
 
   /**
