@@ -1,28 +1,27 @@
 <!--pages/keeper/shopManage/shop/printerManage/printerManage.wxml-->
 <view>
-    <view wx:for="{{printers}}" wx:for-item="printer">
-        <view bindtap="showOptions" data-printid="{{printer.id}}">
-            <image src="image/print.png"></image>
-        </view>
-        <view>
-            <view wx:if="{{printer.name}}">
-                <text>{{printer.name}}</text>
-            </view>
-            <view wx:else>
-                <text>{{printer.pcname}}</text>
-            </view>
-        </view>
-        <view wx:if="{{active==printer.id}}">
-            <view bindtap="deletePrint" data-printid="{{printer.id}}">删除打印机</view>
-            <view bindtap="editName" data-printid="{{printer.id}}">更改打印机名字</view>
-        </view>
-        
-    
+  <view wx:for="{{printers}}" wx:for-item="printer">
+    <view class='row' bindtap="showOptions" data-printid="{{printer.id}}">
+      <image class='.img' src="image/print.png"></image>
     </view>
-    <view bindtap="addPrint">
-        <image src="image/add.png"></image>
-        <text>添加打印机</text>
+    <view>
+      <view wx:if="{{printer.name}}">
+        <text>{{printer.name}}</text>
+      </view>
+      <view wx:else>
+        <text>{{printer.pcname}}</text>
+      </view>
     </view>
+    <view wx:if="{{active==printer.id}}">
+      <view bindtap="deletePrint" data-printid="{{printer.id}}">删除打印机</view>
+    </view>
+
+
+  </view>
+  <view class='row' bindtap="addPrint">
+    <image class='img' src="image/add.png"></image>
+    <text>添加打印机</text>
+  </view>
 
 
 </view>

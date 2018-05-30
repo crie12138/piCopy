@@ -22,16 +22,24 @@ page {
   flex-direction: column;
   margin-bottom: 5rpx;
 }
-.row input{
+ .row input{
   border:  1px solid black;
-}
+} 
 .row1{
   display: flex;
   flex-direction: column;
   margin-bottom: 5rpx;
 }
-.row1 input{
-  /* width: 55%; */
+ .row1 input{ 
   border:  1px solid black;
   color: gray;
-} 
+}  
+/* .inputView{
+  border:  1px solid black;
+  } */
+.inCorrect{
+  border:  1px solid rgb(60, 179, 113);
+}
+.inMismatch{
+  border:  1px solid rgb(255, 94, 0);
+}
