@@ -1,10 +1,8 @@
 // pages/keeper/shopRegist/shopRegist.js
-var QQMapWX = require('../../../../../qqmap-wx-jssdk.js');
 var Bmap = require('../../../../../bmap-wx.js')
 var bmap =new Bmap.BMapWX({
   ak:'18q8dG0hhApDZCVuG4SiPVQPywoLgWK4'
 })
-var qqmapsdk;
 Page({
 
   /**
@@ -34,7 +32,7 @@ Page({
     var wxMarkerData = []
     //1、获取当前位置坐标
         bmap.regeocoding({
-          iconPath:"img/location-sign.png",
+          iconPath:"/img/location-sign.png",
           success:function(res){
             wxMarkerData = res.wxMarkerData
             latitude=wxMarkerData[0]['latitude']
