@@ -7,3 +7,7 @@
   width: 175rpx;
   height: 175rpx ;
 }
+
+.row{
+  display: flex;
+}

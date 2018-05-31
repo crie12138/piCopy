@@ -37,7 +37,7 @@
   <view class="{{nameInput}}">
     <input name="shopName" value="店名：{{shop.name}}" bindinput="nameInput" disabled></input>
   </view>
-  <view class="{{priceInput}}">
+  <view>
     <input name="price" value="单张打印价格：{{shop.page_price}}元" bindinput="priceInput" disabled></input>
   </view>
   <view>

@@ -99,13 +99,11 @@ Page({
     var that = this
     var form = event.detail.value
     console.log(form)
-    console.log("in")
     wx.showModal({
       title: '确认',
       content: '是否更新信息',
       success: function (res) {
         if (res.confirm) {
-          console.log("hell")
           wx.request({
             url: url,
             data: form,
@@ -118,6 +116,8 @@ Page({
               if (res.data.code == 0) {
                 //提示修改成功
                 that.setData({
+                  'shop.page_price':form.price,
+                  'shop.name':form.shopName,
                   "isEdit": false
                 })
               }
