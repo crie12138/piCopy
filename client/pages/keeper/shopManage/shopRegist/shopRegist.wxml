@@ -1,29 +1,92 @@
 <!--pages/keeper/shopRegist/shopRegist.wxml-->
+<view class='page' xmlns:wx="http://www.w3.org/1999/xhtml" style='width:750rpx'>
+<view class='page__bd'>
+<view class="weui-cells__title">打印店信息</view>
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                  <view class="weui-label">店名</view>
+              </view>
+              <view class="weui-cell__bd">
+                  <input class="weui-input" placeholder="请输入打印店名称" type='text' bindinput='shopNameInput'/>
+              </view>
+              <view wx:if="{{!nameFlag}}" class="weui-cell__ft">
+                    <icon type="warn" size="23" color="#E64340"></icon>
+              </view>
+        </view>
+    </view>
+ <!--店名输入框-->
 
-<view class="{{nameInput}}">
-    <input placeholder="打印店名称" bindinput="shopNameInput"></input>
-</view>
-<view wx:if="{{shopLocation}}">
-    <text>{{shopLocation.address}}</text>
-    <button bindtap="localChoose">重新选择地址</button>
-</view>
-<view wx:else>
-    <button bindtap="localChoose">选择打印店地址</button>
-</view>
-<view class="uploader">
-        <view class="uploader-text" bindtap="doUpload">
-            <text>上传店面图片</text>
+        <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                  <view class="weui-label">单面价格</view>
+              </view>
+              <view class="weui-cell__bd">
+                  <input class="weui-input" placeholder="请输入单面打印价格" type='text' bindinput='priceInput'/>
+              </view>
+               <view wx:if="{{!priceFlag}}" class="weui-cell__ft">
+                    <icon type="warn" size="23" color="#E64340"></icon>
+              </view>
         </view>
-        <view class="uploader-container" wx:if="{{imgUrl}}">
-            <image
-                class="uploader-image"
-                src="{{imgUrl}}"
-                mode="aspectFit"
-                bindtap="previewImg"
-            ></image>
+    </view>
+    <!--价格输入框-->
+</view>
+    <view class="weui-cells__title">打印店地址</view>
+    <view wx:if="{{shopLocation}}" class="page__bd page__bd_spacing" >
+       <view class="button-sp-area">
+            <button class="weui-btn" type="primary" plain="true" bindtap="localChoose">重选打印店地址</button>
+       </view>
+    </view>
+    <view wx:else class="page__bd page__bd_spacing" >
+       <view class="button-sp-area">
+            <button class="weui-btn" type="primary" plain="true" bindtap="localChoose">选择打印店地址</button>
+       </view>
+    </view>
+
+    <view class="page__bd">
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">地址</view>
+                <view wx:if="{{shopLocation==null}}" class="weui-cell__ft">未选择地址</view>
+                <view wx:else class="weui-cell__ft">{{shopLocation.address}}</view>
+            </view>
         </view>
-</view>
-<view class="{{priceInput}}">
-    <input placeholder="打印单面价格" type="digit" bindinput="priceInput"></input>
-</view>
-<button bindtap="confirm">提交</button>
+        </view>
+    <!--选择地址-->
+    <view class="weui-cells__title">店面图片</view>
+    <view class="page__bd">
+        <view class="weui-cells">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">
+                    <view class="weui-uploader">
+                        <view class="weui-uploader__hd">
+                            <view class="weui-uploader__title">图片上传</view>
+                            <view class="weui-uploader__info">{{files.length}}/1</view>
+                        </view>
+                        <view class="weui-uploader__bd">
+                            <view class="weui-uploader__files" id="uploaderFiles"><!--图片容器-->
+                                
+                                <view class="weui-uploader__file">
+                                    <image class="weui-uploader__img" src="{{imgUrl[0]}}" mode="aspectFill" bindtap='previewImage'/>
+                                </view>
+                                
+                            </view>
+                            <view class="weui-uploader__input-box" wx:if="{{flag}}">
+                                <view class="weui-uploader__input" bindtap="doUpload"></view>
+                            </view>
+                            <view class="weui-uploader__file" wx:else>
+                                <image class="weui-uploader__img" src="refresh.png" mode="aspectFill" bindtap="doUpload"/>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view><!--上传图片-->
+
+
+
+    </view><!--page结束-->
+
+<button class="weui-btn" type="primary" bindtap='confirm'>提交</button>
