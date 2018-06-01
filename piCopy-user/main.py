@@ -108,7 +108,8 @@ def conventPDF(input):
     dirname= os.path.split(os.path.realpath(sys.argv[0]))[0]
     output=dirname+"\\temp\\"+fileName+".pdf"
     doc2pdf(input, output)
-    editPDF(input)
+    statusPDF(input)
+   # mergePDF(output)
     return output,fileName
 
 #pdf文件操作
@@ -123,7 +124,7 @@ def doc2pdf(input, output):
 
 #调用windows api转换pdf
 
-def editPDF(filePath):
+def statusPDF(filePath):
     pdf=canvas.Canvas("./temp/status.pdf")
     pdf.setFont('heiTi',10)
     textobject = pdf.beginText()
@@ -137,6 +138,20 @@ def editPDF(filePath):
     return
 
 #给pdf添加状态页
+
+def mergePDF(input):
+    print(input)
+    PdfWriter=PdfFileWriter()
+    pdfFile= PdfFileReader(open(input, 'rb'))
+    pdfStatus=PdfFileReader(open("temp/status.pdf",'rb'))
+    numPages = pdfFile.getNumPages()
+    for index in range(0,numPages):
+        print(index)
+        PdfWriter.addPage(pdfFile.getPage(index))
+    PdfWriter.addPage(pdfStatus.getPage(0))
+    PdfWriter.write(open(input,'wb'))
+    return
+
 
 def upload(filePath,fileName):
     url=host+"sendFile"
