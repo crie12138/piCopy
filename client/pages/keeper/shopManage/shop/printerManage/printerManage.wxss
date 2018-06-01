@@ -1,1 +1,78 @@
 /* pages/keeper/shopManage/shop/printerManage/printerManage.wxss */
+
+.img {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: center;
+  width: 140rpx;
+  height: 140rpx;
+}
+
+.img1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-content: center;
+  width: 175rpx;
+  height: 175rpx;
+}
+
+.row {
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-around;
+  width: 490rpx;
+}
+
+.text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.weui-grids {
+  border-top: 1rpx solid #d9d9d9;
+  border-left: 1rpx solid #d9d9d9;
+  overflow: hidden;
+}
+
+.weui-grid {
+  position: relative;
+  float: left;
+  padding: 20px 10px;
+  width: 33.33333333%;
+  box-sizing: border-box;
+  border-right: 1rpx solid #d9d9d9;
+  border-bottom: 1rpx solid #d9d9d9;
+}
+
+.weui-grid_active {
+  position: relative;
+  float: left;
+  padding: 20px 10px;
+  width: 33.33333333%;
+  box-sizing: border-box;
+  border-right: 1rpx solid #d9d9d9;
+  border-bottom: 1rpx solid #d9d9d9;
+  background-color: #ececec;
+}
+
+.weui-grid__icon {
+  display: block;
+  width: 28px;
+  height: 28px;
+  margin: 0 auto;
+}
+
+.weui-grid__label {
+  margin-top: 5px;
+  display: block;
+  text-align: center;
+  color: #000;
+  font-size: 14px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

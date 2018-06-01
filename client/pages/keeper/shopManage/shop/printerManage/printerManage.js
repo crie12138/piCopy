@@ -6,9 +6,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    grids: [0, 1, 2, 3, 4, 5,6,7,8],
     shopId:null,
     printers:null,
     active:null,
+    printerNum:null
   },
 
   /**
@@ -79,7 +81,8 @@ Page({
       url:config.service.shopUrl+"getPrinter/"+shopId,
       success:function(result){
         that.setData({
-          'printers':result.data.data
+          'printers':result.data.data,
+          'printerNum':result.data.data.length
         })
         console.log(result.data.data)
       }
