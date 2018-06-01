@@ -1,20 +1,18 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/about/about",
     "pages/user/user",
     "pages/keeper/keeperRegist/keeperRegist",
     "pages/keeper/keeper",
+    "pages/keeper/keeperInfo/keeperInfo",
     "pages/keeper/shopManage/shopManage",
     "pages/keeper/shopManage/shopRegist/shopRegist",
     "pages/keeper/shopManage/shopRegist/localChoose/localChoose",
-    "pages/about/about",
-    "pages/keeper/keeperInfo/keeperInfo",
     "pages/keeper/shopManage/shop/shop",
     "pages/keeper/shopManage/shop/printerManage/printerManage",
-    "pages/keeper/shopManage/shop/printerManage/addPrint/addPrint",
     "pages/user/chooseShop/chooseShop",
-    "pages/user/chooseShop/shopInfo/shopInfo",
-    "pages/user/chooseShop/shopInfo/sendFile/sendFile"
+    "pages/user/chooseShop/shopInfo/shopInfo"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

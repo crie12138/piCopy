@@ -1,18 +1,30 @@
 // pages/user/chooseShop/shopInfo/shopInfo.js
+var config=require("../../../../config")
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    shopInfo:null,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that=this
+    var shopId=options.shopId
+    var url=config.service.userUrl+"getShopInfo/"+shopId
+    console.log(url)
+    wx.request({
+      url:url,
+      success:function(result){
+        that.setData({
+          'shopInfo':result.data.shopInfo
+        })
+      }
+    })
   },
 
   /**
@@ -62,5 +74,35 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  sendFile:function(event){
+    var url=config.service.userUrl+"registToken"
+    var shopId=this.data.shopInfo.id
+    var openId=getApp().globalData.userInfo.openId
+    wx.scanCode({
+      onlyFromCamera:true,
+      success:function(res){
+        var token =res.result
+        wx.request({
+          url:url,
+          data:{
+            "token":token,
+            "shopId":shopId,
+            "openId":openId
+          },
+          method:"POST",
+          header: {
+            'content-type': 'application/x-www-form-urlencoded'
+          },
+          success:function(result){
+            if (result.data.code==0){
+              wx.navigateTo({
+                url:"printConfirm/printConfirm?token="+token
+              })
+            }
+          }
+        })
+      }
+    })
   }
 })

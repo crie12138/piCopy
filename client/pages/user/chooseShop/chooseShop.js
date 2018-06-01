@@ -34,7 +34,7 @@ Page({
             for(var i=0,len=result.data.shops.length;i<len;i++){
             
             var marker={ 
-              'id':i,
+              'id':result.data.shops[i].id,
               'label':{
                 'content':result.data.shops[i].page_price,
                 'bgcolor':"yellow",
@@ -114,7 +114,7 @@ Page({
   },
   getShop:function(event){
     var url='shopInfo/shopInfo?shopId='+event.detail.markerId
-    wx.navigate({
+    wx.navigateTo({
       url:url
     })
 
