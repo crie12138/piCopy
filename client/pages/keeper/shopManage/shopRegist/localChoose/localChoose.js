@@ -21,7 +21,8 @@ Page({
     suggestions:[],
     inputvalue:null,
     height:"70vh",
-    width:"100%"
+    width:"100%",
+    placeholder:null
   },
 
   /**
@@ -46,7 +47,8 @@ Page({
               'marker': wxMarkerData,
               'latitude':latitude,
               'longitude':longitude,
-              'placehold':address
+              'placeholder':wxMarkerData[0].address
+
             });
             //console.log(that.data.marker)
           }
@@ -104,7 +106,7 @@ Page({
         success:function(res){
           that.setData({
             "suggestions":res.result,
-            "height": "50vh",
+            "height": "60vh",
             "width": "100%"
           })
           console.log(res)
@@ -134,18 +136,17 @@ Page({
     
   },
   confirm:function(event){
-    if(this.data.address==null){
-      var shopLocation={
-        "longitude":this.data.longitude,
-        "latitude":this.data.latitude,
-        "address": this.data.placehold
-      }
-    }else{
-      var shopLocation={
-        "longitude":this.data.longitude,
-        "latitude":this.data.latitude,
-        "address": this.data.address
-      }
+    
+    if(this.data.address==null) {
+      this.setData({
+        "address": this.data.placeholder,
+        
+      })
+    }
+    var shopLocation={
+      "longitude":this.data.longitude,
+      "latitude":this.data.latitude,
+      "address": this.data.address
     }
       
     getApp().globalData.shopLocation=shopLocation
