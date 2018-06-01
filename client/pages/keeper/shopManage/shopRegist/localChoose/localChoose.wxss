@@ -1,7 +1,7 @@
 
 .title {
   display: flex;
-  justify-content:space-between;
+  justify-content:flex-start;
 }
 .pc{
 color:  darkgrey;
@@ -10,24 +10,34 @@ color:  darkgrey;
     /*边界：大小1px, 为固体，为绿色*/
     border:  1px solid green;
     /*边界角的弧度*/
-    border-radius: 40px;
-    margin-left: 10px;
+    border-radius: 5px;
+    margin-left: 10rpx;
     margin-top: 0px;
     margin-bottom: 0px;
-    width: 70%;
-}
-
-input {
-    margin: 10px 10px;
-    
+    width: 75%;
 }
 
 .sug_info {
     margin: 15px 10px;
 }
 .a{
+  margin-left: 0px;
+  margin-right: 15rpx;
+
   display: flex;
   align-items: center;
+}
+.s {
+  width: 100%;
+  height: auto;
+}
+.stext {
+   margin-left: 90rpx;
+   border-radius: 5px;
+   border:  1px solid green;
+   width: 75%;
+   align-items: center;
+   align-content: center;
 }
 
 

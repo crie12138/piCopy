@@ -9,9 +9,10 @@ Page({
     shopName:null,
     price:null,
     shopLocation:null,
-    imgUrl:null,
-    priceInput:"inputView",
-    nameInput:"inputView"
+    imgUrl:["pic.png"],
+    flag:true,
+    nameFlag:true,
+    priceFlag:true
 
   },
 
@@ -37,7 +38,9 @@ Page({
   onShow: function () {
     this.setData({
       "shopLocation":getApp().globalData.shopLocation
+      
     })
+    console.log(this.data.shopLocation)
     //当页面从隐藏到下一次打开是获取全局变量看是否选好了商店地址
   },
 
@@ -93,18 +96,19 @@ Page({
 
   shopNameInput:function(event){
     var name=event.detail.value
-    if(4<name.length<50){
+    if(2<name.length&&name.length<20){
         this.setData({
         "shopName":event.detail.value,
-        "nameInput":"inputCorrect"
+        "nameFlag":true
       })
     }
     else{
       this.setData({
         "shopName":null,
-        "nameInput":"inputMismatch"
+        "nameFlag":false
       })
     }
+    console.log(this.data.nameFlag)
   },
 
 
@@ -123,7 +127,9 @@ Page({
         success: function(res){
             var filePath = res.tempFilePaths[0]
             that.setData({
-              "imgUrl":filePath
+              "imgUrl[0]":filePath,
+              "flag":false
+
             })
             console.log(filePath)
         },
@@ -135,32 +141,36 @@ Page({
   },
   priceInput:function(event){
     var reg = /^(([1-9]+)|([0-9]+\.[0-9]{1,2}))$/;
-    var result
+    var pFlag
     var price=event.detail.value
     if(reg.test(price)){
-      result="inputCorrect"
+      pFlag=true
     }
     else{
-      result="inputMismatch"
+      pFlag=false
       price=0
     }
     this.setData({
-      "priceInput":result,
-      "price":price
+      "price":price,
+      "priceFlag":pFlag
     })
-    console.log(event.detail.value)
     
   },
-
-
-
+  previewImage: function (e) {
+    wx.previewImage({
+      
+      urls: this.data.imgUrl // 需要预览的图片http链接列表
+    })
+  },
+  
 
   confirm:function(){
     console.log(getApp().globalData.userInfo.openId)
     var that=this
     var url=config.service.shopUrl+"shopRegist"
-    var imgUrl=this.data.imgUrl
-    if (!(this.isBlank(config.service.keeperUrl) || this.isBlank(imgUrl) || this.isBlank(that.data.shopLocation) 
+    var imgUrl=this.data.imgUrl[0]
+    console.log(imgUrl)
+    if (!(this.isBlank(config.service.keeperUrl) || this.isBlank(imgUrl[0]) || this.isBlank(that.data.shopLocation) 
     || this.isBlank(that.data.shopLocation['address']) || this.isBlank(that.data.shopName)
     || this.isBlank(that.data.price))) {
       wx.showToast({
