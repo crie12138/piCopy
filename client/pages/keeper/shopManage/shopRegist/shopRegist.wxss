@@ -1,6 +1,6 @@
 /* pages/keeper/shopRegist/shopRegist.wxss */
 
-.uploader{
+/* .uploader{
     margin-top: 40rpx;
     height: 140rpx;
     width: 100%;
@@ -35,3 +35,21 @@
     font-size: 34rpx;
     color: #007AFF;
 }
+.inputView{
+    /*边界：大小1px, 为固体，为绿色
+    border:  1px solid green;
+    /*边界角的弧度
+    border-radius: 5px;
+    margin-left: 10rpx;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    width: 470rpx;
+}
+.inputV{
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  align-content: flex-end;
+  width: 750rpx;
+  height: 200rpx;
+} */
