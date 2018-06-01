@@ -4,10 +4,28 @@
   flex-direction:row;
   justify-content: space-around;
   align-content: center; 
+  width: 140rpx;
+  height: 140rpx;
+}
+.img1{
+  display: flex;
+  flex-direction:row;
+  justify-content: space-around;
+  align-content: center; 
   width: 175rpx;
-  height: 175rpx ;
+  height: 175rpx;
 }
 
 .row{
+  border: 1px solid black;
   display: flex;
+  justify-content: space-around;
+  width: 490rpx;
+}
+
+.text{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
