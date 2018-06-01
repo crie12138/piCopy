@@ -1,25 +1,53 @@
 <!--pages/keeper/shopManage/shop/printerManage/printerManage.wxml-->
 <view>
-  <view class='row' wx:for="{{printers}}" wx:key="key" wx:for-item="printer">
-    <view class='row' bindtap="showOptions" data-printid="{{printer.id}}">
-      <image class='img' src="image/print.png"></image>
+  <!-- <view class='row' wx:for="{{printers}}" wx:key="key" wx:for-item="printer"> -->
+  <!-- <view class='row' bindtap="showOptions" data-printid="{{printer.id}}">
+       <image class='img' src="image/print.png"></image>
       <view class='text'>
         <view wx:if="{{printer.name}}">
           <text>{{printer.name}}</text>
         </view>
         <view wx:else>
           <text>{{printer.pcname}}</text>
-        </view>
+        </view> 
       </view>
-    </view>
-  </view>
+    </view> -->
 
-  <view wx:if="{{active!=printer.id}}">
-    <view bindtap="deletePrint" data-printid="{{printer.id}}">删除打印机</view>
+  <view class="weui-grids">
+    <block wx:for="{{grids}}" wx:for-index="num" wx:key="*this">
+      <view class="weui-grid" hover-class="weui-grid_active">
+
+        <view wx:if="{{num>=printerNum}}">
+          <image class="weui-grid__icon" src="../images/icon_tabbar.png" />
+          <view class="weui-grid__label">新的打印机</view>
+        </view>
+        <view wx:else>
+          <view wx:if="{{active!=printers[num].id}}">
+            <view bindtap="showOptions" data-printid="{{printers[num].id}}">
+              <image class='weui-grid__icon' src="image/print.png" />
+              <view class='weui-grid__label' wx:if="{{printers[num].name==null}}">
+                <text>{{printers[num].pcname}}</text>
+              </view>
+            </view>
+          </view>
+          <view wx:else>
+            <image class='weui-grid__icon' src="image/delete.png" />
+            <view class='weui-grid__label' bindtap="deletePrint" data-printid="{{printers[num].id}}">删除打印机</view>
+          </view>
+        </view>
+
+
+      </view>
+    </block>
   </view>
 </view>
 
+<!-- <view wx:if="{{active!=printer.id}}">
+  <view bindtap="deletePrint" data-printid="{{printer.id}}">删除打印机</view>
+</view> -->
+<!-- </view> -->
+
 <view bindtap="addPrint">
-  <image class='img1' src="image/add.png"></image>
+  <image class='img1' src="image/ad.png"></image>
   <text>添加打印机</text>
 </view>
