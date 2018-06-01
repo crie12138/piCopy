@@ -1,2 +1,6 @@
 <!--pages/user/chooseShop/shopInfo/shopInfo.wxml-->
-<text>pages/user/chooseShop/shopInfo/shopInfo.wxml</text>
+<image src="{{shopInfo.photo}}"></image>
+<text>{{shopInfo.name}}</text>
+<text>{{shopInfo.location}}</text>
+<text>{{shopInfo.page_price}}</text>
+<button bindtap="sendFile" data-shopid="{{shopInfo.id}}">发送文件</button>
