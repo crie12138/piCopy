@@ -15,7 +15,8 @@ from reportlab.lib.units import inch
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import portrait
 from PyPDF2 import PdfFileWriter,PdfFileReader
-from io import StringIO
+import requests
+
 
 reportlab.pdfbase.pdfmetrics.registerFont(reportlab.pdfbase.ttfonts.TTFont('heiTi','lib/msjh.ttf'))
 config=configparser.ConfigParser()
@@ -23,8 +24,9 @@ config.read('config.ini')
 host=config.get('base','host')
 token=config.get('base','token')
 tokenVaild=False
-userName="CJ"
-printId=12312
+userName=None
+printId=None
+pagesNum=0
 def get_mac_address():
     mac=uuid.UUID(int = uuid.getnode()).hex[-12:]
     return "".join([mac[e:e+2] for e in range(0,11,2)])
@@ -76,21 +78,19 @@ def checkToken():
     print(url)
     try:
         response = request.urlopen(url)
-        print(response.read())
         response = json.loads(bytes.decode(response.read()))
+        print (response)
         if (response['code'] == 0):
-            printId=response['id']
             tokenVaild=response['tokenVaild']
-            userName=response['userName']
             
     except error.URLError as e:
+        if hasattr(e, 'code'):
+             print("HTTPError")
+             print(e.code)
+        elif hasattr(e, 'reason'):
+             print("URLError")
+             print(e.reason)
         return
-        # if hasattr(e, 'code'):
-        #     print("HTTPError")
-        #     print(e.code)
-        # elif hasattr(e, 'reason'):
-        #     print("URLError")
-        #     print(e.reason)
 
 
 #检查token是否被注册可以使用
@@ -103,13 +103,16 @@ def fileChoose():
 #选择上传用的文件并转换格式
 
 def conventPDF(input):
+    global pagesNum
     suffix=os.path.splitext(input)[1]
     fileName=os.path.splitext(os.path.split(input)[1])[0]
     dirname= os.path.split(os.path.realpath(sys.argv[0]))[0]
     output=dirname+"\\temp\\"+fileName+".pdf"
     doc2pdf(input, output)
-    statusPDF(input)
-   # mergePDF(output)
+    pdfFile= PdfFileReader(open(output, 'rb'))
+    pagesNum = pdfFile.getNumPages()
+    # statusPDF(input)
+    # mergePDF("temp/"+fileName+".pdf")
     return output,fileName
 
 #pdf文件操作
@@ -124,54 +127,51 @@ def doc2pdf(input, output):
 
 #调用windows api转换pdf
 
-def statusPDF(filePath):
-    pdf=canvas.Canvas("./temp/status.pdf")
-    pdf.setFont('heiTi',10)
-    textobject = pdf.beginText()
-    textobject.setTextOrigin(inch,11*inch)
-    textobject.textLines("派印微信小程序")
-    textobject.textLine(("用户名："+userName))
-    textobject.textLine("打印编码:"+str(printId))
-    pdf.drawText(textobject)
-    pdf.showPage()
-    pdf.save()
-    return
+# def statusPDF(filePath):
+#     pdf=canvas.Canvas("./temp/status.pdf")
+#     pdf.setFont('heiTi',10)
+#     textobject = pdf.beginText()
+#     textobject.setTextOrigin(inch,11*inch)
+#     textobject.textLines("派印微信小程序")
+#     textobject.textLine(("用户名："+userName))
+#     textobject.textLine("打印编码:"+str(printId))
+#     pdf.drawText(textobject)
+#     pdf.showPage()
+#     pdf.save()
+#     return
 
-#给pdf添加状态页
+# #给pdf添加状态页
 
-def mergePDF(input):
-    print(input)
-    PdfWriter=PdfFileWriter()
-    pdfFile= PdfFileReader(open(input, 'rb'))
-    pdfStatus=PdfFileReader(open("temp/status.pdf",'rb'))
-    numPages = pdfFile.getNumPages()
-    for index in range(0,numPages):
-        print(index)
-        PdfWriter.addPage(pdfFile.getPage(index))
-    PdfWriter.addPage(pdfStatus.getPage(0))
-    PdfWriter.write(open(input,'wb'))
-    return
+# def mergePDF(input):
+#     print(input)
+#     PdfWriter=PdfFileWriter()
+#     pdfFile= PdfFileReader(open(input, 'rb'))
+#     pdfStatus=PdfFileReader(open("temp/status.pdf",'rb'))
+#     numPages = pdfFile.getNumPages()
+#     PdfWriter.addPage(pdfFile.getPage(0))
+#     PdfWriter.addPage(pdfStatus.getPage(0))
+#     PdfWriter.write(open(input,'wb'))
+#     return
 
 
 def upload(filePath,fileName):
-    url=host+"sendFile"
+    url=host+"uploadFile"
     register_openers()
-    datagen,headers = multipart_encode({"file":open(filePath, "rb"),"type":"uploadFile","token":token,"fileName":fileName})
-    req=request.Request(url,datagen,headers)
-    response=request.urlopen(req)
-    the_page=response.read()
-    print(the_page.decode('utf8'))
+    files = {"file":open(filePath,"rb")}
+    data = {'token':token,"fileName":fileName,"pagesNum":pagesNum}
+    req = requests.post(url,files=files,data=data)
+    print(req.text)
 
     return
 
 def main():
-    #registToken()
-    #showQR(token)
-    #while(not tokenVaild):
-    #    checkToken()
-    #    time.sleep(1)
+    registToken()
+    showQR(token)
+    while(not tokenVaild):
+        checkToken()
+        time.sleep(1)
     filePath,fileName=fileChoose()
-    #upload(filePath,fileName)
+    upload(filePath,fileName)
     return
 if __name__ == '__main__':
     main()
