@@ -1,5 +1,6 @@
 <!--pages/user/user.wxml-->{{shop.location}}
 <view>
+<image src='image/top.jpg'/>
     <button bindtap='redirect' data-action='chooseShop'>我要打印</button>
     <button bindtap='redirect' data-action='history'>历史记录</button>
 </view>
