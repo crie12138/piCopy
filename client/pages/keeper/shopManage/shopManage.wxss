@@ -33,3 +33,17 @@
   align-content: space-between;
   text-align: center;
 }
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+} 
+page {
+  height: 100%;
+  background: rgb(246, 246, 246);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}

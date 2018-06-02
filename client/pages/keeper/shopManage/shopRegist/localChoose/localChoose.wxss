@@ -1,5 +1,4 @@
-
-.title {
+/* .title {
   display: flex;
   justify-content:flex-start;
 }
@@ -7,9 +6,9 @@
 color:  darkgrey;
 }
 .inputView{
-    /*边界：大小1px, 为固体，为绿色*/
+    
     border:  1px solid green;
-    /*边界角的弧度*/
+   
     border-radius: 5px;
     margin-left: 10rpx;
     margin-top: 0px;
@@ -41,4 +40,4 @@ color:  darkgrey;
 }
 
 
-
+ */

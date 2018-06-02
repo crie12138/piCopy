@@ -1,33 +1,57 @@
-<!--pages/keeper/shopRegist/shopRegist.wxml-->
-    <view class='s'>
-
-    <view class="title">
-        <view class="a"><text>地址</text></view>
-        <view class="inputView">
-        <form>
-        <input  placeholder='{{placeholder}}' value='{{address}}' maxlength="30" bindinput="addressInput" placeholder-class="pc" auto-focus="false"/>
-        </form>
-        </view>
-        </view> <!--title结束-->
-        <scroll-view scroll-y style='height: 100rpx' >
-        <view wx:for="{{suggestions}}" wx:for-item="suggestion">
-            <view bindtap="useSuggestion" data-name="{{suggestion.name}}" data-lat='{{suggestion.location.lat}}' data-lng='{{suggestion.location.lng}}'>
-            <view class='stext'><text>{{suggestion.name}}</text></view>
-            
-        </view>
-        </view>
-        </scroll-view>
-        <!--重复渲染-->
-        
-    </view><!--搜索栏结束-->
-    <view style="width: {{width}}; height: {{height}};"><map longitude="{{longitude}}" latitude="{{latitude}}" markers="{{marker}}" style="width: {{width}}; height: {{height}};"></map></view>
+<view class="page" >
     
-        
-    <view>
-        <button bindtap="confirm" type="default" plain>确认</button>
-    </view>
+    <view class="page__bd">
+        <view class="weui-search-bar">
+            <view class="weui-search-bar__form">
+                <view class="weui-search-bar__box">
+                    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                    <input type="text" class="weui-search-bar__input" placeholder="{{placeholder}}" value="{{address}}" focus="{{inputShowed}}" bindinput="addressInput" />
+                    <view class="weui-icon-clear" wx:if="{{iconFlag}}" bindtap="clearInput">
+                    
+                        <icon type="clear" size="14"></icon>
+                    </view>
+                </view>
+                <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                    <icon class="weui-icon-search" type="search" size="14"></icon>
+                    <view class="weui-search-bar__text">搜索</view>
+                </label>
+            </view>
+            <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+        </view>
 
-<view class="sug_info">
-    <text>{{sugData}}</text>
+        <scroll-view scroll-y class="weui-cells searchbar-result" wx:if="{{showFlag}}" style='height:300rpx'>
+            <view class="weui-cell" hover-class="weui-cell_active" wx:for="{{suggestions}}" wx:for-item="suggestion">
+                <view class="weui-cell__bd" bindtap='useSuggestion' data-name="{{suggestion.name}}" data-lat='{{suggestion.location.lat}}' data-lng='{{suggestion.location.lng}}'>
+                    <view>{{suggestion.name}}</view>
+                </view>
+            </view>
+        </scroll-view>
+    
+    <view class='page_bd' style="width: {{width}}; height: {{height}};"><map longitude="{{longitude}}" latitude="{{latitude}}" markers="{{marker}}" style="width: {{width}}; height: {{height}};"></map></view>
 </view>
+    <view class="page__bd page__bd_spacing">
+        <button class="weui-btn" type="primary" bindtap="confirm">确认</button>
+    </view>
+</view>
+
+
+<!-- <navigator url="" class="weui-cell" hover-class="weui-cell_active" bindtap='useSuggestion' data-name="{{suggestions[1].name}}" data-lat='{{suggestions[1].location.lat}}' data-lng='{{suggestions[1].location.lng}}'>
+                <view class="weui-cell__bd">
+                    <view>{{suggestions[1].name}}</view>
+                </view>
+            </navigator>
+
+            <navigator url="" class="weui-cell" hover-class="weui-cell_active" bindtap='useSuggestion' data-name="{{suggestions[2].name}}" data-lat='{{suggestions[2].location.lat}}' data-lng='{{suggestions[2].location.lng}}'>
+                <view class="weui-cell__bd">
+                    <view>{{suggestions[2].name}}</view>
+                </view>
+            </navigator>
+
+            <navigator url="" class="weui-cell" hover-class="weui-cell_active" bindtap='useSuggestion' data-name="{{suggestions[3].name}}" data-lat='{{suggestions[3].location.lat}}' data-lng='{{suggestions[3].location.lng}}'>
+                <view class="weui-cell__bd">
+                    <view>{{suggestions[3].name}}</view>
+                </view>
+            </navigator> -->
+    
+
 
