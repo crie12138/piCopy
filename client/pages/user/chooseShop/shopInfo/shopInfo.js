@@ -75,6 +75,7 @@ Page({
   onShareAppMessage: function () {
   
   },
+
   sendFile:function(event){
     var url=config.service.userUrl+"registToken"
     var shopId=this.data.shopInfo.id
@@ -97,7 +98,7 @@ Page({
           success:function(result){
             if (result.data.code==0){
               wx.navigateTo({
-                url:"printConfirm/printConfirm?token="+token
+                url:"fileConfirm/fileConfirm?token="+token
               })
             }
           }
