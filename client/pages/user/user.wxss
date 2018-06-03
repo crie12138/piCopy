@@ -1,7 +1,11 @@
 /* pages/user/user.wxss */
-
-.weui-cell_access {
-  color: inherit;
+page {
+  height: 100%;
+  background: rgb(246, 246, 246);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .weui-cell__ft_in-access {
@@ -44,6 +48,8 @@
   margin-top: 1.17647059em;
   line-height: 1.41176471;
   font-size: 17px;
+  background-color: #F8F8F8;
+  position: static;
 }
 
   .weui-cells:before {

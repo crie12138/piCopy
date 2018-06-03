@@ -7,10 +7,10 @@
         </button>
     </view>
     <view>
-        
         <button data-action="keeperInfo" bindtap="onclick" class='bu'>
             <image src="image/user.png" class="icon" mode="widthFix"></image>
             商家信息管理
         </button>
     </view>
 </view>
+<navigator class='navi' open-type='redirect' url='../index/index'>返回</navigator>
