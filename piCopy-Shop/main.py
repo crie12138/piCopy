@@ -105,6 +105,9 @@ def askShopId():
             print("URLError")
             print(e.reason)
 
+def askFile():
+        
+    return
 
 def main():
 
@@ -117,6 +120,8 @@ def main():
         while(shopId==''):
             askShopId()
             time.sleep(3)
+    else:
+        askFile()
     
 if __name__ == "__main__":
     main()

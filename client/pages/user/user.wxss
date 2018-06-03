@@ -152,3 +152,11 @@ page {
 .topimg{
   width: 100%;
 }
+page {
+  height: 100%;
+  background: rgb(246, 246, 246);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}

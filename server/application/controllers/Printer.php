@@ -81,4 +81,21 @@ class Printer extends CI_Controller {
         }
 
     }
+    
+    public function getFile($token){
+        try{
+            $row = DB::row('printers',['shop_id'],['token'=>$token]);
+            if($row!=null){
+                $row = get_object_vars($row);
+                $row = DB::row('fileSender',['fileURL'],"shop_id="+$row['shop_id']+"and finish_time is null and create_time is not null");
+                $row = get_object_vars($row);
+                $this->json([
+                    'code'=>0,
+                    'fileURL'=>$row['fileURL']
+                ]);
+            }
+        }catch(Expection $e){
+
+        }
+    }
 }
