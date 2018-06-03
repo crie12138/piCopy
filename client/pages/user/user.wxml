@@ -1,5 +1,20 @@
-<!--pages/user/user.wxml-->{{shop.location}}
-<view>
-    <button bindtap='redirect' data-action='chooseShop'>我要打印</button>
-    <button bindtap='redirect' data-action='history'>历史记录</button>
+<!-- pages/user/user.wxml{{shop.location}} -->
+
+<image class='topimg' src='image/top.jpg' mode='aspectFit' />
+<view class="weui-cells weui-cells_after-title">
+  <view class="top">
+    <button bindtap='redirect' data-action='chooseShop' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <image src='image/print.png' class='img' />
+      <view class="weui-cell__bd">我要打印</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </button>
+  </view>
+  <view class='top'>
+    <button bindtap='redirect' data-action='history' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <image src='image/history.png' class='img' />
+      <view class="weui-cell__bd">历史记录</view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </button>
+  </view>
 </view>
+<navigator class='navi' open-type='redirect' url='../index/index'>返回</navigator>
