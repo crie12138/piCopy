@@ -119,6 +119,19 @@ Page({
         filePath:that.data.filePath
       })
   }
+  },
+
+  confirm:function(){
+    var url = config.service.userUrl+"orderConfirm/"+this.data.token
+    wx:request({
+      url:url,
+      success:function(res){
+        if(res.data.code==0){
+          wx.redirectTo({
+            url:"/pages/user/user"
+          })
+        }
+      }
+    })
   }
-  
 })

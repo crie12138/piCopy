@@ -121,12 +121,10 @@ class User extends CI_Controller {
             $shop = DB::row("shops",['page_price'],['id'=>$row['shop_id']]);
             $shop = get_object_vars($shop);
             $price = $infoArry['pagesNum']*$shop['page_price'];
-            $create_time = date('Y-m-d h:i:s', time());
             DB::update("fileSender",[
                 'fileURL'=>$uploadStatus["Location"],
                 'origin_name'=>$infoArry["fileName"],
                 'price'=>$price,
-                'create_time'=>$create_time
             ],['user_token'=>$infoArry['token']]);
             
             $this->json([
@@ -159,5 +157,12 @@ class User extends CI_Controller {
         
         
 
+    }
+    public function orderConfirm($token){
+        $create_time = date('Y-m-d h:i:s', time());
+        DB::update('fileSender',['create_time'=>$create_time],['token'=>$token]);
+        $this->json([
+            'code'=>0,
+        ]);
     }
 }
