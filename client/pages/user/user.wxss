@@ -48,6 +48,8 @@ page {
   margin-top: 1.17647059em;
   line-height: 1.41176471;
   font-size: 17px;
+  background-color: #F8F8F8;
+  position: static;
 }
 
   .weui-cells:before {
