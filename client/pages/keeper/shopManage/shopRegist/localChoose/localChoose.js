@@ -17,9 +17,12 @@ Page({
     marker:[],
     suggestions:[],
     inputvalue:null,
-    height:"70vh",
+    height:"60vh",
     width:"100%",
-    placeholder:null
+    placeholder:null,
+    inputShowed: false,
+    iconFlag:false,
+    showFlag:false
   },
 
   /**
@@ -48,6 +51,7 @@ Page({
 
             });
             //console.log(that.data.marker)
+            
           }
         })
   },
@@ -103,10 +107,12 @@ Page({
         success:function(res){
           that.setData({
             "suggestions":res.result,
-            "height": "60vh",
-            "width": "100%"
+            "height": "34vh",
+            "width": "100%",
+            "iconFlag":true,
+            "showFlag":true
           })
-          console.log(res)
+          //console.log(res)
         },
         fail:function(res){
           console.log(res)
@@ -127,11 +133,40 @@ Page({
       "latitude": lat,
       "marker":marker,
       "suggestions":null,
-      "height": "70vh",
-      "width": "100%"
+      "height": "60vh",
+      "width": "100%",
+      "showFlag":false
+      
     })
     
   },
+
+  showInput: function () {
+    this.setData({
+      "inputShowed": true,
+    });
+    console.log(this.data.inputShowed)
+  },
+  hideInput: function () {
+    this.setData({
+      address: null,
+      inputShowed: false,
+      iconFlag: false,
+      showFlag:false,
+      "height": "60vh"
+    });
+    console.log(this.data.inputShowed)
+  },
+  clearInput: function () {
+    this.setData({
+      address: null,
+      iconFlag:false,
+      showFlag:false,
+      "height": "60vh"
+    });
+    console.log(this.data.inputShowed)
+  },
+
   confirm:function(event){
     
     if(this.data.address==null) {

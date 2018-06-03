@@ -2,7 +2,7 @@
 <view wx:if="{{filePath}}">
     <text>{{originName}}</text>
     <text>{{price}}</text>
+    <button bindtap="confirm">提交订单</button>
 </view>
 <button bindtap="getFile">已上传文件预览</button>
-<button bindtap="confirm">提交订单</button>
 

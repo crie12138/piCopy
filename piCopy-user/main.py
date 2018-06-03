@@ -1,4 +1,3 @@
-import configparser
 import json
 import os,sys
 import time
@@ -9,20 +8,14 @@ from poster.streaminghttp import register_openers
 import qrcode
 import hashlib
 import easygui
-import comtypes.client 
-import reportlab.pdfbase.ttfonts
-from reportlab.lib.units import inch
-from reportlab.pdfgen import canvas
-from reportlab.lib.pagesizes import portrait
+import comtypes
+from comtypes import client
 from PyPDF2 import PdfFileWriter,PdfFileReader
 import requests
 
-
-reportlab.pdfbase.pdfmetrics.registerFont(reportlab.pdfbase.ttfonts.TTFont('heiTi','lib/msjh.ttf'))
-config=configparser.ConfigParser()
-config.read('config.ini')
-host=config.get('base','host')
-token=config.get('base','token')
+com = comtypes
+host= "https://7okomkrt.qcloud.la/weapp/user/"
+token=None
 tokenVaild=False
 userName=None
 printId=None
@@ -107,7 +100,8 @@ def conventPDF(input):
     suffix=os.path.splitext(input)[1]
     fileName=os.path.splitext(os.path.split(input)[1])[0]
     dirname= os.path.split(os.path.realpath(sys.argv[0]))[0]
-    output=dirname+"\\temp\\"+fileName+".pdf"
+    print(dirname)
+    output=dirname+"\\"+fileName+".pdf"
     doc2pdf(input, output)
     pdfFile= PdfFileReader(open(output, 'rb'))
     pagesNum = pdfFile.getNumPages()
@@ -118,8 +112,9 @@ def conventPDF(input):
 #pdf文件操作
 
 def doc2pdf(input, output):
+    print(input,output)
     wdFormatPDF=17
-    word = comtypes.client.CreateObject('Word.Application')
+    word = client.CreateObject('Word.Application')
     doc = word.Documents.Open(input)
     doc.SaveAs(output, FileFormat=wdFormatPDF)
     doc.Close()
