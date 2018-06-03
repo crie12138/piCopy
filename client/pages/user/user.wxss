@@ -1,7 +1,11 @@
 /* pages/user/user.wxss */
-
-.weui-cell_access {
-  color: inherit;
+page {
+  height: 100%;
+  background: rgb(246, 246, 246);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .weui-cell__ft_in-access {
