@@ -1,6 +1,6 @@
 <!--pages/keeper/shopRegist/shopRegist.wxml-->
 <view class='page' style='width:750rpx'>
-
+<view class='page__bd'>
 <view class="weui-cells__title">打印店信息</view>
     <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
@@ -31,7 +31,7 @@
         </view>
     </view>
     <!--价格输入框-->
-
+</view>
     <view class="weui-cells__title">打印店地址</view>
     <view wx:if="{{shopLocation}}" class="page__bd page__bd_spacing" >
        <view class="button-sp-area">
@@ -83,10 +83,11 @@
                 </view>
             </view>
         </view>
+        <button class="weui-btn" type="primary" bindtap='confirm'>提交</button>
     </view><!--上传图片-->
 
-
+      
 
     </view><!--page结束-->
 
-<button class="weui-btn" type="primary" bindtap='confirm'>提交</button>
+
