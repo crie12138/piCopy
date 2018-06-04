@@ -97,7 +97,7 @@ Page({
           },
           success:function(result){
             if (result.data.code==0){
-              wx.navigateTo({
+              wx.redirectTo({
                 url:"fileConfirm/fileConfirm?token="+token
               })
             }
