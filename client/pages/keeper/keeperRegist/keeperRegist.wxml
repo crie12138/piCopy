@@ -11,39 +11,39 @@
 <view class="weui-cells__title">填写信息</view>
     <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
-              <view class="weui-cell__hd">
-                  <view class="weui-label">姓名</view>
-              </view>
-              <view class="weui-cell__bd">
-                  <input class="weui-input" placeholder="请填写真实姓名" type='text' bindinput='shopNameInput'/>
-              </view>
+            <view class="weui-cell__hd">
+                <view class="weui-label">姓名</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" placeholder="请填写真实姓名" type='text' bindinput='realNameInput'/>
+            </view>
         </view>
     </view>
- <!--店名输入框-->
+<!--店名输入框-->
 
         <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
-              <view class="weui-cell__hd">
-                  <view class="weui-label">手机</view>
-              </view>
-              <view class="weui-cell__bd">
-                  <input class="weui-input" placeholder="手机号码" name="phone" type="number" bindinput="phoneInput"/>
-              </view>
-              <view wx:if="{{result=='wrong'}}" class="weui-cell__ft">
+            <view class="weui-cell__hd">
+                <view class="weui-label">手机</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" placeholder="手机号码" name="phone" type="number" bindinput="phoneInput"/>
+            </view>
+            <view wx:if="{{result=='wrong'}}" class="weui-cell__ft">
                     <icon type="warn" size="23" color="#E64340"></icon>
-              </view>
+            </view>
         </view>
     </view>
     <!--价格输入框-->
 
     <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input">
-              <view class="weui-cell__hd">
-                  <view class="weui-label">验证码</view>
-              </view>
-              <view class="weui-cell__bd">
-                  <input class="weui-input" placeholder="输入验证码" name="openId" type="number" bindinput="captchaInput"/>
-              </view>
+            <view class="weui-cell__hd">
+                <view class="weui-label">验证码</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" placeholder="输入验证码" name="openId" type="number" bindinput="captchaInput"/>
+            </view>
         </view>
     </view>
     <view class="button-sp-area" style='margin-top: 60rpx;'>
