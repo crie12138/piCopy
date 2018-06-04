@@ -14,7 +14,7 @@ Page({
     captcha:null,
     realName:null,
     phone:null,
-    result:"inputView",
+    result:"normal"
   },
 
   /**
@@ -85,12 +85,12 @@ Page({
   },
   phoneInput:function(event){
     var phone = event.detail.value
-    var result="inputMismatch"
+    var result="wrong"
     if(/^1[34578]\d{9}$/.test(phone)){ 
-      result="inputCorrect"
+      result="right"
     } 
     else if(phone==0){
-      result="inputView"
+      result="normal"
     }
     else{
       phone=phone
@@ -124,7 +124,7 @@ Page({
       setTimeout(function(){
         wx.hideToast()
       },2000)
-    } else if (this.data.result == "inputMismatch"){
+    } else if (this.data.result == "wrong"){
       wx.showToast({
         title: '手机号格式错误',
         image: '/pages/keeper/image/error.png',

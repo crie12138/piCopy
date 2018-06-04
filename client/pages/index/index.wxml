@@ -7,11 +7,11 @@
     <view class='conter' wx:if="{{canIUse}}">
     <view class='button'>
         <button type="primary" loading="{{userLoading}}" disabled="{{userDisable}}" hover-class="button-hover" 
-        data-identity="user" open-type="getUserInfo" bindgetuserinfo="onclick">我是用户</button>
+        data-identity="user" open-type="getUserInfo" bindgetuserinfo="onclick">用户</button>
     </view>
     <view class='button'>
         <button type="primary" loading="{{keeperLoading}}" disabled="{{keeperDisable}}" hover-class="button-hover" 
-        data-identity="keeper" open-type="getUserInfo" bindgetuserinfo="onclick">我是商家</button>
+        data-identity="keeper" open-type="getUserInfo" bindgetuserinfo="onclick">商家</button>
     </view>
     </view>
     <!-- 上传图片测试 -->
