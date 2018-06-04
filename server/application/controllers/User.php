@@ -9,7 +9,7 @@ use \QCloud_WeApp_SDK\Cos\CosAPI as Cos;
 class User extends CI_Controller {
     public function getShops(){
         try{
-            $rows=DB::select("shops",['id','latitude','longitude','location','page_price']);
+            $rows=DB::select("shops",['id','name','latitude','longitude','location','page_price']);
             $this->json([
                 'code'=>0,
                 'shops'=>$rows

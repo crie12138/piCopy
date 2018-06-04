@@ -5,12 +5,17 @@ import time
 import uuid
 from urllib import error, parse, request
 import qrcode
+from win32com import client
+import win32api
+import win32print
+import sys
 
 config=configparser.ConfigParser()
 config.read('config.ini')
 host=config.get('base','host')
 shopId=config.get('base','shopId')
 token=config.get('base','token')
+fileURL=None
 
 def hostname():
     sys = os.name
@@ -105,9 +110,61 @@ def askShopId():
             print("URLError")
             print(e.reason)
 
-def askFile():
-        
+def askFileURL():
+    url=host+"getFileURL/"+token
+    try:
+        response = request.urlopen(url)
+        response = json.loads(bytes.decode(response.read()))
+        if (response['code'] == 0 ):
+           fileURL=response['fileURL'] 
+           downloadFile(fileURL)
+           
+    except error.URLError as e:
+        if hasattr(e, 'code'):
+            print("HTTPError")
+            print(e.code)
+        elif hasattr(e, 'reason'):
+            print("URLError")
+            print(e.reason)
     return
+
+def downloadFile(fileURL):
+    request.urlretrieve(fileURL,'print.pdf')
+    printFile('print.pdf',fileURL)
+
+
+def printFile(filePath,fileURL):
+    filePath=os.path.split(os.path.realpath(sys.argv[0]))[0]
+    print (filePath+"\\print.pdf")
+    win32api.ShellExecute (
+     0,
+    "print",
+    filePath,
+      #
+      # If this is None, the default printer will
+      # be used anyway.
+      #
+      '/d:"%s"' % win32print.GetDefaultPrinter (),
+      ".",
+      0
+    )
+    printcomplete(fileURL)
+
+def printcomplete(fileURL):
+    url = host+'printComplete/'+fileURL
+    try:
+        response = request.urlopen(url)
+        response = json.loads(bytes.decode(response.read()))
+           
+    except error.URLError as e:
+        if hasattr(e, 'code'):
+            print("HTTPError")
+            print(e.code)
+        elif hasattr(e, 'reason'):
+            print("URLError")
+            print(e.reason)
+    return
+
 
 def main():
 
@@ -121,7 +178,8 @@ def main():
             askShopId()
             time.sleep(3)
     else:
-        askFile()
+        while(True):
+            askFileURL()
     
 if __name__ == "__main__":
     main()
