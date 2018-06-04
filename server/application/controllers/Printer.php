@@ -98,4 +98,10 @@ class Printer extends CI_Controller {
 
         }
     }
+    
+    // public function printFinish($fileURL){
+    //     try{
+    //         DB::update('fileSender',[''])
+    //     }
+    // }
 }

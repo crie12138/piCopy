@@ -21,7 +21,7 @@ Page({
     var that=this
     var url=config.service.userUrl+"getShops"
     var markers=[]
-    console.log(url)
+    
     //通过百度地图定位找出用户的所在地
     bmap.regeocoding({
       'iconPath':'/img/location-sign.png',
@@ -30,12 +30,14 @@ Page({
         wx.request({
           url:url,
           success:function(result){
+            console.log(result)
             markers[0]=res.wxMarkerData[0]
             for(var i=0,len=result.data.shops.length;i<len;i++){
             
             var marker={ 
               'id':result.data.shops[i].id,
               'label':{
+                //'title': result.data.shop[i].name,
                 'content':result.data.shops[i].page_price,
                 'bgcolor':"yellow",
                 'color':"black",
@@ -47,7 +49,7 @@ Page({
               }
                 markers[i+1]=marker
             }
-            console.log(markers)
+            //console.log(markers)
             that.setData({
               'location':markers[0],
               'markers':markers

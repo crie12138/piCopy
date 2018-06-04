@@ -1,5 +1,5 @@
 <!--pages/keeper/shopRegist/shopRegist.wxml-->
-<view class='page' xmlns:wx="http://www.w3.org/1999/xhtml" style='width:750rpx'>
+<view class='page' style='width:750rpx'>
 <view class='page__bd'>
 <view class="weui-cells__title">打印店信息</view>
     <view class="weui-cells weui-cells_after-title">
@@ -83,10 +83,11 @@
                 </view>
             </view>
         </view>
+        <button class="weui-btn" type="primary" bindtap='confirm'>提交</button>
     </view><!--上传图片-->
 
-
+      
 
     </view><!--page结束-->
 
-<button class="weui-btn" type="primary" bindtap='confirm'>提交</button>
+

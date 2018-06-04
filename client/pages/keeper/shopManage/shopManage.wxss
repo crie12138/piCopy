@@ -1,5 +1,5 @@
 /* pages/keeper/shopManage/shopManage.wxss */
-.ac_button{
+ .ac_button{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -46,4 +46,4 @@ page {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-}
+} 

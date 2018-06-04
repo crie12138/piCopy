@@ -10,7 +10,8 @@
     </button>
   </view>
   <view class='top'>
-    <button bindtap='redirect' data-action='history' class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+    <button bindtap='redirect' data-action='history' class="weui-cell weui-cell_access"
+    hover-class="weui-cell_active">
       <image src='image/history.png' class='img' />
       <view class="weui-cell__bd">历史记录</view>
       <view class="weui-cell__ft weui-cell__ft_in-access"></view>

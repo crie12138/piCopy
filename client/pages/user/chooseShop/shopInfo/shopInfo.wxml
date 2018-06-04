@@ -1,6 +1,26 @@
 <!--pages/user/chooseShop/shopInfo/shopInfo.wxml-->
-<image src="{{shopInfo.photo}}"></image>
-<text>{{shopInfo.name}}</text>
-<text>{{shopInfo.location}}</text>
-<text>{{shopInfo.page_price}}</text>
-<button bindtap="sendFile" data-shopid="{{shopInfo.id}}">发送文件</button>
+<view class='page'>
+  <view class='page__hd' style='padding:20px;'>
+    <view class="page__title">商家详情</view>
+  </view>
+  <view class='page__bd'>
+    <view class="weui-cells__title">商家图片</view>
+    <image src="{{shopInfo.photo}}" mode='aspectFit' style='height:450rpx;'></image>
+    <view class="weui-cells__title">打印店信息</view>
+    <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">名称</view>
+                <view class="weui-cell__ft">{{shopInfo.name}}</view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd">地址</view>
+                <view class="weui-cell__ft">{{shopInfo.location}}</view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd">价格</view>
+                <view class="weui-cell__ft">{{shopInfo.page_price}}</view>
+            </view>
+  </view>
+  <button data-shopid="{{shopInfo.id}}" class="weui-btn" type="primary" bindtap="sendFile">我要打印</button>
+</view>
+</view>
