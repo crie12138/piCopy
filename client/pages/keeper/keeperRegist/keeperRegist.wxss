@@ -1,8 +1,8 @@
 /* pages/keeperRegist/keeperRegist.wxss */
-.input{
+ /* .input{
     padding-left: 20rpx;
     height: 88rpx;
-}
+}  */
 .con{
   display: flex;
   flex-direction: column;
@@ -21,7 +21,7 @@
     border-radius: 50%;
     margin-bottom: 75rpx;
 }
-.button{
+/* .button{
   margin-left: 100rpx;
   margin-right:100rpx;
   margin-top: 30rpx
@@ -46,4 +46,7 @@
   margin-top: 30rpx;
   margin-left: 100rpx;
   margin-right:100rpx;
+} */
+.con {
+  margin-top: 
 }

@@ -1,26 +1,55 @@
 <!--pages/keeperRegist/keeperRegist.wxml-->
 
-<view>
+<view class='page'>
     <view class="con">
         <image  class="avatar-banner" src="{{avatarUrl}}" mode="scaleToFill"></image>
         <label class="nickName-banner">{{nickName}}</label>
     </view>
     
-    <form bindsubmit='formSubmit'>
-    <view class="inputView">
-        <input class="input" placeholder="真实姓名" name="realName" maxlength="10" confirm-type="next" bindinput="realNameInput"></input>
-    </view>
-    <view class="{{result}}">
-        <input class="input" placeholder="手机号码" name="phone" type="number" bindinput="phoneInput"></input>
-    </view>
-    <view>
-        <view class="inputView">
-            <input class="input" placeholder="输入验证码" name="openId" type="number" bindinput="captchaInput"></input>
+<view class='page__bd'>
+<form bindsubmit='formSubmit'>
+<view class="weui-cells__title">填写信息</view>
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                  <view class="weui-label">姓名</view>
+              </view>
+              <view class="weui-cell__bd">
+                  <input class="weui-input" placeholder="请填写真实姓名" type='text' bindinput='shopNameInput'/>
+              </view>
         </view>
-        <button type="primary" bindtap="getCaptcha">获取验证码</button>
     </view>
-    <view class="button">
-      <button type="primary" formType='submit'>确认注册</button>
+ <!--店名输入框-->
+
+        <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                  <view class="weui-label">手机</view>
+              </view>
+              <view class="weui-cell__bd">
+                  <input class="weui-input" placeholder="手机号码" name="phone" type="number" bindinput="phoneInput"/>
+              </view>
+              <view wx:if="{{result=='wrong'}}" class="weui-cell__ft">
+                    <icon type="warn" size="23" color="#E64340"></icon>
+              </view>
+        </view>
     </view>
+    <!--价格输入框-->
+
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+              <view class="weui-cell__hd">
+                  <view class="weui-label">验证码</view>
+              </view>
+              <view class="weui-cell__bd">
+                  <input class="weui-input" placeholder="输入验证码" name="openId" type="number" bindinput="captchaInput"/>
+              </view>
+        </view>
+    </view>
+    <view class="button-sp-area" style='margin-top: 60rpx;'>
+            <button class="weui-btn" type="primary" plain="true"  bindtap="getCaptcha">获取验证码</button>
+    </view>
+    <button class="weui-btn" type="primary" formType='submit'>注册</button>
     </form>
+</view>
 </view>

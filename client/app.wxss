@@ -33,12 +33,12 @@ page{
     text-align: left;
     font-size: 14px;
 }
- .container {
+ /* .container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   box-sizing: border-box;
-} 
+}  */
  /* page {
   height: 100%;
   background: rgb(246, 246, 246);
@@ -47,7 +47,7 @@ page{
   justify-content: space-around;
   align-items: center;
 }  */
-.inputView{
+/* .inputView{
   border:  2px solid rgb(181, 184, 176);
   border-radius: 40px;
   margin-left: 15px;
@@ -67,4 +67,4 @@ page{
   margin-left: 15px;
   margin-right: 15px;
   margin-top: 15px;
-} 
+}  */
