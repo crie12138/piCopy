@@ -24,7 +24,7 @@ Page({
     
     //通过百度地图定位找出用户的所在地
     bmap.regeocoding({
-      'iconPath':'/img/location-sign.png',
+      'iconPath':'/img/marker_yellow.png',
       success:function(res){
       //从服务器获取所有打印机所在的点并且放入shops的数组里作为地图的markers
         wx.request({
@@ -32,15 +32,24 @@ Page({
           success:function(result){
             console.log(result)
             markers[0]=res.wxMarkerData[0]
+            console.log(markers[0])
+            console.log(markers[0].label)
+            markers[0].label={
+                //'title': result.data.shop[i].name,
+                'content':"你所在位置",
+                'bgcolor':"yellow",
+                'color':"#0066ff",
+                'textAlign':'center',
+            }
+            console.log(markers[0])
             for(var i=0,len=result.data.shops.length;i<len;i++){
-            
             var marker={ 
               'id':result.data.shops[i].id,
               'label':{
                 //'title': result.data.shop[i].name,
-                'content':result.data.shops[i].page_price,
+                'content':result.data.shops[i].name,
                 'bgcolor':"yellow",
-                'color':"black",
+                'color':"#FF9900",
                 'textAlign':'center',
               },
               'latitude':result.data.shops[i].latitude,

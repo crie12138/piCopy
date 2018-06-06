@@ -1,18 +1,29 @@
 // pages/user/history/history.js
+var config = require ("../../../config")
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    orders:null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var url = config.service.userUrl+'getOrders/'+getApp().globalData.userInfo.openId
+    var that = this
+    wx.request({
+      url:url,
+      success:function(res){
+        that.setData({
+          orders : res.data.orders
+        })
+        console.log(res)
+      }
+    })
   },
 
   /**
