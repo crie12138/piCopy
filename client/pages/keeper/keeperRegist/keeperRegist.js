@@ -12,7 +12,7 @@ Page({
     openId:null,
     nickName:null,
     captcha:null,
-    realName:null,
+    realName:'',
     phone:null,
     result:"normal"
   },
@@ -78,7 +78,6 @@ Page({
   
   },
   realNameInput:function(event){
-    console.log(event.detail.value=='')
     this.setData({
       'realName':event.detail.value
     })
@@ -115,6 +114,7 @@ Page({
     var realName = this.data.realName
     var phone = this.data.phone
     var openId = this.data.openId
+    console.log(realName,phone)
     var url = config.service.keeperUrl + "regist"
     if (this.data.realName == "" || this.data.realName == null || this.data.phone == null){
       wx.showToast({

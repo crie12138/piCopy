@@ -1,1 +1,5 @@
 /* pages/user/chooseShop/shopInfo/shopInfo.wxss */
+.page__bd image{
+  display: flex;
+  margin: 0 auto;
+}
