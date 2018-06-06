@@ -1,2 +1,18 @@
 <!--pages/user/history/history.wxml-->
-<text>pages/user/history/history.wxml</text>
+<scroll-view scroll-y="true">
+    <view wx:for="{{orders}}" wx:for-item="order">
+        <view>
+            <view wx:if="{{order.origin_name != null}}">
+                <text>{{order.origin_name}}</text>
+                <text>{{order.price}}</text>
+            </view>
+            <view wx:else>
+                <text>未上传文件</text>
+            </view>
+            <button data-orderid="{{order.id}}">订单详情</button>
+            <view wx:if="{{order.finish_time == null}}">已完成</view>
+            <view wx:elif="{{order.create_time == null}}">已提交</view>
+            <view wx:else>未上传文件</view>
+        </view>
+    </view>
+</scroll-view>

@@ -165,4 +165,12 @@ class User extends CI_Controller {
             'code'=>0,
         ]);
     }
+
+    public function getOrders($openId){
+        $rows=DB::select('fileSender',['id','origin_name','create_time','finish_time','price'],['open_id'=>$openId]);
+        $this->json([
+            'code'=>0,
+            'orders'=>$rows
+        ]);
+    }
 }
