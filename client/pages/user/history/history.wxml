@@ -7,11 +7,11 @@
                 <text>{{order.price}}</text>
             </view>
             <view wx:else>
-                <text>未上传文件</text>
+                <text>空</text>
             </view>
             <button data-orderid="{{order.id}}">订单详情</button>
-            <view wx:if="{{order.finish_time == null}}">已完成</view>
-            <view wx:elif="{{order.create_time == null}}">已提交</view>
+            <view wx:if="{{order.finish_time != null}}">已完成</view>
+            <view wx:elif="{{order.create_time != null}}">已提交</view>
             <view wx:else>未上传文件</view>
         </view>
     </view>
