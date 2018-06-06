@@ -1,54 +1,75 @@
 <!--pages/keeper/shopManage/shop/shop.wxml-->
-<view class='img'>
-  <image src="{{shop.photo}}" mode="aspectFit"></image>
+<view class='page'>
+  <image src="{{shop.photo}}" mode="aspectFit" style='height:400rpx;'></image>
+
+<view class="page__bd" wx:if="{{shop}}" hidden="{{isEdit}}">
+    
+        <view class="weui-cells__title">商店信息</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">店名</view>
+                <view class="weui-cell__ft">{{shop.name}}</view>
+            </view>
+
+            <view class="weui-cell">
+                <view class="weui-cell__bd">单面价格</view>
+                <view class="weui-cell__ft">{{shop.page_price}}</view>
+            </view>
+
+            <view class="weui-cell">
+                <view class="weui-cell__bd">商店地址</view>
+                <view class="weui-cell__ft">{{shop.location}}</view>
+            </view>
+        </view>
+
+        <view class="button-sp-area" style='margin-top:30rpx;'>
+            <button class="weui-btn" type="primary" plain="true" bindtap="addPrinter" data-shopid="{{shop.id}}" >打印机管理</button>
+            <button class="weui-btn" type="primary" plain="true" bindtap="editInfo">编辑信息</button>
+        </view>
 </view>
 
-<view wx:if="{{isEdit}}">
-  <form bindsubmit="submit">
-    <view class="{{nameInput}}">
-      <input name="id" value="{{shop.id}}" hidden disabled></input>
-      <view class='row'>
-        <text>店名：</text>
-        <input name="shopName" value="{{shop.name}}" bindinput="nameInput"></input>
-      </view>
+  <view class="page__bd" wx:if="{{isEdit}}">
+    <form bindsubmit="submit">
+
+    <view class="weui-cells__title">信息修改</view>
+        <view class="weui-cells weui-cells_after-title">
+
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">店名</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" placeholder="请输入新的店名" name="id" bindinput="nameInput"/>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">单张价格</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input type='digit' name="price" class="weui-input" placeholder="请输入新的价格" bindinput="priceInput"/>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">商店地址</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" disabled='true' value="{{shop.location}}"/>
+                </view>
+            </view>
+
+
     </view>
-    <view class='row'>
-      <text>单张打印价格：（元）</text>
-      <view class="{{priceInput}}">
-        <input name="price" value="{{shop.page_price}}" bindinput="priceInput"></input>
-      </view>
-    </view>
-    <view>
-      <view class='row1'>
-        <text>商店地址：(无法修改，请删除后重建！)</text>
-        <input value="{{shop.location}}" disabled></input>
-      </view>
-    </view>
-    <view class="section btn-area">
-      <button type="primary" plain form-type="submit">提交修改</button>
-    </view>
-    <view>
-      <button data-shopid="{{shop.id}}" bindtap="shopDelete" type="warn">删除打印店</button>
-    </view>
+
+  <view class="button-sp-area" style='margin-top:30rpx;'>
+          <button class="weui-btn" type="primary" plain="true" form-type="submit">提交修改</button>
+          
+          <button class="weui-btn" type="warn" plain="true" data-shopid="{{shop.id}}" bindtap="shopDelete">删除打印店</button>
+  </view>
   </form>
+  
+
+</view>
 </view>
 
-<view wx:if="{{shop}}" hidden="{{isEdit}}">
-  <view class="{{nameInput}}">
-    <input name="shopName" value="店名：{{shop.name}}" bindinput="nameInput" disabled></input>
-  </view>
-  <view>
-    <input name="price" value="单张打印价格：{{shop.page_price}}元" bindinput="priceInput" disabled></input>
-  </view>
-  <view>
-    <text>商店地址：{{shop.location}}</text>
-  </view>
-  <view>
-    <button type="primary" plain bindtap="addPrinter" data-shopid="{{shop.id}}">打印机管理</button>
-    <button bindtap="editInfo">编辑信息</button>
-  </view>
-</view>
-
-<view>
-  <button bindtap="back">返回</button>
-</view>
