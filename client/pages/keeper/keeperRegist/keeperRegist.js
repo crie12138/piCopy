@@ -147,7 +147,7 @@ Page({
         success: function (result) {
           if (result.data.code == 0) {
             wx.redirectTo({
-              url: "/pages/keeper/keeper"
+              url: "/pages/keeper/shopManage/shopManage"
             })
           }
           else {

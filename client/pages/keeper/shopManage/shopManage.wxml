@@ -11,3 +11,4 @@
     <view class='text'>添加打印店</view>
   </button>
 </view>
+<navigator class='navi' open-type='redirect' url='../../index/index'>返回</navigator>
